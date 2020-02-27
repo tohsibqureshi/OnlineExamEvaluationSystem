@@ -1,0 +1,98 @@
+button{
+	
+	
+	 text-align: center;
+      font-size: 28px;
+      padding: 20px;
+      width: 250px;
+      height:55px;
+      text-align:center;
+      font-size:15px;
+	border-radius:50px;
+	cursor:pointer;
+	color:black;
+	background-color:#4CAF50;
+	margin: 5px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   
+	
+	
+}
+
+.sec{
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	position:relative;
+	border:1px solid;
+	border-color:lightgrey;
+	max-width:100%;
+	height:95vh;
+	
+	overflow:hidden;
+
+	
+
+}
+.sec h2{
+	padding-left:2%;
+}
+.que{
+
+	border-top:1px solid;
+	border-bottom:1px solid;
+	border-color:lightgrey;
+	
+	padding:10px;
+	padding-left:2%;
+
+}
+
+.qbody{
+	
+	position:absolute;
+	display:inline-block;
+	text-align:justify;
+	font-family:serif;
+	
+	border-color:lightgrey;
+	width:45%;
+	height:78%;
+	padding:10px;
+	padding-left:4%;
+	margin-top:1%;
+
+	
+}
+
+
+
+.opt{
+	position:absolute;
+	display:inline-block;
+	margin-left:51%;
+	border-left:1px solid;
+	height:80vh;
+	overflow:auto;
+	border-color:lightgrey;
+	padding-top:30px;
+	padding-left:2%;
+	width:44.8%;
+	
+	}
+.opt1{
+	border:1px solid;
+	border-color:lightgrey;
+	border-radius:50px;
+	margin-top:5%;
+	padding:2%;
+	
+	
+}
+.btn{
+	display:inline-block;
+	margin-right:2%;
+	margin-top:5%;
+	
+	
+}
+
+

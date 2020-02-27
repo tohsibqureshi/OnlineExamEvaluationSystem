@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: MvcBootHello
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: ist
+Implementation-Vendor-Id: com.arc.springboot
+Build-Jdk: 1.8.0_45-internal
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/OnlineExamEvaluationSystem
+Created-By: Maven Integration for Eclipse
+
