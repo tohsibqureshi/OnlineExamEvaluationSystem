@@ -79,8 +79,7 @@ public class CommonController {
 
 		String mail = userService.getEmail(email);
 		String pass = userService.getPassword(email);
-		String name = userService.getName(email);
-
+		
 		// System.out.println("**"+f_id);
 		if (mail != null) {
 			if (email.equals(mail) && password.equals(pass)) {
@@ -88,13 +87,13 @@ public class CommonController {
 				session.setAttribute("user", userService.getUser(email));
 				if (userService.getRole(email).equals("faculty")) {
 					ModelAndView m = new ModelAndView("examiner");
-					// m.addObject("email", email);
-					// m.addObject("name", name);
+					 m.addObject("createtest", "Create Test");
+					 m.addObject("createdbyme", "Test Created By Me");
 
 					return m;
 				} else {
-					ModelAndView m = new ModelAndView("userdashboard");
-					m.addObject("name", name);
+					ModelAndView m = new ModelAndView("examiner");
+
 					return m;
 				}
 			}
