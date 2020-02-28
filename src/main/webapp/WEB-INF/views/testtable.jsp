@@ -26,7 +26,7 @@ tr:nth-child(even) {
 
 	<h2>
 		Tests...
-		<h1>${msg}</h1>
+	
 
 	</h2>
 
@@ -62,9 +62,10 @@ tr:nth-child(even) {
 
 			</tr>
 		</c:forEach>
+		
 
 
-	</table>
+	</table>	<center><h1>${msg}</h1></center>
 
 </body>
 </html>

@@ -149,12 +149,12 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`userid`, `email`, `ln`, `name`, `password`, `roles`, `username`) VALUES
 (1, 'hatian3105@gmail.com', 0, 'tohsib', '123', 'f', 'qq'),
-(14, 'a@b.c', 0, 'neema', '1111', 'f', 'nn'),
-(15, 'a@b.c', 0, 'neema', '1111', 'f', 'nn'),
-(16, 'a@b.com', 0, 'neema', '123', 'f', 'nn'),
-(17, 'a@b.com', 0, 'neema', '123', 'f', 'nn'),
-(18, 'a@b.com', 0, 'neema', '123', 'f', 'nn'),
-(19, 'a@b.com', 0, 'neema1', '123456', 'f', 'nn');
+(14, 'a@b.c', 0, 'neema', '1111', 'faculty', 'nn'),
+(15, 'a@b.c', 0, 'neema', '1111', 'faculty', 'nn'),
+(16, 'a@b.com', 0, 'neema', '123', 'faculty', 'nn'),
+(17, 'a@b.com', 0, 'neema', '123', 'faculty', 'nn'),
+(18, 'a@b.com', 0, 'neema', '123', 'faculty', 'nn'),
+(19, 'a@b.com', 0, 'neema1', '123456', 'faculty', 'nn');
 
 -- --------------------------------------------------------
 

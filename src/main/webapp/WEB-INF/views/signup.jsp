@@ -34,8 +34,8 @@
     </div>
      <div class="input_field">
      
-      <input name="roles" type="radio" value="f" >As Examiner &nbsp;</input>
-      <input name="roles" type="radio" value="s" required="required" checked="checked">As Student</input>
+      <input name="roles" type="radio" value="faculty" >As Examiner &nbsp;</input>
+      <input name="roles" type="radio" value="student" required="required" checked="checked">As Student</input>
     
     </div>
     <div class="btn1">

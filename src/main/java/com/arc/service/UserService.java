@@ -28,8 +28,10 @@ UserRepository userRepository;
 	}
 	public String getEmail(String email) {
 		User u=getUser(email);
-		
-		return u.getEmail();
+		if(u!=null)
+			return u.getEmail();
+		else
+			return null;
 		
 	}
 	public User getUser(String email) {
@@ -50,33 +52,41 @@ UserRepository userRepository;
 	}
 	public String getPassword(String email) {
 		User u=getUser(email);
-		
-		return u.getPassword();
+		if(u!=null)
+			return u.getPassword();
+		else
+			return null;
 	}
-	public void setLogin(String email) {
-		User u=getUser(email);
-		u.setLn(1);
-		userRepository.save(u);
-		
-	}
+//	public void setLogin(String email) {
+//		User u=getUser(email);
+//		u.setLn(1);
+//		userRepository.save(u);
+//		
+//	}
 	
 	public String getName(String email) {
 		User u=getUser(email);
 		
-		return u.getName();		
+		if(u!=null)
+			return u.getName();
+		else
+			return null;
 	}
-	public void setLogout() {
-		for (User record : list()) {
-			record.setLn(0);
-			userRepository.save(record);
-		}
+//	public void setLogout() {
+//		for (User record : list()) {
+//			record.setLn(0);
+//			userRepository.save(record);
+//		}
 		
-	}
+//	}
 	public String getRole(String email) {
 		User user = getUser(email);
 		
 		
-		return user.getRoles();
+		if(user!=null)
+			return user.getRoles();
+		else
+			return null;
 	}
 	
 

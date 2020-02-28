@@ -82,26 +82,28 @@ public class CommonController {
 		String name = userService.getName(email);
 
 		// System.out.println("**"+f_id);
-
-		if (email.equals(mail) && password.equals(pass)) {
-			// userService.setLogin(email);
-			if (userService.getRole(email).equals("f")) {
-				ModelAndView m = new ModelAndView("examiner");
-				// m.addObject("email", email);
-				// m.addObject("name", name);
+		if (mail != null) {
+			if (email.equals(mail) && password.equals(pass)) {
+				// userService.setLogin(email);
 				session.setAttribute("user", userService.getUser(email));
-				return m;
-			} else {
-				ModelAndView m = new ModelAndView("userdashboard");
-				m.addObject("name", name);
-				return m;
+				if (userService.getRole(email).equals("faculty")) {
+					ModelAndView m = new ModelAndView("examiner");
+					// m.addObject("email", email);
+					// m.addObject("name", name);
+
+					return m;
+				} else {
+					ModelAndView m = new ModelAndView("userdashboard");
+					m.addObject("name", name);
+					return m;
+				}
 			}
 		} else {
 			ModelAndView m = new ModelAndView("login");
 			m.addObject("msg", "Wrong Credencials");
 			return m;
 		}
-
+		return new ModelAndView("login").addObject("msg", "Wrong Credencials");
 	}
 
 
@@ -209,10 +211,15 @@ public class CommonController {
 		User user = (User) session.getAttribute("user");
 		System.out.println(user);
 		List<Testinfo> testlist = testService.getList(user.getUserId());
-		System.out.println(testlist.get(1).getTestName());
-		m.addObject("testList", testlist);
-		return m;
-	}
+	//	System.out.println(testlist.get(1).getTestName());
+		if(!testlist.isEmpty())
+		{	m.addObject("testList", testlist);
+			return m;
+		}else {
+			m.addObject("msg", "No Record found");
+			return m;
+		}
+		}
 
 	@RequestMapping("/showque")
 	public ModelAndView showQue(HttpSession session, @RequestParam int id) {
