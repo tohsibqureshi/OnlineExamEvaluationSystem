@@ -6,12 +6,13 @@ import javax.servlet.http.HttpSession;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.arc.model.ContactUs;
+import com.arc.model.Student;
 import com.arc.model.Testinfo;
 import com.arc.model.UploadQuestions;
 import com.arc.model.User;
@@ -19,6 +20,7 @@ import com.arc.service.ContactService;
 import com.arc.service.TestService;
 import com.arc.service.UploadQuestionService;
 import com.arc.service.UserService;
+import com.arc.service.StudentService;
 
 @Controller
 public class CommonController {
@@ -30,6 +32,8 @@ public class CommonController {
 	UploadQuestionService uploadQuestionService;
 	@Autowired
 	ContactService contactService;
+	@Autowired
+	StudentService studentService;
 //	@Autowired
 	// HttpServletRequest request;
 
@@ -79,7 +83,7 @@ public class CommonController {
 
 		String mail = userService.getEmail(email);
 		String pass = userService.getPassword(email);
-		
+
 		// System.out.println("**"+f_id);
 		if (mail != null) {
 			if (email.equals(mail) && password.equals(pass)) {
@@ -87,8 +91,8 @@ public class CommonController {
 				session.setAttribute("user", userService.getUser(email));
 				if (userService.getRole(email).equals("faculty")) {
 					ModelAndView m = new ModelAndView("examiner");
-					 m.addObject("createtest", "Create Test");
-					 m.addObject("createdbyme", "Test Created By Me");
+					m.addObject("createtest", "Create Test");
+					m.addObject("createdbyme", "Test Created By Me");
 
 					return m;
 				} else {
@@ -104,7 +108,6 @@ public class CommonController {
 		}
 		return new ModelAndView("login").addObject("msg", "Wrong Credencials");
 	}
-
 
 	@RequestMapping("/loginfailed")
 	public String lp() {
@@ -210,15 +213,15 @@ public class CommonController {
 		User user = (User) session.getAttribute("user");
 		System.out.println(user);
 		List<Testinfo> testlist = testService.getList(user.getUserId());
-	//	System.out.println(testlist.get(1).getTestName());
-		if(!testlist.isEmpty())
-		{	m.addObject("testList", testlist);
+		// System.out.println(testlist.get(1).getTestName());
+		if (!testlist.isEmpty()) {
+			m.addObject("testList", testlist);
 			return m;
-		}else {
+		} else {
 			m.addObject("msg", "No Record found");
 			return m;
 		}
-		}
+	}
 
 	@RequestMapping("/showque")
 	public ModelAndView showQue(HttpSession session, @RequestParam int id) {
@@ -235,6 +238,71 @@ public class CommonController {
 			m.addObject("queList", quelist);
 		} else
 			m.addObject("msg", "No data found");
+		return m;
+	}
+
+	@RequestMapping("/updatetestpage")
+	public ModelAndView updateTestPage(@RequestParam int id) {
+
+		ModelAndView m = new ModelAndView("updatetestform");
+
+		Testinfo test = testService.getTest(id);
+		System.out.println(test.getTestName());
+		m.addObject("test", test);
+		return m;
+	}
+
+	@RequestMapping("/updatetest")
+	public ModelAndView updateTest(HttpSession session, Testinfo test) {
+		ModelAndView m = new ModelAndView("testtable");
+		testService.addTest(test);
+
+		User user = (User) session.getAttribute("user");
+		System.out.println(user);
+		List<Testinfo> testlist = testService.getList(user.getUserId());
+		// System.out.println(testlist.get(1).getTestName());
+		if (!testlist.isEmpty()) {
+			m.addObject("testList", testlist);
+			return m;
+		} else {
+			m.addObject("msg", "No Record found");
+			return m;
+		}
+
+	}
+
+	@RequestMapping("/getlink")
+	public ModelAndView getLink(@RequestParam int id) {
+
+		ModelAndView m = new ModelAndView("linkpage");
+		String link = "localhost:8080/testhosted?id=" + id;
+
+		m.addObject("link", link);
+		return m;
+	}
+
+	@RequestMapping("/testhosted")
+	public ModelAndView hostTest(@RequestParam int id) {
+
+		ModelAndView m = new ModelAndView("getlink");
+
+//		Testinfo test = testService.getTest(id);
+//		System.out.println(test.getTestName());
+		m.addObject("testId", id);
+		return m;
+	}
+
+	@RequestMapping("/addstudentdetails/{testId}")
+	public ModelAndView addStudentDetail(Student student, @PathVariable(value = "testId") int testId) {
+
+		studentService.addStudentDetails(student);
+
+		ModelAndView m = new ModelAndView("instruction");
+
+		System.out.println();
+		Testinfo test = testService.getTest(testId);
+		m.addObject("test", test);
+		m.addObject("testId", testId);
 		return m;
 	}
 

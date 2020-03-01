@@ -20,6 +20,12 @@
 <link rel="stylesheet" href="css/mdb.min.css">
 <!-- Your custom styles (optional) -->
 <link rel="stylesheet" href="css/style.css">
+
+<style>
+html {
+	scroll-behavior: smooth;
+}
+</style>
 </head>
 <body>
 
@@ -49,15 +55,15 @@
 					<div class="collapse navbar-collapse" id="basicExampleNav">
 
 						<!-- Links -->
-						<ul class="navbar-nav mr-auto smooth-scroll">
-<!-- 							<li class="nav-item"><a class="nav-link" href="#intro">Home</a> -->
-<!-- 							</li> -->
-<!-- 							<li class="nav-item"><a class="nav-link" -->
-<!-- 								href="#best-features">Features</a></li> -->
-<!-- 							<li class="nav-item"><a class="nav-link" href="#examples">Examples</a> -->
-<!-- 							</li> -->
-<!-- 							<li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a> -->
-<!-- 							</li> -->
+						<ul class="navbar-nav mr-auto smooth-scroll list-unstyled">
+							<li class="nav-item"><a class="nav-link" href="#intro">Home</a>
+							</li>
+							<li class="nav-item"><a class="nav-link"
+								href="#best-features">Features</a></li>
+							<li class="nav-item"><a class="nav-link" href="#examples">Examples</a>
+							</li>
+							<li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a>
+							</li>
 							<li class="nav-item"><a class="nav-link" href="#contact">Contact</a>
 							</li>
 						</ul>
@@ -99,16 +105,17 @@
 							<div class="col-md-10">
 
 								<!-- Heading -->
-								<h2 class="display-4 font-weight-bold white-text pt-5 mb-2">Online Test Evaluation System</h2>
+								<h2 class="display-4 font-weight-bold white-text pt-5 mb-2">Online
+									Test Evaluation System</h2>
 
 								<!-- Divider -->
 								<hr class="hr-light">
 
 								<!-- Description -->
-<!-- 								<h4 class="white-text my-4"></h4> -->
-<!-- 								<button type="button" class="btn btn-outline-white"> -->
-<!-- 									Read more<i class="fa fa-book ml-2"></i> -->
-<!-- 								</button> -->
+								<!-- 								<h4 class="white-text my-4"></h4> -->
+								<!-- 								<button type="button" class="btn btn-outline-white"> -->
+								<!-- 									Read more<i class="fa fa-book ml-2"></i> -->
+								<!-- 								</button> -->
 
 							</div>
 
@@ -129,301 +136,300 @@
 			<div class="container">
 
 				<!--Section: Best Features-->
-<!-- 				<section id="best-features" class="text-center"> -->
+				<section id="best-features" class="text-center">
 
-<!-- 					Heading -->
-<!-- 					<h2 class="mb-5 font-weight-bold">Best Features</h2> -->
 
-<!-- 					Grid row -->
-<!-- 					<div class="row d-flex justify-content-center mb-4"> -->
+					<h2 class="mb-5 font-weight-bold">Best Features</h2>
 
-<!-- 						Grid column -->
-<!-- 						<div class="col-md-8"> -->
+					<div class="row d-flex justify-content-center mb-4">
 
-<!-- 							Description -->
-<!-- 							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur -->
-<!-- 								adipisicing elit. Quasi voluptate hic provident nulla repellat -->
-<!-- 								facere esse molestiae ipsa labore porro minima quam quaerat rem, -->
-<!-- 								natus repudiandae debitis est sit pariatur.</p> -->
 
-<!-- 						</div> -->
-<!-- 						Grid column -->
+						<div class="col-md-8">
 
-<!-- 					</div> -->
-<!-- 					Grid row -->
 
-<!-- 					Grid row -->
-<!-- 					<div class="row"> -->
+							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur
+								adipisicing elit. Quasi voluptate hic provident nulla repellat
+								facere esse molestiae ipsa labore porro minima quam quaerat rem,
+								natus repudiandae debitis est sit pariatur.</p>
 
-<!-- 						Grid column -->
-<!-- 						<div class="col-md-4 mb-5"> -->
-<!-- 							<i class="fa fa-camera-retro fa-4x orange-text"></i> -->
-<!-- 							<h4 class="my-4 font-weight-bold">Experience</h4> -->
-<!-- 							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur -->
-<!-- 								adipisicing elit. Reprehenderit maiores nam, aperiam minima -->
-<!-- 								assumenda deleniti hic.</p> -->
-<!-- 						</div> -->
-<!-- 						Grid column -->
+						</div>
+						<!-- 						Grid column -->
 
-<!-- 						Grid column -->
-<!-- 						<div class="col-md-4 mb-1"> -->
-<!-- 							<i class="fa fa-heart fa-4x orange-text"></i> -->
-<!-- 							<h4 class="my-4 font-weight-bold">Happiness</h4> -->
-<!-- 							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur -->
-<!-- 								adipisicing elit. Reprehenderit maiores nam, aperiam minima -->
-<!-- 								assumenda deleniti hic.</p> -->
-<!-- 						</div> -->
-<!-- 						Grid column -->
+					</div>
+					<!-- 					Grid row -->
 
-<!-- 						Grid column -->
-<!-- 						<div class="col-md-4 mb-1"> -->
-<!-- 							<i class="fa fa-bicycle fa-4x orange-text"></i> -->
-<!-- 							<h4 class="my-4 font-weight-bold">Adventure</h4> -->
-<!-- 							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur -->
-<!-- 								adipisicing elit. Reprehenderit maiores nam, aperiam minima -->
-<!-- 								assumenda deleniti hic.</p> -->
-<!-- 						</div> -->
-<!-- 						Grid column -->
+					<!-- 					Grid row -->
+					<div class="row">
 
-<!-- 					</div> -->
-<!-- 					Grid row -->
+						<!-- 						Grid column -->
+						<div class="col-md-4 mb-5">
+							<i class="fa fa-camera-retro fa-4x orange-text"></i>
+							<h4 class="my-4 font-weight-bold">Experience</h4>
+							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur
+								adipisicing elit. Reprehenderit maiores nam, aperiam minima
+								assumenda deleniti hic.</p>
+						</div>
+						<!-- 						Grid column -->
 
-<!-- 				</section> -->
-<!-- 				Section: Best Features -->
+						<!-- 						Grid column -->
+						<div class="col-md-4 mb-1">
+							<i class="fa fa-heart fa-4x orange-text"></i>
+							<h4 class="my-4 font-weight-bold">Happiness</h4>
+							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur
+								adipisicing elit. Reprehenderit maiores nam, aperiam minima
+								assumenda deleniti hic.</p>
+						</div>
+						<!-- 						Grid column -->
 
-<!-- 				<hr class="my-5"> -->
+						<!-- 						Grid column -->
+						<div class="col-md-4 mb-1">
+							<i class="fa fa-bicycle fa-4x orange-text"></i>
+							<h4 class="my-4 font-weight-bold">Adventure</h4>
+							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur
+								adipisicing elit. Reprehenderit maiores nam, aperiam minima
+								assumenda deleniti hic.</p>
+						</div>
+						<!-- 						Grid column -->
 
-<!-- 				Section: Examples -->
-<!-- 				<section id="examples" class="text-center"> -->
+					</div>
+					<!-- 					Grid row -->
 
-<!-- 					Heading -->
-<!-- 					<h2 class="mb-5 font-weight-bold">Stunning Examples</h2> -->
+				</section>
+				<!-- 				Section: Best Features -->
 
-<!-- 					Grid row -->
-<!-- 					<div class="row"> -->
+				<hr class="my-5">
 
-<!-- 						Grid column -->
-<!-- 						<div class="col-lg-4 col-md-12 mb-4"> -->
+				<!-- 				Section: Examples -->
+				<section id="examples" class="text-center">
 
-<!-- 							<div class="view overlay z-depth-1-half"> -->
-<!-- 								<img -->
-<!-- 									src="https://mdbootstrap.com/img/Photos/Others/images/48.jpg" -->
-<!-- 									class="img-fluid" alt=""> -->
-<!-- 								<div class="mask rgba-white-slight"></div> -->
-<!-- 							</div> -->
+					<!-- 					Heading -->
+					<h2 class="mb-5 font-weight-bold">Stunning Examples</h2>
 
-<!-- 							<h4 class="my-4 font-weight-bold">Heading</h4> -->
-<!-- 							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur -->
-<!-- 								adipisicing elit. Reprehenderit maiores nam, aperiam minima -->
-<!-- 								assumenda deleniti hic.</p> -->
+					<!-- 					Grid row -->
+					<div class="row">
 
-<!-- 						</div> -->
-<!-- 						Grid column -->
+						<!-- 						Grid column -->
+						<div class="col-lg-4 col-md-12 mb-4">
 
-<!-- 						Grid column -->
-<!-- 						<div class="col-lg-4 col-md-6 mb-4"> -->
+							<div class="view overlay z-depth-1-half">
+								<img
+									src="https://mdbootstrap.com/img/Photos/Others/images/48.jpg"
+									class="img-fluid" alt="">
+								<div class="mask rgba-white-slight"></div>
+							</div>
 
-<!-- 							<div class="view overlay z-depth-1-half"> -->
-<!-- 								<img -->
-<!-- 									src="https://mdbootstrap.com/img/Photos/Others/images/49.jpg" -->
-<!-- 									class="img-fluid" alt=""> -->
-<!-- 								<div class="mask rgba-white-slight"></div> -->
-<!-- 							</div> -->
+							<h4 class="my-4 font-weight-bold">Heading</h4>
+							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur
+								adipisicing elit. Reprehenderit maiores nam, aperiam minima
+								assumenda deleniti hic.</p>
 
-<!-- 							<h4 class="my-4 font-weight-bold">Heading</h4> -->
-<!-- 							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur -->
-<!-- 								adipisicing elit. Reprehenderit maiores nam, aperiam minima -->
-<!-- 								assumenda deleniti hic.</p> -->
+						</div>
+						<!-- 						Grid column -->
 
-<!-- 						</div> -->
-<!-- 						Grid column -->
+						<!-- 						Grid column -->
+						<div class="col-lg-4 col-md-6 mb-4">
 
-<!-- 						Grid column -->
-<!-- 						<div class="col-lg-4 col-md-6 mb-4"> -->
+							<div class="view overlay z-depth-1-half">
+								<img
+									src="https://mdbootstrap.com/img/Photos/Others/images/49.jpg"
+									class="img-fluid" alt="">
+								<div class="mask rgba-white-slight"></div>
+							</div>
 
-<!-- 							<div class="view overlay z-depth-1-half"> -->
-<!-- 								<img -->
-<!-- 									src="https://mdbootstrap.com/img/Photos/Others/images/29.jpg" -->
-<!-- 									class="img-fluid" alt=""> -->
-<!-- 								<div class="mask rgba-white-slight"></div> -->
-<!-- 							</div> -->
+							<h4 class="my-4 font-weight-bold">Heading</h4>
+							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur
+								adipisicing elit. Reprehenderit maiores nam, aperiam minima
+								assumenda deleniti hic.</p>
 
-<!-- 							<h4 class="my-4 font-weight-bold">Heading</h4> -->
-<!-- 							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur -->
-<!-- 								adipisicing elit. Reprehenderit maiores nam, aperiam minima -->
-<!-- 								assumenda deleniti hic.</p> -->
+						</div>
+						<!-- 						Grid column -->
 
-<!-- 						</div> -->
-<!-- 						Grid column -->
+						<!-- 						Grid column -->
+						<div class="col-lg-4 col-md-6 mb-4">
 
-<!-- 					</div> -->
-<!-- 					Grid row -->
+							<div class="view overlay z-depth-1-half">
+								<img
+									src="https://mdbootstrap.com/img/Photos/Others/images/29.jpg"
+									class="img-fluid" alt="">
+								<div class="mask rgba-white-slight"></div>
+							</div>
 
-<!-- 					Grid row -->
-<!-- 					<div class="row"> -->
+							<h4 class="my-4 font-weight-bold">Heading</h4>
+							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur
+								adipisicing elit. Reprehenderit maiores nam, aperiam minima
+								assumenda deleniti hic.</p>
 
-<!-- 						Grid column -->
-<!-- 						<div class="col-lg-4 col-md-12 mb-4"> -->
+						</div>
+						<!-- 						Grid column -->
 
-<!-- 							<div class="view overlay z-depth-1-half"> -->
-<!-- 								<img -->
-<!-- 									src="https://mdbootstrap.com/img/Photos/Others/images/10.jpg" -->
-<!-- 									class="img-fluid" alt=""> -->
-<!-- 								<div class="mask rgba-white-slight"></div> -->
-<!-- 							</div> -->
+					</div>
+					<!-- 					Grid row -->
 
-<!-- 							<h4 class="my-4 font-weight-bold">Heading</h4> -->
-<!-- 							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur -->
-<!-- 								adipisicing elit. Reprehenderit maiores nam, aperiam minima -->
-<!-- 								assumenda deleniti hic.</p> -->
+					<!-- 					Grid row -->
+					<div class="row">
 
-<!-- 						</div> -->
-<!-- 						Grid column -->
+						<!-- 						Grid column -->
+						<div class="col-lg-4 col-md-12 mb-4">
 
-<!-- 						Grid column -->
-<!-- 						<div class="col-lg-4 col-md-6 mb-4"> -->
+							<div class="view overlay z-depth-1-half">
+								<img
+									src="https://mdbootstrap.com/img/Photos/Others/images/10.jpg"
+									class="img-fluid" alt="">
+								<div class="mask rgba-white-slight"></div>
+							</div>
 
-<!-- 							<div class="view overlay z-depth-1-half"> -->
-<!-- 								<img -->
-<!-- 									src="https://mdbootstrap.com/img/Photos/Others/images/11.jpg" -->
-<!-- 									class="img-fluid" alt=""> -->
-<!-- 								<div class="mask rgba-white-slight"></div> -->
-<!-- 							</div> -->
+							<h4 class="my-4 font-weight-bold">Heading</h4>
+							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur
+								adipisicing elit. Reprehenderit maiores nam, aperiam minima
+								assumenda deleniti hic.</p>
 
-<!-- 							<h4 class="my-4 font-weight-bold">Heading</h4> -->
-<!-- 							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur -->
-<!-- 								adipisicing elit. Reprehenderit maiores nam, aperiam minima -->
-<!-- 								assumenda deleniti hic.</p> -->
+						</div>
+						<!-- 						Grid column -->
 
-<!-- 						</div> -->
-<!-- 						Grid column -->
+						<!-- 						Grid column -->
+						<div class="col-lg-4 col-md-6 mb-4">
 
-<!-- 						Grid column -->
-<!-- 						<div class="col-lg-4 col-md-6 mb-4"> -->
+							<div class="view overlay z-depth-1-half">
+								<img
+									src="https://mdbootstrap.com/img/Photos/Others/images/11.jpg"
+									class="img-fluid" alt="">
+								<div class="mask rgba-white-slight"></div>
+							</div>
 
-<!-- 							<div class="view overlay z-depth-1-half"> -->
-<!-- 								<img -->
-<!-- 									src="https://mdbootstrap.com/img/Photos/Others/images/13.jpg" -->
-<!-- 									class="img-fluid" alt=""> -->
-<!-- 								<div class="mask rgba-white-slight"></div> -->
-<!-- 							</div> -->
+							<h4 class="my-4 font-weight-bold">Heading</h4>
+							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur
+								adipisicing elit. Reprehenderit maiores nam, aperiam minima
+								assumenda deleniti hic.</p>
 
-<!-- 							<h4 class="my-4 font-weight-bold">Heading</h4> -->
-<!-- 							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur -->
-<!-- 								adipisicing elit. Reprehenderit maiores nam, aperiam minima -->
-<!-- 								assumenda deleniti hic.</p> -->
+						</div>
+						<!-- 						Grid column -->
 
-<!-- 						</div> -->
-<!-- 						Grid column -->
+						<!-- 						Grid column -->
+						<div class="col-lg-4 col-md-6 mb-4">
 
-<!-- 					</div> -->
-<!-- 					Grid row -->
+							<div class="view overlay z-depth-1-half">
+								<img
+									src="https://mdbootstrap.com/img/Photos/Others/images/13.jpg"
+									class="img-fluid" alt="">
+								<div class="mask rgba-white-slight"></div>
+							</div>
 
-<!-- 				</section> -->
-<!-- 				Section: Examples -->
+							<h4 class="my-4 font-weight-bold">Heading</h4>
+							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur
+								adipisicing elit. Reprehenderit maiores nam, aperiam minima
+								assumenda deleniti hic.</p>
 
-<!-- 				<hr class="my-5"> -->
+						</div>
+						<!-- 						Grid column -->
 
-<!-- 				Section: Gallery -->
-<!-- 				<section id="gallery"> -->
+					</div>
+					<!-- 					Grid row -->
 
-<!-- 					Heading -->
-<!-- 					<h2 class="mb-5 font-weight-bold text-center">Gallery heading</h2> -->
+				</section>
+				<!-- 				Section: Examples -->
 
-<!-- 					Grid row -->
-<!-- 					<div class="row"> -->
+				<hr class="my-5">
 
-<!-- 						Grid column -->
-<!-- 						<div class="col-md-6 mb-4"> -->
+				<!-- 				Section: Gallery -->
+				<section id="gallery">
 
-<!-- 							Carousel Wrapper -->
-<!-- 							<div id="carousel-example-1z" -->
-<!-- 								class="carousel slide carousel-fade carousel-fade" -->
-<!-- 								data-ride="carousel"> -->
-<!-- 								Indicators -->
-<!-- 								<ol class="carousel-indicators"> -->
-<!-- 									<li data-target="#carousel-example-1z" data-slide-to="0" -->
-<!-- 										class="active"></li> -->
-<!-- 									<li data-target="#carousel-example-1z" data-slide-to="1"></li> -->
-<!-- 									<li data-target="#carousel-example-1z" data-slide-to="2"></li> -->
-<!-- 								</ol> -->
-<!-- 								/.Indicators -->
-<!-- 								Slides -->
-<!-- 								<div class="carousel-inner z-depth-1-half" role="listbox"> -->
-<!-- 									First slide -->
-<!-- 									<div class="carousel-item active"> -->
-<!-- 										<img class="d-block w-100" -->
-<!-- 											src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg" -->
-<!-- 											alt="First slide"> -->
-<!-- 									</div> -->
-<!-- 									/First slide -->
-<!-- 									Second slide -->
-<!-- 									<div class="carousel-item"> -->
-<!-- 										<img class="d-block w-100" -->
-<!-- 											src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" -->
-<!-- 											alt="Second slide"> -->
-<!-- 									</div> -->
-<!-- 									/Second slide -->
-<!-- 									Third slide -->
-<!-- 									<div class="carousel-item"> -->
-<!-- 										<img class="d-block w-100" -->
-<!-- 											src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" -->
-<!-- 											alt="Third slide"> -->
-<!-- 									</div> -->
-<!-- 									/Third slide -->
-<!-- 								</div> -->
-<!-- 								/.Slides -->
-<!-- 								Controls -->
-<!-- 								<a class="carousel-control-prev" href="#carousel-example-1z" -->
-<!-- 									role="button" data-slide="prev"> <span -->
-<!-- 									class="carousel-control-prev-icon" aria-hidden="true"></span> <span -->
-<!-- 									class="sr-only">Previous</span> -->
-<!-- 								</a> <a class="carousel-control-next" href="#carousel-example-1z" -->
-<!-- 									role="button" data-slide="next"> <span -->
-<!-- 									class="carousel-control-next-icon" aria-hidden="true"></span> <span -->
-<!-- 									class="sr-only">Next</span> -->
-<!-- 								</a> -->
-<!-- 								/.Controls -->
-<!-- 							</div> -->
-<!-- 							/.Carousel Wrapper -->
+					<!-- 					Heading -->
+					<h2 class="mb-5 font-weight-bold text-center">Gallery heading</h2>
 
-<!-- 						</div> -->
-<!-- 						Grid column -->
+					<!-- 					Grid row -->
+					<div class="row">
 
-<!-- 						Grid column -->
-<!-- 						<div class="col-md-6"> -->
+						<!-- 						Grid column -->
+						<div class="col-md-6 mb-4">
 
-<!-- 							Excerpt -->
-<!-- 							<a href="" class="teal-text"> -->
-<!-- 								<h6 class="pb-1"> -->
-<!-- 									<i class="fa fa-heart"></i><strong> Lifestyle </strong> -->
-<!-- 								</h6> -->
-<!-- 							</a> -->
-<!-- 							<h4 class="mb-3"> -->
-<!-- 								<strong>This is title of the news</strong> -->
-<!-- 							</h4> -->
-<!-- 							<p>Nam libero tempore, cum soluta nobis est eligendi optio -->
-<!-- 								cumque nihil impedit quo minus id quod maxime placeat facere -->
-<!-- 								possimus, omnis voluptas assumenda est, omnis dolor repellendus -->
-<!-- 								et aut officiis debitis aut rerum.</p> -->
+							<!-- 							Carousel Wrapper -->
+							<div id="carousel-example-1z"
+								class="carousel slide carousel-fade carousel-fade"
+								data-ride="carousel">
+								Indicators
+								<ol class="carousel-indicators">
+									<li data-target="#carousel-example-1z" data-slide-to="0"
+										class="active"></li>
+									<li data-target="#carousel-example-1z" data-slide-to="1"></li>
+									<li data-target="#carousel-example-1z" data-slide-to="2"></li>
+								</ol>
+								<!-- 								/.Indicators -->
+								Slides
+								<div class="carousel-inner z-depth-1-half" role="listbox">
+									<!-- 									First slide -->
+									<div class="carousel-item active">
+										<img class="d-block w-100"
+											src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"
+											alt="First slide">
+									</div>
+									<!-- 									/First slide -->
+									<!-- 									Second slide -->
+									<div class="carousel-item">
+										<img class="d-block w-100"
+											src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"
+											alt="Second slide">
+									</div>
+									<!-- 									/Second slide -->
+									<!-- 									Third slide -->
+									<div class="carousel-item">
+										<img class="d-block w-100"
+											src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"
+											alt="Third slide">
+									</div>
+									<!-- 									/Third slide -->
+								</div>
+								<!-- 								/.Slides -->
+								<!-- 								Controls -->
+								<a class="carousel-control-prev" href="#carousel-example-1z"
+									role="button" data-slide="prev"> <span
+									class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+									class="sr-only">Previous</span>
+								</a> <a class="carousel-control-next" href="#carousel-example-1z"
+									role="button" data-slide="next"> <span
+									class="carousel-control-next-icon" aria-hidden="true"></span> <span
+									class="sr-only">Next</span>
+								</a>
+								<!-- 								/.Controls -->
+							</div>
+							<!-- 							/.Carousel Wrapper -->
 
-<!-- 							<p>Nam libero tempore, cum soluta nobis est eligendi optio -->
-<!-- 								cumque nihil impedit quo minus id quod maxime placeat facere -->
-<!-- 								possimus, omnis voluptas assumenda est, omnis dolor repellendus -->
-<!-- 								et aut officiis debitis aut rerum.</p> -->
-<!-- 							<p> -->
-<!-- 								by <a><strong>Jessica Clark</strong></a>, 26/08/2016 -->
-<!-- 							</p> -->
-<!-- 							<a class="btn btn-primary btn-md">Read more</a> -->
+						</div>
+						<!-- 						Grid column -->
 
-<!-- 						</div> -->
-<!-- 						Grid column -->
+						<!-- 						Grid column -->
+						<div class="col-md-6">
 
-<!-- 					</div> -->
-<!-- 					Grid row -->
+							<!-- 							Excerpt -->
+							<a href="" class="teal-text">
+								<h6 class="pb-1">
+									<i class="fa fa-heart"></i><strong> Lifestyle </strong>
+								</h6>
+							</a>
+							<h4 class="mb-3">
+								<strong>This is title of the news</strong>
+							</h4>
+							<p>Nam libero tempore, cum soluta nobis est eligendi optio
+								cumque nihil impedit quo minus id quod maxime placeat facere
+								possimus, omnis voluptas assumenda est, omnis dolor repellendus
+								et aut officiis debitis aut rerum.</p>
 
-<!-- 				</section> -->
-<!-- 				Section: Gallery -->
+							<p>Nam libero tempore, cum soluta nobis est eligendi optio
+								cumque nihil impedit quo minus id quod maxime placeat facere
+								possimus, omnis voluptas assumenda est, omnis dolor repellendus
+								et aut officiis debitis aut rerum.</p>
+							<p>
+								by <a><strong>Jessica Clark</strong></a>, 26/08/2016
+							</p>
+							<a class="btn btn-primary btn-md">Read more</a>
+
+						</div>
+						<!-- 						Grid column -->
+
+					</div>
+					<!-- 					Grid row -->
+
+				</section>
+				<!-- 				Section: Gallery -->
 
 				<hr class="my-5">
 
@@ -443,24 +449,27 @@
 							<form class="p-5 grey-text" action="/addquery">
 								<div class="md-form form-sm">
 									<i class="fa fa-user prefix"></i> <input type="text"
-										name="name" id="form3" class="form-control form-control-sm" required="required">
-									<label for="form3">Your name</label>
+										name="name" id="form3" class="form-control form-control-sm"
+										required="required"> <label for="form3">Your
+										name</label>
 								</div>
 								<div class="md-form form-sm">
 									<i class="fa fa-envelope prefix"></i> <input type="email"
-										name="email" id="form2" class="form-control form-control-sm" required="required">
-									<label for="form2">Your email</label>
+										name="email" id="form2" class="form-control form-control-sm"
+										required="required"> <label for="form2">Your
+										email</label>
 								</div>
 								<div class="md-form form-sm">
 									<i class="fa fa-tag prefix"></i> <input type="text"
 										name="subject" id="form32"
-										class="form-control form-control-sm" required="required"> <label
-										for="form34">Subject</label>
+										class="form-control form-control-sm" required="required">
+									<label for="form34">Subject</label>
 								</div>
 								<div class="md-form form-sm">
 									<i class="fa fa-pencil prefix"></i>
 									<textarea type="text" name="msgBody" id="form8"
-										class="md-textarea form-control form-control-sm" rows="4" required="required"></textarea>
+										class="md-textarea form-control form-control-sm" rows="4"
+										required="required"></textarea>
 									<label for="form8">Your message</label>
 								</div>
 								<div class="text-center mt-4">
@@ -647,7 +656,7 @@
 						<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
 							style="width: 60px;">
 						<p>
-							<i class="fas fa-home"></i></i> Indore, 452001, India
+							<i class="fas fa-home"></i> Indore, 452001, India
 						</p>
 						<p>
 							<i class="fa fa-envelope mr-3"></i>
@@ -668,8 +677,7 @@
 
 			<!-- Copyright -->
 			<div class="footer-copyright text-center py-3">
-				© 2020 Copyright: <a
-					href="#">onlineEvaluationSystem.com</a>
+				© 2020 Copyright: <a href="#">onlineEvaluationSystem.com</a>
 			</div>
 			<!-- Copyright -->
 
@@ -698,8 +706,7 @@
 	<!-- Carousel options -->
 	<script>
 		//Regular map
-		
-		
+
 		function regular_map() {
 			var var_location = new google.maps.LatLng(22.719568, 75.857727);
 

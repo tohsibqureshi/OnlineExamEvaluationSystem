@@ -24,11 +24,7 @@ tr:nth-child(even) {
 
 
 
-	<h2>
-		Tests...
-	
-
-	</h2>
+	<h2>Tests...</h2>
 
 	<table>
 		<tr>
@@ -39,6 +35,7 @@ tr:nth-child(even) {
 			<th>marks for correct Ans</th>
 			<th>Marks for wrong ans</th>
 			<th>Date of expiry</th>
+			<th>time of expiry</th>
 			<th>Tid</th>
 			<th>Edit</th>
 		</tr>
@@ -51,21 +48,34 @@ tr:nth-child(even) {
 				<td>${test.nQuestions}</td>
 				<td>${test.correct}</td>
 				<td>${test.incorrect}</td>
+				<td>${test.expiry}</td>
 				<td>${test.expiryTime}</td>
 				<td>${test.testId}</td>
 				<td>
 					<form action="/showque">
 						<input name="id" value="${test.testId}" style="display: none;">
+						<button type="submit">Open</button>
+					</form>
+					<form action="/updatetestpage">
+						<input name="id" value="${test.testId}" style="display: none;">
 						<button type="submit">Edit</button>
+					</form>
+					<form action="/getlink">
+						<input name="id" value="${test.testId}" style="display: none;">
+						<button type="submit">Get Link</button>
+						${link}
 					</form>
 				</td>
 
 			</tr>
 		</c:forEach>
-		
 
 
-	</table>	<center><h1>${msg}</h1></center>
+
+	</table>
+	<center>
+		<h1>${msg}</h1>
+	</center>
 
 </body>
 </html>

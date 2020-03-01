@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.arc.model.Testinfo;
+import com.arc.model.UploadQuestions;
 import com.arc.model.User;
 import com.arc.repository.TestRepository;
 
@@ -24,9 +25,9 @@ public class TestService {
 		List<Testinfo> test = new ArrayList<Testinfo>();
 		for (Testinfo record : list()) {
 			if (record.getF_id() == fid) {
-				
+
 				test.add(record);
-				
+
 			}
 		}
 
@@ -40,6 +41,17 @@ public class TestService {
 		testRepository.findAll().forEach(test::add);
 		return test;
 
+	}
+
+	public Testinfo getTest(int id) {
+		for (Testinfo record : list()) {
+			if (record.getTestId() == id) {
+
+				return record;
+
+			}
+		}
+		return null;
 	}
 
 }
