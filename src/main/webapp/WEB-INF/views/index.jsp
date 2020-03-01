@@ -71,11 +71,11 @@ html {
 
 						<!-- Social Icon  -->
 						<ul class="navbar-nav nav-flex-icons">
-							<li class="nav-item"><a class="nav-link"><i
+							<li class="nav-item"><a href="https://www.facebook.com" class="nav-link"><i
 									class="fab fa-facebook"></i></a></li>
-							<li class="nav-item"><a class="nav-link"><i
+							<li class="nav-item"><a href="https://www.twitter.com" class="nav-link"><i
 									class="fab fa-twitter"></i></a></li>
-							<li class="nav-item"><a class="nav-link"><i
+							<li class="nav-item"><a href="https://www.instagram.com" class="nav-link"><i
 									class="fab fa-instagram"></i></a></li>
 							<li class="nav-item"><a href="/loginpage" class="nav-link">Login</a>
 							</li>
@@ -106,7 +106,7 @@ html {
 
 								<!-- Heading -->
 								<h2 class="display-4 font-weight-bold white-text pt-5 mb-2">Online
-									Test Evaluation System</h2>
+									Exam Evaluation System</h2>
 
 								<!-- Divider -->
 								<hr class="hr-light">
@@ -346,7 +346,7 @@ html {
 							<div id="carousel-example-1z"
 								class="carousel slide carousel-fade carousel-fade"
 								data-ride="carousel">
-								Indicators
+								<!-- 								Indicators -->
 								<ol class="carousel-indicators">
 									<li data-target="#carousel-example-1z" data-slide-to="0"
 										class="active"></li>
@@ -354,7 +354,7 @@ html {
 									<li data-target="#carousel-example-1z" data-slide-to="2"></li>
 								</ol>
 								<!-- 								/.Indicators -->
-								Slides
+
 								<div class="carousel-inner z-depth-1-half" role="listbox">
 									<!-- 									First slide -->
 									<div class="carousel-item active">
@@ -561,23 +561,23 @@ html {
 						<!--Grid column-->
 						<div class="col-md-6 col-lg-7 text-center text-md-right">
 							<!--Facebook-->
-							<a class="fb-ic ml-0"> <i
+							<a class="fb-ic ml-0" href="https://www.facebook.com"> <i
 								class="fab fa-facebook white-text mr-4"> </i>
 							</a>
 							<!--Twitter-->
-							<a class="tw-ic"> <i class="fab fa-twitter white-text mr-4">
+							<a class="tw-ic" href="https://www.twitter.com"> <i class="fab fa-twitter white-text mr-4">
 							</i>
 							</a>
 							<!--Google +-->
-							<a class="gplus-ic"> <i
+							<a class="gplus-ic" href="https://www.google+.com"> <i
 								class="fab fa-google-plus white-text mr-4"> </i>
 							</a>
 							<!--Linkedin-->
-							<a class="li-ic"> <i class="fab fa-linkedin white-text mr-4">
+							<a class="li-ic" href="https://www.linkedin.com"> <i class="fab fa-linkedin white-text mr-4">
 							</i>
 							</a>
 							<!--Instagram-->
-							<a class="ins-ic"> <i
+							<a class="ins-ic" href="https://www.instagtram.com"> <i
 								class="fab fa-instagram white-text mr-lg-4"> </i>
 							</a>
 						</div>
@@ -656,11 +656,11 @@ html {
 						<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
 							style="width: 60px;">
 						<p>
-							<i class="fas fa-home"></i> Indore, 452001, India
+							<i class="fas fa-home"></i> &nbsp; &nbsp; Indore, 452001, India
 						</p>
 						<p>
 							<i class="fa fa-envelope mr-3"></i>
-							evaluation.official03@gmail.com
+							official03@arcdeveloper.com
 						</p>
 						<p>
 							<i class="fa fa-phone mr-3"></i> + 91 798 700 5757
@@ -677,7 +677,7 @@ html {
 
 			<!-- Copyright -->
 			<div class="footer-copyright text-center py-3">
-				© 2020 Copyright: <a href="#">onlineEvaluationSystem.com</a>
+				© 2020 Copyright: <a href="#">arcDeveloper.com</a>
 			</div>
 			<!-- Copyright -->
 
