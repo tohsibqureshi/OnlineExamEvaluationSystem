@@ -63,9 +63,7 @@ button {
 						<span class="input-group-text">Enter Question</span>
 					</div>
 					<textarea class="form-control" name="question"
-						aria-label="With textarea">
-							${que.question}
-							</textarea>
+						aria-label="With textarea">${que.question}</textarea>
 				</div>
 
 				<div class="input-group mb-3 opt1">
