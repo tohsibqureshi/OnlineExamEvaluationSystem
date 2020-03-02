@@ -54,4 +54,17 @@ public class TestService {
 		return null;
 	}
 
+	public String getExpiryDate(int id) {
+
+		Testinfo test = getTest(id);
+		
+		return test.getExpiry();
+	}
+
+	public String getExpiryTime(int id) {
+
+		Testinfo test = getTest(id);
+		return test.getExpiryTime();
+	}
+
 }

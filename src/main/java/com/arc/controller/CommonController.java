@@ -1,10 +1,15 @@
 package com.arc.controller;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.datetime.DateTimeFormatAnnotationFormatterFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -284,12 +289,88 @@ public class CommonController {
 	@RequestMapping("/testhosted")
 	public ModelAndView hostTest(@RequestParam int id) {
 
-		ModelAndView m = new ModelAndView("getlink");
+		ModelAndView m = null;
+		DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		DateTimeFormatter tf = DateTimeFormatter.ofPattern("HH:mm");
+		LocalDateTime now = LocalDateTime.now();
+
+		String cDate = df.format(now);
+
+		String[] splitTime = tf.format(now).split(":");
+
+		String cTimeHour = splitTime[0];
+		String cTimeMinute = splitTime[1];
+
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+		String eDate = testService.getExpiryDate(id);
+		String eTime = testService.getExpiryTime(id);
+
+		String[] splitDbTime = eTime.split(":");
+
+		String eTimeHour = splitDbTime[0];
+		String eTimeMinute = splitDbTime[1];
+
+		System.out.println(cTimeHour + " " + cTimeMinute + " " + eTimeHour + " " + eTimeMinute + " ");
+
+		Date dbDate = null;
+		try {
+			dbDate = format.parse(eDate);
+		} catch (java.text.ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		Date currentDate = null;
+		try {
+			currentDate = format.parse(cDate);
+		} catch (java.text.ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Date > 0");
+		System.out.println(currentDate.compareTo(dbDate) > 0);
+
+		if (currentDate.compareTo(dbDate) > 0) {
+
+			m = new ModelAndView("getlink");
+			m.addObject("testId", id);
+			return m;
+
+		} else if (currentDate.compareTo(dbDate) == 0) {
+			System.out.println("Date == 0");
+			System.out.println(currentDate.compareTo(dbDate) == 0);
+			if (Integer.parseInt(eTimeHour) > Integer.parseInt(cTimeHour)) {
+				System.out.println("ehour > chour");
+				System.out.println(Integer.parseInt(eTimeHour) > Integer.parseInt(cTimeHour));
+				m = new ModelAndView("getlink");
+				m.addObject("testId", id);
+				return m;
+			} else if (Integer.parseInt(eTimeHour) == Integer.parseInt(cTimeHour)) {
+				System.out.println("ehour == chour");
+				System.out.println(Integer.parseInt(eTimeHour) == Integer.parseInt(cTimeHour));
+				if (Integer.parseInt(eTimeMinute) > Integer.parseInt(cTimeMinute)) {
+					System.out.println("eminute > cminute");
+					System.out.println(Integer.parseInt(eTimeMinute) > Integer.parseInt(cTimeMinute));
+					m = new ModelAndView("getlink");
+					m.addObject("testId", id);
+					return m;
+				} else {
+					m = new ModelAndView("linkexpire");
+					return m;
+				}
+			} else {
+				m = new ModelAndView("linkexpire");
+				return m;
+			}
+		} else {
+			m = new ModelAndView("linkexpire");
+			return m;
+		}
 
 //		Testinfo test = testService.getTest(id);
 //		System.out.println(test.getTestName());
-		m.addObject("testId", id);
-		return m;
+
 	}
 
 	@RequestMapping("/addstudentdetails/{testId}")
