@@ -11,10 +11,8 @@ textarea {
 }
 
 .opt1 {
-	border: 1px solid;
-	border-color: lightgrey;
-	border-radius: 50px;
-	margin-top: 5%;
+	border: none;
+	
 	padding: 2%;
 }
 
@@ -24,13 +22,10 @@ textarea {
 	text-align: justify;
 	font-family: serif;
 	border-color: lightgrey;
-	width: 45%;
+	width: 100%;
 	height: 78%;
 	padding: 10px;
-	padding-left: 4%;
-	margin-top: 1%;
 	padding-right: 2%;
-	overflow: auto;
 }
 
 button {
@@ -51,6 +46,7 @@ button {
 	border: none;
 }
 </style>
+<link rel="stylesheet" href="css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <body>
@@ -58,8 +54,9 @@ button {
 		<div ng-hide="tt">
 			<h1>Submitted success fully.... Goto dashboard</h1>
 			<form action="/addQuestion">
-				<input name="jsonobj" type="text" ng-model="json" style="display: none;"> 
-					<input name="testId" type="number" value="${testid}" style="display: none;">
+				<input name="jsonobj" type="text" ng-model="json"
+					style="display: none;"> <input name="testId" type="number"
+					value="${testid}" style="display: none;">
 
 				<button type="submit">Dashboard</button>
 			</form>
@@ -67,42 +64,101 @@ button {
 		<form>
 			<div ng-show="tt">
 				<div class="qbody">
+					<div class="input-group opt1">
+						<div class="input-group-prepend">
+							<span class="input-group-text">Enter Question</span>
+						</div>
+						<textarea class="form-control" ng-model="test.question"
+							aria-label="With textarea"></textarea>
+					</div>
+					<!-- 					<label> Enter question:- </label> -->
+					<!-- 					<textarea ng-model="test.question" style="outline: none"> -->
 
-					Enter question:-
-					<textarea ng-model="test.question" style="outline: none">
-	
-					</textarea>
+					<!-- 					</textarea> -->
 
 
 					<div style="display: none;">{{total=${totalques}}}</div>
+
+					<div class="input-group opt1">
+						<div class="input-group-prepend">
+							<div class="input-group-text">
+								<input ng-model="test.answer" type="radio" value="option1"
+									required="required">
+							</div>
+						</div>
+						<input ng-model="test.opt1" type="text" class="form-control"
+							aria-label="Text input with radio button">
+					</div>
+
+
+					<div class="input-group  opt1">
+						<div class="input-group-prepend">
+							<div class="input-group-text">
+								<input ng-model="test.answer" type="radio" value="option2"
+									required="required">
+							</div>
+						</div>
+						<input ng-model="test.opt2" type="text" class="form-control"
+							aria-label="Text input with radio button">
+					</div>
+
+
+
+					<div class="input-group  opt1">
+						<div class="input-group-prepend">
+							<div class="input-group-text">
+								<input ng-model="test.answer" type="radio" value="option3"
+									required="required">
+							</div>
+						</div>
+						<input ng-model="test.opt3" type="text" class="form-control"
+							aria-label="Text input with radio button">
+					</div>
+
+
+					<div class="input-group  opt1">
+						<div class="input-group-prepend">
+							<div class="input-group-text">
+								<input ng-model="test.answer" type="radio" value="option4"
+									required="required">
+							</div>
+						</div>
+						<input ng-model="test.opt4" type="text" class="form-control"
+							aria-label="Text input with radio button">
+					</div>
+					<!-- 					<div class="opt1 form-check"> -->
+					<!-- 						<input ng-model="test.answer" class="form-check-input" type="radio" value="option1" required="required" style="outline: none"> -->
+					<!-- 						<input ng-model="test.opt1" type="text" -->
+					<!-- 							style="border: none; outline: none; width: 80%; height: 30px"> -->
+					<!-- 					</div> -->
+					<!-- 					<div class="opt1"> -->
+					<!-- 						<input ng-model="test.answer" type="radio" value="option2" required="required"> -->
+					<!-- 						<input type="text" ng-model="test.opt2" -->
+					<!-- 							style="border: none; outline: none; width: 80%; height: 30px"> -->
+					<!-- 					</div> -->
+					<!-- 					<div class="opt1"> -->
+					<!-- 						<input ng-model="test.answer" type="radio" value="option3" required="required"> -->
+					<!-- 						<input type="text" ng-model="test.opt3" -->
+					<!-- 							style="border: none; outline: none; width: 80%; height: 30px"> -->
+					<!-- 					</div> -->
+					<!-- 					<div class="opt1"> -->
+					<!-- 						<input ng-model="test.answer" type="radio" value="option4" required="required"> -->
+					<!-- 						<input ng-model="test.opt4" type="text" -->
+					<!-- 							style="border: none; outline: none; width: 80%; height: 30px"> -->
+					<!-- 					</div> -->
 					<div class="opt1">
-						<input ng-model="test.answer" type="radio" value="option1" required="required" style="outline: none">
-						<input ng-model="test.opt1" type="text"
-							style="border: none; outline: none; width: 80%; height: 30px">
+						<button class=" btn-primary" ng-hide="con" ng-if="test.answer"
+							ng-click="next()">Next Question</button>
 					</div>
 					<div class="opt1">
-						<input ng-model="test.answer" type="radio" value="option2" required="required">
-						<input type="text" ng-model="test.opt2"
-							style="border: none; outline: none; width: 80%; height: 30px">
+						<button class=" btn-primary" ng-show="con" ng-if="test.answer"
+							ng-click="next()">Finish</button>
 					</div>
-					<div class="opt1">
-						<input ng-model="test.answer" type="radio" value="option3" required="required">
-						<input type="text" ng-model="test.opt3"
-							style="border: none; outline: none; width: 80%; height: 30px">
-					</div>
-					<div class="opt1">
-						<input ng-model="test.answer" type="radio" value="option4" required="required">
-						<input ng-model="test.opt4" type="text"
-							style="border: none; outline: none; width: 80%; height: 30px">
-					</div>
-					<div class="btn">
-						<button ng-hide="con" ng-if="test.answer" ng-click="next()">Next Question</button>
-					</div>
-					<div class="btn">
-						<button ng-show="con" ng-if="test.answer" ng-click="next()">Finish</button>
-					</div>
+				</div>
+			</div>
+
 		</form>
-		<div></div>
+
 	</div>
 
 

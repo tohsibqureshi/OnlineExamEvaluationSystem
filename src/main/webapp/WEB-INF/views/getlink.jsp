@@ -8,6 +8,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Registration Form</title>
 <link rel="stylesheet" href="css/student-register.css">
+
+
 </head>
 <body>
 
@@ -30,7 +32,7 @@
 				<div class="inputfield">
 					<label>Gender</label>
 					<div class="custom_select">
-						<select name="gender" required="required">
+						<select name="gender" class="form-control" required="required">
 							<option value="">Select</option>
 							<option value="male">Male</option>
 							<option value="female">Female</option>
@@ -47,21 +49,24 @@
 				</div>
 				
 				<div class="inputfield">
-					<label>College</label> <input name="institute" type="text"
+					<label>College Name</label> <input name="institute" type="text"
 						required="required" class="input">
 				</div>
 				
+					
+
+				<div class="inputfield">
+					<label>Branch</label>
 					<div class="custom_select">
-						<select name="branch" required="required">
-							<option value="">Select</option>
+						<select  name="branch" class="form-control" required="required">
+							<option value="">Select Branch</option>
 							<option value="cs">CSE</option>
 							<option value="it">IT</option>
 							<option value="ec">EC</option>
 							<option value="me">ME</option>
 						</select>
 					</div>
-
-
+				</div>
 				<div class="inputfield">
 
 					<button type="submit" id="Register" class="btn">Submit</button>
