@@ -16,7 +16,7 @@
 	<div class="wrapper">
 		<div class="title">Registration Form</div>
 		<div class="form">
-			<form action="/addstudentdetails/${testId}">
+			<form action="/addstudentdetails/${testId}/${email}">
 				<div class="inputfield">
 					<label>First Name </label> <input name="firstname" type="text"
 						class="input" required="required">
@@ -28,6 +28,7 @@
 					<label>Last Name </label> <input name="lastname"
 						required="required" type="text" class="input">
 				</div>
+				
 
 				<div class="inputfield">
 					<label>Gender</label>

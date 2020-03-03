@@ -47,10 +47,10 @@ public class CommonController {
 		return "index";
 	}
 
-	@RequestMapping("/admin")
-	public String admin() {
-		return "examiner";
-	}
+//	@RequestMapping("/admin")
+//	public String admin() {
+//		return "examiner";
+//	}
 
 //	@GetMapping("/user")
 //	public String user() {
@@ -126,6 +126,7 @@ public class CommonController {
 		if (session != null) {
 			session.removeAttribute("user");
 			session.invalidate();
+			session=null;
 		}
 		return "index";
 	}
@@ -169,7 +170,7 @@ public class CommonController {
 		System.out.println(jsonobj + testId);
 		uploadQuestionService.addQuestion(jsonobj, testId);
 //	System.out.println("questuonnnss"+uploadQuestions.getQuestion());
-		ModelAndView m = new ModelAndView("welcome");
+		ModelAndView m = new ModelAndView("examiner");
 
 		return m;
 	}
@@ -227,7 +228,23 @@ public class CommonController {
 			return m;
 		}
 	}
-
+    
+	@RequestMapping("/alltest")
+	public ModelAndView showallTest(HttpSession session) {
+		ModelAndView m = new ModelAndView("alltest");
+		List<Testinfo> testlist = testService.getalltest();
+		// System.out.println(testlist.get(1).getTestName());
+		if (!testlist.isEmpty()) {
+			m.addObject("testList", testlist);
+			return m;
+		} else {
+			m.addObject("msg", "No Record found");
+			return m;
+		}
+	}
+	
+	
+	
 	@RequestMapping("/showque")
 	public ModelAndView showQue(HttpSession session, @RequestParam int id) {
 
@@ -277,19 +294,29 @@ public class CommonController {
 	}
 
 	@RequestMapping("/getlink")
-	public ModelAndView getLink(@RequestParam int id) {
+	public ModelAndView getLink(@RequestParam int id,HttpSession session) {
 
 		ModelAndView m = new ModelAndView("linkpage");
-		String link = "localhost:8080/testhosted?id=" + id;
+		User user = (User) session.getAttribute("user");
+		String link = "localhost:8080/testhosted?AcRfg=" + id+"&arcDz="+user.getEmail();
 
 		m.addObject("link", link);
 		return m;
 	}
 
 	@RequestMapping("/testhosted")
-	public ModelAndView hostTest(@RequestParam int id) {
+	public ModelAndView hostTest(@RequestParam int AcRfg,@RequestParam String arcDz) {
 
 		ModelAndView m = null;
+	
+		User u=userService.getUser(arcDz);
+	
+		if(u==null) {
+			m=new ModelAndView("403");
+			m.addObject("msg","Please check url");
+			return m;
+		}
+		
 		DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		DateTimeFormatter tf = DateTimeFormatter.ofPattern("HH:mm");
 		LocalDateTime now = LocalDateTime.now();
@@ -303,8 +330,8 @@ public class CommonController {
 
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
-		String eDate = testService.getExpiryDate(id);
-		String eTime = testService.getExpiryTime(id);
+		String eDate = testService.getExpiryDate(AcRfg);
+		String eTime = testService.getExpiryTime(AcRfg);
 
 		String[] splitDbTime = eTime.split(":");
 
@@ -328,13 +355,14 @@ public class CommonController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("Date > 0");
-		System.out.println(currentDate.compareTo(dbDate) > 0);
+		System.out.println("Date < 0");
+		System.out.println(currentDate.compareTo(dbDate));
 
-		if (currentDate.compareTo(dbDate) > 0) {
+		if (currentDate.compareTo(dbDate) < 0) {
 
 			m = new ModelAndView("getlink");
-			m.addObject("testId", id);
+			m.addObject("testId", AcRfg);
+			m.addObject("email",arcDz);
 			return m;
 
 		} else if (currentDate.compareTo(dbDate) == 0) {
@@ -344,7 +372,8 @@ public class CommonController {
 				System.out.println("ehour > chour");
 				System.out.println(Integer.parseInt(eTimeHour) > Integer.parseInt(cTimeHour));
 				m = new ModelAndView("getlink");
-				m.addObject("testId", id);
+				m.addObject("testId", AcRfg);
+				m.addObject("email",arcDz);
 				return m;
 			} else if (Integer.parseInt(eTimeHour) == Integer.parseInt(cTimeHour)) {
 				System.out.println("ehour == chour");
@@ -353,7 +382,8 @@ public class CommonController {
 					System.out.println("eminute > cminute");
 					System.out.println(Integer.parseInt(eTimeMinute) > Integer.parseInt(cTimeMinute));
 					m = new ModelAndView("getlink");
-					m.addObject("testId", id);
+					m.addObject("testId", AcRfg);
+					m.addObject("email",arcDz);
 					return m;
 				} else {
 					m = new ModelAndView("linkexpire");
@@ -373,9 +403,12 @@ public class CommonController {
 
 	}
 
-	@RequestMapping("/addstudentdetails/{testId}")
-	public ModelAndView addStudentDetail(Student student, @PathVariable(value = "testId") int testId) {
+	@RequestMapping("/addstudentdetails/{testId}/{email}")
+	public ModelAndView addStudentDetail(Student student, @PathVariable(value = "testId") int testId,@PathVariable(value = "email") String email) {
 
+		User u=userService.getUser(email);
+		
+		student.setfId(u.getUserId());
 		studentService.addStudentDetails(student);
 
 		ModelAndView m = new ModelAndView("instruction");

@@ -19,6 +19,16 @@ public class Student {
 	String phone;
 	String institute;
 	String branch;
+	long fId;
+	
+	
+	
+	public long getfId() {
+		return fId;
+	}
+	public void setfId(long fId) {
+		this.fId = fId;
+	}
 	public long getId() {
 		return id;
 	}

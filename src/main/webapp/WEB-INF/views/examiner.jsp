@@ -17,7 +17,7 @@
 				<li><a href="/profile">Edit Profile</a></li>
 				<li><a href="/create">${createtest }</a></li>
 				<li><a href="/testtable">${createdbyme }</a></li>
-				<li><a href="/profile">Available Test</a></li>
+				<li><a href="/alltest">Available Test</a></li>
 				<li><a href="/logout">Logout</a></li>
 			</ul>
 			<div class="social_media">

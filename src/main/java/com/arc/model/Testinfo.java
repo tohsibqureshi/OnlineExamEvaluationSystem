@@ -18,8 +18,26 @@ public class Testinfo {
 	String correct;
 	String incorrect;
 	String expiryTime;
-	int F_id;
+	String privacy;
+	int fId;
 
+	public int getfId() {
+		return fId;
+	}
+
+	public void setfId(int fId) {
+		this.fId = fId;
+	}
+
+	public String getPrivacy() {
+		return privacy;
+	}
+
+	public void setPrivacy(String privacy) {
+		this.privacy = privacy;
+	}
+
+	
 	public String getExpiryTime() {
 		return expiryTime;
 	}
@@ -93,12 +111,5 @@ public class Testinfo {
 		this.incorrect = incorrect;
 	}
 
-	public int getF_id() {
-		return F_id;
-	}
-
-	public void setF_id(int F_id) {
-		this.F_id = F_id;
-	}
-
+	
 }

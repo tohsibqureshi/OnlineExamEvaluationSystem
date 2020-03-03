@@ -63,7 +63,7 @@ tr:nth-child(even) {
 					<form action="/getlink">
 						<input name="id" value="${test.testId}" style="display: none;">
 						<button type="submit">Get Link</button>
-						${link}
+					
 					</form>
 				</td>
 

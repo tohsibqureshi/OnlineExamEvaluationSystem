@@ -24,7 +24,7 @@ public class TestService {
 	public List<Testinfo> getList(Long fid) {
 		List<Testinfo> test = new ArrayList<Testinfo>();
 		for (Testinfo record : list()) {
-			if (record.getF_id() == fid) {
+			if (record.getfId() == fid) {
 
 				test.add(record);
 
@@ -65,6 +65,20 @@ public class TestService {
 
 		Testinfo test = getTest(id);
 		return test.getExpiryTime();
+	}
+
+	public List<Testinfo> getalltest() {
+		String check="public";
+		List<Testinfo> test = new ArrayList<Testinfo>();
+		for (Testinfo record : list()) {
+			if (record.getPrivacy().equals(check)) {
+
+				test.add(record);
+
+			}
+		}
+
+		return test;
 	}
 
 }

@@ -64,6 +64,12 @@
       <input name="incorrect" type="number" required="required" placeholder="Marks of incorrect answer" class="input" required="required">
       
     </div>
+    <div class="input_field">
+    
+    <input name="privacy" type="radio" value="public" >Public &nbsp;</input>
+    <input name="privacy" type="radio" value="private" required="required" checked="checked">Private</input>
+  
+  </div>
    
     <div class="btn1">
       <button class="btn" type="submit" >Upload Questions</button>
