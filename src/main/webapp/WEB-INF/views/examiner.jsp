@@ -133,7 +133,7 @@
 		<div
 			class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
 			<header class="demo-drawer-header">
-				<img src="img/images/user.jpg" class="demo-avatar">
+				<img src="upload/${user.imageName}" class="demo-avatar">
 				<div class="demo-avatar-dropdown">
 					<span>${user.email}</span>
 					<div class="mdl-layout-spacer"></div>
@@ -158,18 +158,18 @@
 					role="presentation">home</i>Home</a> <a class="mdl-navigation__link"
 					href="/create"><i
 					class="mdl-color-text--blue-grey-400 material-icons"
-					role="presentation">inbox</i>${createtest}</a> <a
+					role="presentation">inbox</i>Create Test</a> <a
 					class="mdl-navigation__link" href="/testtable"><i
 					class="mdl-color-text--blue-grey-400 material-icons"
-					role="presentation">delete</i>${createdbyme }</a> <a
+					role="presentation">delete</i>Test Created By Me</a> <a
 					class="mdl-navigation__link" href="/alltest"><i
 					class="mdl-color-text--blue-grey-400 material-icons"
-					role="presentation">report</i>Available Test</a> <a
-					class="mdl-navigation__link" href="/logout"><i
+					role="presentation">report</i>Available Test</a> 
+					
+					 <a
+					class="mdl-navigation__link"  href="/editprofile"><i
 					class="mdl-color-text--blue-grey-400 material-icons"
-					role="presentation">forum</i>Forums</a> <a class="mdl-navigation__link"
-					href=""><i class="mdl-color-text--blue-grey-400 material-icons"
-					role="presentation">flag</i>Updates</a> 
+					role="presentation">flag</i>Edit Profile</a>
 				<div class="mdl-layout-spacer"></div>
 				<a class="mdl-navigation__link" href=""><i
 					class="mdl-color-text--blue-grey-400 material-icons"
@@ -355,7 +355,8 @@
 	<a
 		href="https://github.com/google/material-design-lite/blob/mdl-1.x/templates/dashboard/"
 		target="_blank" id="view-source"
-		class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">Contact us</a>
+		class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">Contact
+		us</a>
 	<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </body>
 </html>

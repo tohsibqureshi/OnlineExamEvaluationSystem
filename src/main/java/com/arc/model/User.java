@@ -18,6 +18,27 @@ public class User {
 	String email;
 	String password;
 	String roles;
+	String mobile="000";
+	String imageName="avatar.png";
+	
+	
+	
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
 
 	public String getRoles() {
 		return roles;

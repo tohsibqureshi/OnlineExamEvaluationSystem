@@ -1,11 +1,16 @@
 package com.arc.controller;
 
+import java.io.BufferedOutputStream;
+
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.arc.model.ContactUs;
 import com.arc.model.Student;
@@ -39,8 +45,8 @@ public class CommonController {
 	ContactService contactService;
 	@Autowired
 	StudentService studentService;
-//	@Autowired
-	// HttpServletRequest request;
+	@Autowired
+	 HttpServletRequest request;
 
 	@RequestMapping({ "/", "/home" })
 	public String index() {
@@ -126,7 +132,7 @@ public class CommonController {
 		if (session != null) {
 			session.removeAttribute("user");
 			session.invalidate();
-			session=null;
+			session = null;
 		}
 		return "index";
 	}
@@ -228,7 +234,7 @@ public class CommonController {
 			return m;
 		}
 	}
-    
+
 	@RequestMapping("/alltest")
 	public ModelAndView showallTest(HttpSession session) {
 		ModelAndView m = new ModelAndView("alltest");
@@ -242,9 +248,7 @@ public class CommonController {
 			return m;
 		}
 	}
-	
-	
-	
+
 	@RequestMapping("/showque")
 	public ModelAndView showQue(HttpSession session, @RequestParam int id) {
 
@@ -294,29 +298,29 @@ public class CommonController {
 	}
 
 	@RequestMapping("/getlink")
-	public ModelAndView getLink(@RequestParam int id,HttpSession session) {
+	public ModelAndView getLink(@RequestParam int id, HttpSession session) {
 
 		ModelAndView m = new ModelAndView("linkpage");
 		User user = (User) session.getAttribute("user");
-		String link = "localhost:8080/testhosted?AcRfg=" + id+"&arcDz="+user.getEmail();
+		String link = "localhost:8080/testhosted?AcRfg=" + id + "&arcDz=" + user.getEmail();
 
 		m.addObject("link", link);
 		return m;
 	}
 
 	@RequestMapping("/testhosted")
-	public ModelAndView hostTest(@RequestParam int AcRfg,@RequestParam String arcDz) {
+	public ModelAndView hostTest(@RequestParam int AcRfg, @RequestParam String arcDz) {
 
 		ModelAndView m = null;
-	
-		User u=userService.getUser(arcDz);
-	
-		if(u==null) {
-			m=new ModelAndView("403");
-			m.addObject("msg","Please check url");
+
+		User u = userService.getUser(arcDz);
+
+		if (u == null) {
+			m = new ModelAndView("403");
+			m.addObject("msg", "Please check url");
 			return m;
 		}
-		
+
 		DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		DateTimeFormatter tf = DateTimeFormatter.ofPattern("HH:mm");
 		LocalDateTime now = LocalDateTime.now();
@@ -362,7 +366,7 @@ public class CommonController {
 
 			m = new ModelAndView("getlink");
 			m.addObject("testId", AcRfg);
-			m.addObject("email",arcDz);
+			m.addObject("email", arcDz);
 			return m;
 
 		} else if (currentDate.compareTo(dbDate) == 0) {
@@ -373,7 +377,7 @@ public class CommonController {
 				System.out.println(Integer.parseInt(eTimeHour) > Integer.parseInt(cTimeHour));
 				m = new ModelAndView("getlink");
 				m.addObject("testId", AcRfg);
-				m.addObject("email",arcDz);
+				m.addObject("email", arcDz);
 				return m;
 			} else if (Integer.parseInt(eTimeHour) == Integer.parseInt(cTimeHour)) {
 				System.out.println("ehour == chour");
@@ -383,7 +387,7 @@ public class CommonController {
 					System.out.println(Integer.parseInt(eTimeMinute) > Integer.parseInt(cTimeMinute));
 					m = new ModelAndView("getlink");
 					m.addObject("testId", AcRfg);
-					m.addObject("email",arcDz);
+					m.addObject("email", arcDz);
 					return m;
 				} else {
 					m = new ModelAndView("linkexpire");
@@ -404,10 +408,11 @@ public class CommonController {
 	}
 
 	@RequestMapping("/addstudentdetails/{testId}/{email}")
-	public ModelAndView addStudentDetail(Student student, @PathVariable(value = "testId") int testId,@PathVariable(value = "email") String email) {
+	public ModelAndView addStudentDetail(Student student, @PathVariable(value = "testId") int testId,
+			@PathVariable(value = "email") String email) {
 
-		User u=userService.getUser(email);
-		
+		User u = userService.getUser(email);
+
 		student.setfId(u.getUserId());
 		studentService.addStudentDetails(student);
 
@@ -420,4 +425,46 @@ public class CommonController {
 		return m;
 	}
 
+	@RequestMapping("/editprofile")
+	public ModelAndView editProfile(HttpSession session) {
+
+		ModelAndView m = new ModelAndView("profile");
+
+		return m;
+	}
+	
+	@RequestMapping(value="/updateprofile",method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView update(User user,@RequestParam MultipartFile file) {
+		String filename=file.getOriginalFilename();
+		String realPath=request.getRealPath("/");
+		String finalPath=realPath+"upload";
+		System.out.println("-========="+realPath);
+		System.out.println("-========="+realPath);
+		System.out.println("==============="+finalPath);
+		System.out.println("================"+finalPath+"/"+filename);
+		String p=finalPath+"/"+filename;
+		try {
+		
+			BufferedOutputStream b=new BufferedOutputStream(new FileOutputStream(p));
+		b.write(file.getBytes());
+		b.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if(filename.isEmpty())
+		{
+			filename="pp.png";
+		}
+		user.setImageName(filename);
+		
+		userService.addRecord(user);
+		
+		ModelAndView m = new ModelAndView("examiner");
+	
+
+		return m;
+	}
+	
+	
+	
 }

@@ -22,7 +22,8 @@ UserRepository userRepository;
 	public void addRecord(User user) {
 		//User u= new User();
 		//user.setPassword(passwordEncoder.encode(user.getPassword()));
-		
+		user.setRoles(getUser(user.getEmail()).getRoles());
+		user.setPassword(getUser(user.getEmail()).getPassword());
 		userRepository.save(user);
 		
 	}
