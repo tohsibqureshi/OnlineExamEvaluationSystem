@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.datetime.DateTimeFormatAnnotationFormatterFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,11 +22,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.arc.model.ContactUs;
+import com.arc.model.Feedbackinfo;
 import com.arc.model.Student;
 import com.arc.model.Testinfo;
 import com.arc.model.UploadQuestions;
 import com.arc.model.User;
 import com.arc.service.ContactService;
+import com.arc.service.FeedbackService;
 import com.arc.service.TestService;
 import com.arc.service.UploadQuestionService;
 import com.arc.service.UserService;
@@ -45,6 +46,8 @@ public class CommonController {
 	ContactService contactService;
 	@Autowired
 	StudentService studentService;
+	@Autowired
+	FeedbackService feedbackService;
 	@Autowired
 	 HttpServletRequest request;
 
@@ -464,7 +467,26 @@ public class CommonController {
 
 		return m;
 	}
-	
+	@RequestMapping("/feedbackform")
+	public ModelAndView feedback() {
+		ModelAndView m = new ModelAndView("feedbackform");
+		
+		
+		
+		return m;
+	}
+	@RequestMapping(value = "/addfeedback", method = RequestMethod.GET)
+	public ModelAndView addFeedback(Feedbackinfo feedbackinfo) {
+
+		feedbackService.addRecord(feedbackinfo);
+		// System.out.println(user.getFaculty());
+		// System.out.println(user.getEmail());
+		// System.out.println(user.getId());
+		// System.out.println(user.getPassword());
+		ModelAndView m = new ModelAndView("welcome");
+		
+		return m;
+	}
 	
 	
 }
