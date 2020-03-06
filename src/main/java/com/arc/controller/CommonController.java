@@ -3,15 +3,21 @@ package com.arc.controller;
 import java.io.BufferedOutputStream;
 
 import java.io.FileOutputStream;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.sql.rowset.serial.SerialBlob;
+import javax.sql.rowset.serial.SerialException;
+
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -437,7 +443,7 @@ public class CommonController {
 	}
 	
 	@RequestMapping(value="/updateprofile",method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView update(User user,@RequestParam MultipartFile file) {
+	public ModelAndView update(User user,@RequestParam MultipartFile file,HttpSession session) {
 		String filename=file.getOriginalFilename();
 		String realPath=request.getRealPath("/");
 		String finalPath=realPath+"upload";
@@ -446,6 +452,10 @@ public class CommonController {
 		System.out.println("==============="+finalPath);
 		System.out.println("================"+finalPath+"/"+filename);
 		String p=finalPath+"/"+filename;
+		if(filename.isEmpty())
+		{
+			filename="pp.png";
+		}
 		try {
 		
 			BufferedOutputStream b=new BufferedOutputStream(new FileOutputStream(p));
@@ -460,7 +470,8 @@ public class CommonController {
 		}
 		user.setImageName(filename);
 		
-		userService.addRecord(user);
+		userService.updateRecord(user);
+		session.setAttribute("user", userService.getUser(user.getEmail()));
 		
 		ModelAndView m = new ModelAndView("examiner");
 	
@@ -487,6 +498,49 @@ public class CommonController {
 		
 		return m;
 	}
+	
+	@RequestMapping(value = "/starttest", method = RequestMethod.GET)
+	public ModelAndView startTest() {
+
+
+		
+		ModelAndView m = new ModelAndView("testlive");
+		
+		return m;
+	}
+	
+	
+	@RequestMapping(value = "/submittest", method = RequestMethod.GET)
+	public ModelAndView submitTest(@RequestParam String video) throws Exception {
+
+			System.out.println(video);
+			
+			byte[] decodedByte = org.apache.tomcat.util.codec.binary.Base64.decodeBase64(video);
+		
+			Blob b = new SerialBlob(decodedByte);
+			System.out.println(b.length());
+			
+			Student s=new Student();
+			s.setBranch("cse");
+			s.setVideo(b);
+			s.setEmail("a@b.fd");
+			s.setfId(12);
+			s.setFirstname("Rahul");
+			s.setGender("male");
+			s.setInstitute("asd");
+			s.setLastname("fds");
+			s.setPhone("5665555545");
+			
+			
+			
+		//	studentService.addStudentDetails(s);
+			
+			
+			
+		ModelAndView m = new ModelAndView("testlive");
+		
+		return m;
+	}	
 	
 	
 }

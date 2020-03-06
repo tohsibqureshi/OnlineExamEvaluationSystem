@@ -18,6 +18,19 @@ td, th {
 tr:nth-child(even) {
 	background-color: #dddddd;
 }
+button{
+background-color:#bfc1c2;
+border:none;
+color:#000;
+width:100px;
+padding:7px 7px;
+text-align:center;
+text-decoration:none;
+display:block;
+font-size:12px;
+margin:4px 4px;
+cursor:pointer;
+}
 </style>
 </head>
 <body>

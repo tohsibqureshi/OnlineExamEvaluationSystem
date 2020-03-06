@@ -1,5 +1,7 @@
 package com.arc.model;
 
+import java.sql.Blob;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,9 +22,16 @@ public class Student {
 	String institute;
 	String branch;
 	long fId;
+	Blob video;
 	
 	
 	
+	public Blob getVideo() {
+		return video;
+	}
+	public void setVideo(Blob video) {
+		this.video = video;
+	}
 	public long getfId() {
 		return fId;
 	}

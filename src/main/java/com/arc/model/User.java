@@ -19,7 +19,7 @@ public class User {
 	String password;
 	String roles;
 	String mobile="000";
-	String imageName="avatar.png";
+	String imageName="pp.png";
 	
 	
 	

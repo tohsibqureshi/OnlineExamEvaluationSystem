@@ -20,8 +20,14 @@ UserRepository userRepository;
 //	private PasswordEncoder passwordEncoder;
 	
 	public void addRecord(User user) {
+		
+		userRepository.save(user);
+		
+	}
+	public void updateRecord(User user) {
 		//User u= new User();
 		//user.setPassword(passwordEncoder.encode(user.getPassword()));
+		user.setUserId(getUser(user.getEmail()).getUserId());
 		user.setRoles(getUser(user.getEmail()).getRoles());
 		user.setPassword(getUser(user.getEmail()).getPassword());
 		userRepository.save(user);

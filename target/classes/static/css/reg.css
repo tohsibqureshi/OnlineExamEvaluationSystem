@@ -6,24 +6,26 @@
   box-sizing: border-box;
   outline: none;
   text-decoration: none;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
+ 
 }
 
 body{
-  background: #00bfff;
+	background:#f1f1f1;
 }
 
 .wrapper{
-  max-width: 560px;
-  width: 100%;
+  max-width: 500px;
+  width: 450px;
   height: auto;
-  background: #fff;
+  background: #f5fffa;
   padding: 60px 45px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
   border-radius: 20px;
+background:#ffffff;
 }
 
 .wrapper .title{

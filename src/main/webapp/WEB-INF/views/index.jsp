@@ -60,11 +60,13 @@ html {
 							</li>
 							<li class="nav-item"><a class="nav-link"
 								href="#best-features">Features</a></li>
-							<li class="nav-item"><a class="nav-link" href="#examples">Examples</a>
-							</li>
-							<li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a>
-							</li>
-							<li class="nav-item"><a class="nav-link" href="#contact">Contact</a>
+							<li class="nav-item"><a class="nav-link"
+								href="#services">Services</a></li>
+								
+								<li class="nav-item"><a class="nav-link"
+								href="#team">Team</a></li>
+							
+							<li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a>
 							</li>
 						</ul>
 						<!-- Links -->
@@ -105,8 +107,7 @@ html {
 							<div class="col-md-10">
 
 								<!-- Heading -->
-								<h2 class="display-4 font-weight-bold white-text pt-5 mb-2">Online
-									Exam Evaluation System</h2>
+								<h2 class="display-3 font-weight-bold white-text pt-5 mb-4">Online Test Portal</h2>
 
 								<!-- Divider -->
 								<hr class="hr-light">
@@ -136,301 +137,114 @@ html {
 			<div class="container">
 
 				<!--Section: Best Features-->
-				<section id="best-features" class="text-center">
+			<section >
+	<div class="content-box" >
+		<div class="container" id="best-features">
+			<div class="row">
+				<div class="col-md-6" >
+					<h2>Features Are</h2>
+					<ul>
+						<li>online exam portal, you can create online exams in less than 5 minutes without any hassle.</li>
+						<li>With our portal, online exams are auto checked and results are provided immediately to students.</li>
+						<li>Create unlimited questions sets</li>
+						<li>Create and conduct unlimited examinations.</li>
+						<li>Create unlimited number of student profiles.</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+		<!-- -service -->
+		<section class="services">
+	<div class="container" id="services">
+		<h1>Our Service</h1>
+		<div class="row services">
+			<div class="col-md-3 text-center">
+				<div class="icon">
+					<i class="fa fa-check-square-o" aria-hidden="true"></i>
+				</div>
+				<h3>Online <span>MCQ Test</span></h3>
+				<p>This portal provides a tool for assessment of conceptual capabilities.
+				 Recruiters can use MCQ tests for filtering candidates based on 
+				analytical /aptitude /comprehension /technical /conceptual skills.</p>
+			</div>
+			<div class="col-md-3 text-center">
+				<div class="icon">
+					<i class="fa fa-file-text" aria-hidden="true"></i>
+
+				</div>
+				<h3>Online <span>Test Submission</span></h3>
+				<p>This type of test includes questions with submission based answers. These submissions can be in the form of text. It is a Quick and easy way to evaluate & manage candidates pouring in from different sources.<p>
+			</div>
+			<div class="col-md-3 text-center">
+				<div class="icon">
+				<i class="fa fa-file-text" aria-hidden="true"></i>
+
+				</div>
+				<h3>Question  <span>Library</span></h3>
+				<p>This platform provides a private library with MCQs, Conceptual questions. It also supports creation of your own private question bank.</p>
+			</div>
+			<div class="col-md-3 text-center">
+				<div class="icon">
+					<i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+
+				</div>
+				<h3>Extensive <span>Test Report</span></h3>
+				<p>Get detailed report on candidate's performance for analysis and decision making for hiring needs.
+Consolidated reports accompanies a feature to shortlist candidates into different groups for further processing..</p>
+			</div>
+		</div>
+	</div>
+	
+</section >
+<!-- team -->
+<div class="team-section" id="team">
+    <div class="inner-width">
+      <h1>Our Team</h1>
+      <div class="pers">
+        <div class="pe">
+          <img src="img/team_members/members_1.jpg" alt="">
+          <div class="p-name">Rohan Chouhan</div>
+          <div class="p-des">Front-End Developer</div>
+          <div class="p-sm">
+            <a href="#"><i class="fab fa-facebook-f "></i></a>
+            <a href="#"><i class="fab fa-instagram "></i></a>
+          </div>
+        </div>
+         <div class="pe">
+          <img src="img/team_members/members_2.jpg" alt="">
+          <div class="p-name">Ronak Neema</div>
+          <div class="p-des">Back-End Developer</div>
+          <div class="p-sm">
+            <a href="#"><i class="fab fa-facebook-f "></i></a>
+            <a href="#"><i class="fab fa-instagram "></i></a>
+          </div>
+        </div>
+         <div class="pe">
+          <img src="img/team_members/members_3.jpg" alt="">
+          <div class="p-name">Suryansh Tiwari</div>
+          <div class="p-des">Back-End Developer</div>
+          <div class="p-sm">
+            <a href="#"><i class="fab fa-facebook-f "></i></a>
+            <a href="#"><i class="fab fa-instagram "></i></a>
+          </div>
+        </div>
+         <div class="pe">
+          <img src="img/team_members/members_4.jpg" alt="">
+          <div class="p-name">Tohsib Qureshi</div>
+          <div class="p-des">Full-Stack Developer</div>
+          <div class="p-sm">
+            <a href="#"><i class="fab fa-facebook-f "></i></a>
+            <a href="#"><i class="fab fa-instagram "></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
-					<h2 class="mb-5 font-weight-bold">Best Features</h2>
-
-					<div class="row d-flex justify-content-center mb-4">
-
-
-						<div class="col-md-8">
-
-
-							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Quasi voluptate hic provident nulla repellat
-								facere esse molestiae ipsa labore porro minima quam quaerat rem,
-								natus repudiandae debitis est sit pariatur.</p>
-
-						</div>
-						<!-- 						Grid column -->
-
-					</div>
-					<!-- 					Grid row -->
-
-					<!-- 					Grid row -->
-					<div class="row">
-
-						<!-- 						Grid column -->
-						<div class="col-md-4 mb-5">
-							<i class="fa fa-camera-retro fa-4x orange-text"></i>
-							<h4 class="my-4 font-weight-bold">Experience</h4>
-							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Reprehenderit maiores nam, aperiam minima
-								assumenda deleniti hic.</p>
-						</div>
-						<!-- 						Grid column -->
-
-						<!-- 						Grid column -->
-						<div class="col-md-4 mb-1">
-							<i class="fa fa-heart fa-4x orange-text"></i>
-							<h4 class="my-4 font-weight-bold">Happiness</h4>
-							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Reprehenderit maiores nam, aperiam minima
-								assumenda deleniti hic.</p>
-						</div>
-						<!-- 						Grid column -->
-
-						<!-- 						Grid column -->
-						<div class="col-md-4 mb-1">
-							<i class="fa fa-bicycle fa-4x orange-text"></i>
-							<h4 class="my-4 font-weight-bold">Adventure</h4>
-							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Reprehenderit maiores nam, aperiam minima
-								assumenda deleniti hic.</p>
-						</div>
-						<!-- 						Grid column -->
-
-					</div>
-					<!-- 					Grid row -->
-
-				</section>
-				<!-- 				Section: Best Features -->
-
-				<hr class="my-5">
-
-				<!-- 				Section: Examples -->
-				<section id="examples" class="text-center">
-
-					<!-- 					Heading -->
-					<h2 class="mb-5 font-weight-bold">Stunning Examples</h2>
-
-					<!-- 					Grid row -->
-					<div class="row">
-
-						<!-- 						Grid column -->
-						<div class="col-lg-4 col-md-12 mb-4">
-
-							<div class="view overlay z-depth-1-half">
-								<img
-									src="https://mdbootstrap.com/img/Photos/Others/images/48.jpg"
-									class="img-fluid" alt="">
-								<div class="mask rgba-white-slight"></div>
-							</div>
-
-							<h4 class="my-4 font-weight-bold">Heading</h4>
-							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Reprehenderit maiores nam, aperiam minima
-								assumenda deleniti hic.</p>
-
-						</div>
-						<!-- 						Grid column -->
-
-						<!-- 						Grid column -->
-						<div class="col-lg-4 col-md-6 mb-4">
-
-							<div class="view overlay z-depth-1-half">
-								<img
-									src="https://mdbootstrap.com/img/Photos/Others/images/49.jpg"
-									class="img-fluid" alt="">
-								<div class="mask rgba-white-slight"></div>
-							</div>
-
-							<h4 class="my-4 font-weight-bold">Heading</h4>
-							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Reprehenderit maiores nam, aperiam minima
-								assumenda deleniti hic.</p>
-
-						</div>
-						<!-- 						Grid column -->
-
-						<!-- 						Grid column -->
-						<div class="col-lg-4 col-md-6 mb-4">
-
-							<div class="view overlay z-depth-1-half">
-								<img
-									src="https://mdbootstrap.com/img/Photos/Others/images/29.jpg"
-									class="img-fluid" alt="">
-								<div class="mask rgba-white-slight"></div>
-							</div>
-
-							<h4 class="my-4 font-weight-bold">Heading</h4>
-							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Reprehenderit maiores nam, aperiam minima
-								assumenda deleniti hic.</p>
-
-						</div>
-						<!-- 						Grid column -->
-
-					</div>
-					<!-- 					Grid row -->
-
-					<!-- 					Grid row -->
-					<div class="row">
-
-						<!-- 						Grid column -->
-						<div class="col-lg-4 col-md-12 mb-4">
-
-							<div class="view overlay z-depth-1-half">
-								<img
-									src="https://mdbootstrap.com/img/Photos/Others/images/10.jpg"
-									class="img-fluid" alt="">
-								<div class="mask rgba-white-slight"></div>
-							</div>
-
-							<h4 class="my-4 font-weight-bold">Heading</h4>
-							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Reprehenderit maiores nam, aperiam minima
-								assumenda deleniti hic.</p>
-
-						</div>
-						<!-- 						Grid column -->
-
-						<!-- 						Grid column -->
-						<div class="col-lg-4 col-md-6 mb-4">
-
-							<div class="view overlay z-depth-1-half">
-								<img
-									src="https://mdbootstrap.com/img/Photos/Others/images/11.jpg"
-									class="img-fluid" alt="">
-								<div class="mask rgba-white-slight"></div>
-							</div>
-
-							<h4 class="my-4 font-weight-bold">Heading</h4>
-							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Reprehenderit maiores nam, aperiam minima
-								assumenda deleniti hic.</p>
-
-						</div>
-						<!-- 						Grid column -->
-
-						<!-- 						Grid column -->
-						<div class="col-lg-4 col-md-6 mb-4">
-
-							<div class="view overlay z-depth-1-half">
-								<img
-									src="https://mdbootstrap.com/img/Photos/Others/images/13.jpg"
-									class="img-fluid" alt="">
-								<div class="mask rgba-white-slight"></div>
-							</div>
-
-							<h4 class="my-4 font-weight-bold">Heading</h4>
-							<p class="grey-text">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit. Reprehenderit maiores nam, aperiam minima
-								assumenda deleniti hic.</p>
-
-						</div>
-						<!-- 						Grid column -->
-
-					</div>
-					<!-- 					Grid row -->
-
-				</section>
-				<!-- 				Section: Examples -->
-
-				<hr class="my-5">
-
-				<!-- 				Section: Gallery -->
-				<section id="gallery">
-
-					<!-- 					Heading -->
-					<h2 class="mb-5 font-weight-bold text-center">Gallery heading</h2>
-
-					<!-- 					Grid row -->
-					<div class="row">
-
-						<!-- 						Grid column -->
-						<div class="col-md-6 mb-4">
-
-							<!-- 							Carousel Wrapper -->
-							<div id="carousel-example-1z"
-								class="carousel slide carousel-fade carousel-fade"
-								data-ride="carousel">
-								<!-- 								Indicators -->
-								<ol class="carousel-indicators">
-									<li data-target="#carousel-example-1z" data-slide-to="0"
-										class="active"></li>
-									<li data-target="#carousel-example-1z" data-slide-to="1"></li>
-									<li data-target="#carousel-example-1z" data-slide-to="2"></li>
-								</ol>
-								<!-- 								/.Indicators -->
-
-								<div class="carousel-inner z-depth-1-half" role="listbox">
-									<!-- 									First slide -->
-									<div class="carousel-item active">
-										<img class="d-block w-100"
-											src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg"
-											alt="First slide">
-									</div>
-									<!-- 									/First slide -->
-									<!-- 									Second slide -->
-									<div class="carousel-item">
-										<img class="d-block w-100"
-											src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg"
-											alt="Second slide">
-									</div>
-									<!-- 									/Second slide -->
-									<!-- 									Third slide -->
-									<div class="carousel-item">
-										<img class="d-block w-100"
-											src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"
-											alt="Third slide">
-									</div>
-									<!-- 									/Third slide -->
-								</div>
-								<!-- 								/.Slides -->
-								<!-- 								Controls -->
-								<a class="carousel-control-prev" href="#carousel-example-1z"
-									role="button" data-slide="prev"> <span
-									class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-									class="sr-only">Previous</span>
-								</a> <a class="carousel-control-next" href="#carousel-example-1z"
-									role="button" data-slide="next"> <span
-									class="carousel-control-next-icon" aria-hidden="true"></span> <span
-									class="sr-only">Next</span>
-								</a>
-								<!-- 								/.Controls -->
-							</div>
-							<!-- 							/.Carousel Wrapper -->
-
-						</div>
-						<!-- 						Grid column -->
-
-						<!-- 						Grid column -->
-						<div class="col-md-6">
-
-							<!-- 							Excerpt -->
-							<a href="" class="teal-text">
-								<h6 class="pb-1">
-									<i class="fa fa-heart"></i><strong> Lifestyle </strong>
-								</h6>
-							</a>
-							<h4 class="mb-3">
-								<strong>This is title of the news</strong>
-							</h4>
-							<p>Nam libero tempore, cum soluta nobis est eligendi optio
-								cumque nihil impedit quo minus id quod maxime placeat facere
-								possimus, omnis voluptas assumenda est, omnis dolor repellendus
-								et aut officiis debitis aut rerum.</p>
-
-							<p>Nam libero tempore, cum soluta nobis est eligendi optio
-								cumque nihil impedit quo minus id quod maxime placeat facere
-								possimus, omnis voluptas assumenda est, omnis dolor repellendus
-								et aut officiis debitis aut rerum.</p>
-							<p>
-								by <a><strong>Jessica Clark</strong></a>, 26/08/2016
-							</p>
-							<a class="btn btn-primary btn-md">Read more</a>
-
-						</div>
-						<!-- 						Grid column -->
-
-					</div>
-					<!-- 					Grid row -->
-
-				</section>
-				<!-- 				Section: Gallery -->
-
+							
 				<hr class="my-5">
 
 				<!--Section: Contact-->
@@ -594,14 +408,8 @@ html {
 				<div class="row mt-3">
 
 					<!--First column-->
-					<div class="col-md-3 col-lg-4 col-xl-3 mb-4">
-						<h6 class="text-uppercase font-weight-bold">
-							<strong>Arc Developers</strong>
-						</h6>
-						<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
-							style="width: 60px;">
-						<p></p>
-					</div>
+				
+				
 					<!--/.First column-->
 
 					<!--Second column-->
@@ -610,7 +418,7 @@ html {
 							<strong>Products</strong>
 						</h6>
 						<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
-							style="width: 60px;">
+							style="width: 80px;">
 						<p>
 							<a href="#!">Create Test</a>
 						</p>
@@ -626,26 +434,7 @@ html {
 					</div>
 					<!--/.Second column-->
 
-					<!--Third column-->
-					<div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-						<h6 class="text-uppercase font-weight-bold">
-							<strong>Useful links</strong>
-						</h6>
-						<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
-							style="width: 60px;">
-						<p>
-							<a href="#!">Your Account</a>
-						</p>
-						<p>
-							<a href="#!">Become an Affiliate</a>
-						</p>
-						<p>
-							<a href="#!">Shipping Rates</a>
-						</p>
-						<p>
-							<a href="#!">Help</a>
-						</p>
-					</div>
+				
 					<!--/.Third column-->
 
 					<!--Fourth column-->
@@ -654,20 +443,19 @@ html {
 							<strong>Contact</strong>
 						</h6>
 						<hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto"
-							style="width: 60px;">
+							style="width: 80px;">
 						<p>
 							<i class="fas fa-home"></i> &nbsp; &nbsp; Indore, 452001, India
 						</p>
 						<p>
 							<i class="fa fa-envelope mr-3"></i>
-							official03@arcdeveloper.com
+							hatian3105@gmail.com
+							
 						</p>
 						<p>
 							<i class="fa fa-phone mr-3"></i> + 91 798 700 5757
 						</p>
-						<p>
-							<i class="fa fa-print mr-3"></i> + 91 777 986 2154
-						</p>
+						
 					</div>
 					<!--/.Fourth column-->
 

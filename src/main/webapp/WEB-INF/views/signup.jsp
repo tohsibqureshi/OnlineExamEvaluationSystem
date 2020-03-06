@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
   <link rel="stylesheet" href="css/reg.css">
 </head>
-<body>
+<body style="background-image: url('img/bg.jpg')">
 
 <div class="wrapper">
   <div class="title">
