@@ -3,6 +3,7 @@ package com.arc.controller;
 import java.io.BufferedOutputStream;
 
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import javax.sql.rowset.serial.SerialBlob;
 import javax.sql.rowset.serial.SerialException;
 
+import org.json.simple.JSONArray;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,6 +40,10 @@ import com.arc.service.FeedbackService;
 import com.arc.service.TestService;
 import com.arc.service.UploadQuestionService;
 import com.arc.service.UserService;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.arc.service.StudentService;
 
 @Controller
@@ -111,13 +117,18 @@ public class CommonController {
 				session.setAttribute("user", userService.getUser(email));
 				if (userService.getRole(email).equals("faculty")) {
 					ModelAndView m = new ModelAndView("examiner");
-					m.addObject("createtest", "Create Test");
-					m.addObject("createdbyme", "Test Created By Me");
+					
+					
+					m.addObject("userClickHome", true);
+					m.addObject("dash_title", "Home");
+					m.addObject("title", "Dashboard");
 
 					return m;
 				} else {
 					ModelAndView m = new ModelAndView("examiner");
-
+					m.addObject("userClickHome", true);
+					m.addObject("dash_title", "Home");
+					m.addObject("title", "Dashboard");
 					return m;
 				}
 			}
@@ -149,11 +160,13 @@ public class CommonController {
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView creatTest(HttpSession session) {
 		if (session != null) {
-			ModelAndView m = new ModelAndView("createtest");
+			ModelAndView m = new ModelAndView("examiner");
 			User user = (User) session.getAttribute("user");
 			m.addObject("F_id", user.getUserId());
 			// System.out.println("sessss"+session.getAttribute("F_id"));
-
+			m.addObject("userClickCreateTest", true);
+			m.addObject("dash_title", "Create Custom Test");
+			m.addObject("title", "Test Creation");
 			return m;
 		} else {
 			ModelAndView m = new ModelAndView("loginpage");
@@ -230,27 +243,36 @@ public class CommonController {
 
 	@RequestMapping("/testtable")
 	public ModelAndView showTable(HttpSession session) {
-		ModelAndView m = new ModelAndView("testtable");
+		ModelAndView m = new ModelAndView("examiner");
 		User user = (User) session.getAttribute("user");
 		System.out.println(user);
 		List<Testinfo> testlist = testService.getList(user.getUserId());
 		// System.out.println(testlist.get(1).getTestName());
 		if (!testlist.isEmpty()) {
 			m.addObject("testList", testlist);
+			m.addObject("userClickCreatedTest", true);
+			m.addObject("dash_title", "My Test");
+			m.addObject("title", "My Tests");
 			return m;
 		} else {
 			m.addObject("msg", "No Record found");
+			m.addObject("userClickCreatedTest", true);
+			m.addObject("dash_title", "My Test");
+			m.addObject("title", "My Tests");
 			return m;
 		}
 	}
 
 	@RequestMapping("/alltest")
 	public ModelAndView showallTest(HttpSession session) {
-		ModelAndView m = new ModelAndView("alltest");
+		ModelAndView m = new ModelAndView("examiner");
 		List<Testinfo> testlist = testService.getalltest();
 		// System.out.println(testlist.get(1).getTestName());
 		if (!testlist.isEmpty()) {
 			m.addObject("testList", testlist);
+			m.addObject("userClickAvailableTest", true);
+			m.addObject("dash_title", "Available Test");
+			m.addObject("title", "Available Tests");
 			return m;
 		} else {
 			m.addObject("msg", "No Record found");
@@ -435,10 +457,12 @@ public class CommonController {
 	}
 
 	@RequestMapping("/editprofile")
-	public ModelAndView editProfile(HttpSession session) {
+	public ModelAndView editProfile() {
 
-		ModelAndView m = new ModelAndView("profile");
-
+		ModelAndView m = new ModelAndView("examiner");
+		m.addObject("userClickEditProfile", true);
+		m.addObject("dash_title", "Edit Profile");
+		m.addObject("title", "Profile");
 		return m;
 	}
 	
@@ -500,11 +524,19 @@ public class CommonController {
 	}
 	
 	@RequestMapping(value = "/starttest", method = RequestMethod.GET)
-	public ModelAndView startTest() {
+	public ModelAndView startTest(@RequestParam int id) {
 
 
+		 List<com.arc.model.UploadQuestions> list = uploadQuestionService.getList(id);
 		
-		ModelAndView m = new ModelAndView("testlive");
+		 Gson gson = new GsonBuilder().create();
+		 JsonArray array = gson.toJsonTree(list).getAsJsonArray();
+		System.out.println(array);
+		 ModelAndView m = new ModelAndView("testlive");
+		
+		m.addObject("json",array);
+		m.addObject("size",list.size());
+		
 		
 		return m;
 	}
@@ -542,5 +574,17 @@ public class CommonController {
 		return m;
 	}	
 	
-	
+	@RequestMapping("/dashboard")
+	public ModelAndView showDashboard(){
+
+		
+			
+		ModelAndView m = new ModelAndView("examiner");
+		
+		
+		m.addObject("userClickHome", true);
+		m.addObject("dash_title", "Home");
+		m.addObject("title", "Dashboard");
+		return m;
+	}
 }

@@ -231,7 +231,7 @@ Consolidated reports accompanies a feature to shortlist candidates into differen
           </div>
         </div>
          <div class="pe">
-          <img src="img/team_members/members_4.jpg" alt="">
+          <img src="img/team_members/3.jpg" alt="">
           <div class="p-name">Tohsib Qureshi</div>
           <div class="p-des">Full-Stack Developer</div>
           <div class="p-sm">
