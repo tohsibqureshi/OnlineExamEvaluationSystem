@@ -247,6 +247,22 @@ public class CommonController {
 		User user = (User) session.getAttribute("user");
 		System.out.println(user);
 		List<Testinfo> testlist = testService.getList(user.getUserId());
+		
+		
+
+		
+		 Gson gson = new GsonBuilder().create();
+		 JsonArray array = gson.toJsonTree(testlist).getAsJsonArray();
+		System.out.println(array);
+		
+		
+		m.addObject("json",array);
+		//m.addObject("size",testlist.size());
+		
+		
+	
+
+		
 		// System.out.println(testlist.get(1).getTestName());
 		if (!testlist.isEmpty()) {
 			m.addObject("testList", testlist);
@@ -268,6 +284,13 @@ public class CommonController {
 		ModelAndView m = new ModelAndView("examiner");
 		List<Testinfo> testlist = testService.getalltest();
 		// System.out.println(testlist.get(1).getTestName());
+		 Gson gson = new GsonBuilder().create();
+		 JsonArray array = gson.toJsonTree(testlist).getAsJsonArray();
+		
+		
+		m.addObject("json",array);
+		m.addObject("size",testlist.size());
+		
 		if (!testlist.isEmpty()) {
 			m.addObject("testList", testlist);
 			m.addObject("userClickAvailableTest", true);
@@ -291,6 +314,13 @@ public class CommonController {
 
 		List<UploadQuestions> quelist = uploadQuestionService.getList(id);
 
+		 Gson gson = new GsonBuilder().create();
+		 JsonArray array = gson.toJsonTree(quelist).getAsJsonArray();
+		
+		
+		m.addObject("json",array);
+		m.addObject("size",quelist.size());
+		
 		if (quelist != null) {
 			m.addObject("queList", quelist);
 		} else

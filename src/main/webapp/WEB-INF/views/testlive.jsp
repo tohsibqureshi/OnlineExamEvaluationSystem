@@ -19,9 +19,9 @@
 	<form>
 				
 				<div class="input-group opt1 ">
-				<div>{{a=${json}}}
+<%-- 				<div>{{a=${json}}} --%>
 				
-				{{total=${size} }}</div>
+<%-- 				{{total=${size} }}</div> --%>
 					<div class="input-group-prepend">
 						<span class="input-group-text">Enter Question</span>
 					</div>
@@ -91,12 +91,19 @@ app.controller('myCtrl', function($scope) {
 var i=0;
 
 var a;
-$scope.a=[];
+$scope.a=${json};
 var total;
-$scope.total=0;
+$scope.total=${size};
 
+console.log($scope.a[i].question);
+console.log($scope.total);
 
-
+$scope.question=$scope.a[i].question;
+$scope.opt1=$scope.a[i].opt1;
+$scope.opt2=$scope.a[i].opt2;
+$scope.opt3=$scope.a[i].opt3;
+$scope.opt4=$scope.a[i].opt4;
+i++;
  $scope.next = function() {
 
 	 console.log($scope.a[i].question);

@@ -1,0 +1,39 @@
+
+.instruction h1{
+		font-size: 28px;
+	    text-align: left;
+		padding-top: 160px;
+
+}
+.instruction h1::after{
+	content: '';
+	background: #ff4d73;
+	display: block;
+	height: 3px;
+	width: 190px;
+	margin: 5px;
+	
+
+}
+.instruction ol
+{
+	margin-top: 30px;
+	margin-left: 10px;
+list-style-type: none;
+
+}
+.instruction ol li{
+	line-height: 40px;
+	font-size: 18px;
+	position: relative;
+}
+.instruction ol li::after{
+	content: '';
+	height: 9px;
+	width: 9px;
+	background: #ff4d73;
+	transform: rotate(45deg);
+	position: absolute;
+	top: 17px;
+	left: -25px;
+}
