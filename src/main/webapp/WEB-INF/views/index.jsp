@@ -101,7 +101,7 @@ html {
 
 					<div
 						class="container-fluid d-flex align-items-center justify-content-center h-100">
-
+${msg}
 						<div class="row d-flex justify-content-center text-center">
 
 							<div class="col-md-10">
@@ -259,7 +259,7 @@ Consolidated reports accompanies a feature to shortlist candidates into differen
 						<!--Grid column-->
 						<div class="col-lg-5 col-md-12">
 							<!-- Form contact -->
-							${msg}
+					
 							<form class="p-5 grey-text" action="/addquery">
 								<div class="md-form form-sm">
 									<i class="fa fa-user prefix"></i> <input type="text"
@@ -268,26 +268,26 @@ Consolidated reports accompanies a feature to shortlist candidates into differen
 										name</label>
 								</div>
 								<div class="md-form form-sm">
-									<i class="fa fa-envelope prefix"></i> <input type="email"
+									<i class="fa fa-envelope prefix"></i> <input id="email" 
 										name="email" id="form2" class="form-control form-control-sm"
 										required="required"> <label for="form2">Your
 										email</label>
 								</div>
 								<div class="md-form form-sm">
-									<i class="fa fa-tag prefix"></i> <input type="text"
+									<i class="fa fa-tag prefix"></i> <input type="text" 
 										name="subject" id="form32"
 										class="form-control form-control-sm" required="required">
 									<label for="form34">Subject</label>
 								</div>
 								<div class="md-form form-sm">
 									<i class="fa fa-pencil prefix"></i>
-									<textarea type="text" name="msgBody" id="form8"
+									<textarea name="msgBody" id="form8"
 										class="md-textarea form-control form-control-sm" rows="4"
 										required="required"></textarea>
 									<label for="form8">Your message</label>
 								</div>
 								<div class="text-center mt-4">
-									<button type="submit" class="btn btn-primary">
+									<button type="submit" onclick="myFunction()" class="btn btn-primary">
 										Send <i class="fa fa-paper-plane-o ml-1"></i>
 									</button>
 								</div>
@@ -521,6 +521,11 @@ Consolidated reports accompanies a feature to shortlist candidates into differen
 		$('.carousel').carousel({
 			interval : 3000,
 		})
+		
+
+
+
+
 	</script>
 </body>
 </html>

@@ -207,18 +207,28 @@ public class CommonController {
 	public ModelAndView contactUs(ContactUs contact) {
 		contactService.addContact(contact);
 		ModelAndView m = new ModelAndView("index");
-		m.addObject("msg", ":- Successfully Recorded");
+		m.addObject("msg", "<div id=\"message\">\n" + 
+				"    <div style=\"padding: 5px;\">\n" + 
+				"        <div id=\"inner-message\" class=\"alert alert-success alert-dismissible\">\n" + 
+				"            <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>\n" + 
+				"            <strong>Success!   </strong>We will contact you soon.\n" + 
+				"        </div>\n" + 
+				"    </div>\n" + 
+				"</div>");
 		return m;
 	}
 
 	@RequestMapping("/updatepage")
 	public ModelAndView updatepage(@RequestParam int id) {
 
-		ModelAndView m = new ModelAndView("updateform");
+		ModelAndView m = new ModelAndView("examiner");
 
 		UploadQuestions question = uploadQuestionService.getQuestion(id);
 		System.out.println(question.getQuestion());
 		m.addObject("que", question);
+		m.addObject("userClickUpdateQuePage", true);
+		m.addObject("dash_title", "Update Que Form");
+		m.addObject("title", "Update Question");
 		return m;
 	}
 
@@ -306,8 +316,8 @@ public class CommonController {
 	@RequestMapping("/showque")
 	public ModelAndView showQue(HttpSession session, @RequestParam int id) {
 
-		ModelAndView m = new ModelAndView("questiontable");
-
+		//ModelAndView m = new ModelAndView("questiontable");
+		ModelAndView m = new ModelAndView("examiner");
 		User user = (User) session.getAttribute("user");
 
 		System.out.println(user);
@@ -323,6 +333,9 @@ public class CommonController {
 		
 		if (quelist != null) {
 			m.addObject("queList", quelist);
+			m.addObject("userClickShowQUes", true);
+			m.addObject("dash_title", "Show QUes");
+			m.addObject("title", "Show QUes");
 		} else
 			m.addObject("msg", "No data found");
 		return m;
@@ -331,17 +344,21 @@ public class CommonController {
 	@RequestMapping("/updatetestpage")
 	public ModelAndView updateTestPage(@RequestParam int id) {
 
-		ModelAndView m = new ModelAndView("updatetestform");
+		ModelAndView m = new ModelAndView("examiner");
 
 		Testinfo test = testService.getTest(id);
 		System.out.println(test.getTestName());
 		m.addObject("test", test);
+		m.addObject("userClickUpdateTest", true);
+		m.addObject("dash_title", "Update test");
+		m.addObject("title", "Update Test");
+		
 		return m;
 	}
 
 	@RequestMapping("/updatetest")
 	public ModelAndView updateTest(HttpSession session, Testinfo test) {
-		ModelAndView m = new ModelAndView("testtable");
+		ModelAndView m = new ModelAndView("examiner");
 		testService.addTest(test);
 
 		User user = (User) session.getAttribute("user");
@@ -350,6 +367,10 @@ public class CommonController {
 		// System.out.println(testlist.get(1).getTestName());
 		if (!testlist.isEmpty()) {
 			m.addObject("testList", testlist);
+			m.addObject("userClickAfterUpdatetest", true);
+			m.addObject("dash_title", "Updated test");
+			m.addObject("title", "after Update Test");
+			
 			return m;
 		} else {
 			m.addObject("msg", "No Record found");
@@ -361,11 +382,15 @@ public class CommonController {
 	@RequestMapping("/getlink")
 	public ModelAndView getLink(@RequestParam int id, HttpSession session) {
 
-		ModelAndView m = new ModelAndView("linkpage");
+		ModelAndView m = new ModelAndView("examiner");
 		User user = (User) session.getAttribute("user");
 		String link = "localhost:8080/testhosted?AcRfg=" + id + "&arcDz=" + user.getEmail();
 
 		m.addObject("link", link);
+		m.addObject("userClickgetLink", true);
+		m.addObject("dash_title", "Test Link is Ready");
+		m.addObject("title", "Get Test Link");
+		
 		return m;
 	}
 

@@ -173,7 +173,11 @@ h1::after{
 line-height: 30px;
 }
 
-
+#message{
+	    left: 72%;
+    top: 80px;
+    position: absolute;
+}
 .top-nav-collapse {
     background-color: #24355C;
   }

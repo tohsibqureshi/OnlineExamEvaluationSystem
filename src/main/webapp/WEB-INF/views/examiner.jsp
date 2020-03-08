@@ -68,9 +68,25 @@
 				<%@include file="profile.jsp"%>
 			</c:if>
 
-<%-- 			<c:if test="${userClick==true}"> --%>
-<%-- 				<%@include file="createtest.jsp"%> --%>
-<%-- 			</c:if> --%>
+ 			<c:if test="${userClickShowQUes==true}">
+				<%@include file="questiontable.jsp"%> 
+			</c:if> 
+			
+			<c:if test="${userClickUpdateTest==true}">
+			<%@include file="updatetestform.jsp"%> 
+		    </c:if> 
+		    
+		    <c:if test="${userClickAfterUpdatetest==true}">
+			<%@include file="testtable.jsp"%> 
+		    </c:if> 
+		    
+		<c:if test="${userClickgetLink==true}">
+		<%@include file="linkpage.jsp"%> 
+	</c:if> 
+	
+	<c:if test="${userClickUpdateQuePage==true}">
+		<%@include file="updateform.jsp"%> 
+	</c:if> 
 
 <%-- 			<c:if test="${userClick==true}"> --%>
 <%-- 				<%@include file="createtest.jsp"%> --%>
