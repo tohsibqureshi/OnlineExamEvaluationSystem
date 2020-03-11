@@ -78,5 +78,10 @@ public class UploadQuestionService {
 		}
 		return null;
 	}
+	
+
+	public void delete(int id) {
+		uploadQuestionRepository.delete(getQuestion(id));
+	}
 
 }

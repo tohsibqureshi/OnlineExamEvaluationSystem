@@ -16,7 +16,7 @@
 <body style="background-image: url('img/bg.jpg')">
 	${msg}
 	<div class="login-wrapper">
-		<form action="/login" class="form">
+		<form action="/login" class="form" method="post">
 			<img src="img/avatar.png" alt="">
 			<h2>Login</h2>
 			<div class="input-group">

@@ -7,7 +7,7 @@
 <title>Timeline</title>
 </head>
 <body>
-<h1>WELCOME ${test1}</h1>
+<h1>WELCOME  -- ${user.name}</h1>
 
 </body>
 </html>

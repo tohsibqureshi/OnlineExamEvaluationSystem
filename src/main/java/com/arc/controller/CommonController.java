@@ -13,7 +13,6 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.sql.rowset.serial.SerialBlob;
@@ -61,7 +60,7 @@ public class CommonController {
 	@Autowired
 	FeedbackService feedbackService;
 	@Autowired
-	 HttpServletRequest request;
+	HttpServletRequest request;
 
 	@RequestMapping({ "/", "/home" })
 	public String index() {
@@ -90,7 +89,7 @@ public class CommonController {
 		return "signup";
 	}
 
-	@RequestMapping(value = "/addrecord", method = RequestMethod.GET)
+	@RequestMapping(value = "/addrecord", method = RequestMethod.POST)
 	public ModelAndView addRecord(User user) {
 
 		userService.addRecord(user);
@@ -103,7 +102,7 @@ public class CommonController {
 		return m;
 	}
 
-	@RequestMapping("/login")
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView login(@RequestParam String email, @RequestParam String password, HttpSession session) {
 		// System.out.print(email+password);
 
@@ -117,8 +116,7 @@ public class CommonController {
 				session.setAttribute("user", userService.getUser(email));
 				if (userService.getRole(email).equals("faculty")) {
 					ModelAndView m = new ModelAndView("examiner");
-					
-					
+
 					m.addObject("userClickHome", true);
 					m.addObject("dash_title", "Home");
 					m.addObject("title", "Dashboard");
@@ -207,14 +205,11 @@ public class CommonController {
 	public ModelAndView contactUs(ContactUs contact) {
 		contactService.addContact(contact);
 		ModelAndView m = new ModelAndView("index");
-		m.addObject("msg", "<div id=\"message\">\n" + 
-				"    <div style=\"padding: 5px;\">\n" + 
-				"        <div id=\"inner-message\" class=\"alert alert-success alert-dismissible\">\n" + 
-				"            <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>\n" + 
-				"            <strong>Success!   </strong>We will contact you soon.\n" + 
-				"        </div>\n" + 
-				"    </div>\n" + 
-				"</div>");
+		m.addObject("msg", "<div id=\"message\">\n" + "    <div style=\"padding: 5px;\">\n"
+				+ "        <div id=\"inner-message\" class=\"alert alert-success alert-dismissible\">\n"
+				+ "            <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>\n"
+				+ "            <strong>Success!   </strong>We will contact you soon.\n" + "        </div>\n"
+				+ "    </div>\n" + "</div>");
 		return m;
 	}
 
@@ -232,9 +227,36 @@ public class CommonController {
 		return m;
 	}
 
+	@RequestMapping("/deleteque")
+	public ModelAndView deleteQue(HttpSession session, @RequestParam int id) {
+
+		ModelAndView m = new ModelAndView("examiner");
+		UploadQuestions question = uploadQuestionService.getQuestion(id);
+		uploadQuestionService.delete(id);
+		User user = (User) session.getAttribute("user");
+	
+
+		// System.out.println(user);
+
+
+		List<UploadQuestions> quelist = uploadQuestionService.getList(question.getTestId());
+		System.out.println(quelist);
+		Gson gson = new GsonBuilder().create();
+		JsonArray array = gson.toJsonTree(quelist).getAsJsonArray();
+
+		m.addObject("json", array);
+		m.addObject("size", quelist.size());
+
+		System.out.println("User in update que " + user);
+		m.addObject("userClickShowQUes", true);
+		m.addObject("dash_title", "Questions");
+		m.addObject("title", "Questions");
+		return m;
+	}
+
 	@RequestMapping("/updatequestion")
 	public ModelAndView updateQue(HttpSession session, UploadQuestions que) {
-		ModelAndView m = new ModelAndView("questiontable");
+		ModelAndView m = new ModelAndView("examiner");
 		uploadQuestionService.updateQue(que);
 
 		User user = (User) session.getAttribute("user");
@@ -243,7 +265,15 @@ public class CommonController {
 
 		List<UploadQuestions> quelist = uploadQuestionService.getList(que.getTestId());
 		System.out.println("que list in update que " + quelist);
+		
+		Gson gson = new GsonBuilder().create();
+		JsonArray array = gson.toJsonTree(quelist).getAsJsonArray();
+		System.out.println(array);
 
+		m.addObject("json", array);
+		m.addObject("userClickShowQUes", true);
+		m.addObject("dash_title", "Questions");
+		m.addObject("title", "Questions");
 		if (quelist != null) {
 			m.addObject("queList", quelist);
 		} else
@@ -257,22 +287,14 @@ public class CommonController {
 		User user = (User) session.getAttribute("user");
 		System.out.println(user);
 		List<Testinfo> testlist = testService.getList(user.getUserId());
-		
-		
 
-		
-		 Gson gson = new GsonBuilder().create();
-		 JsonArray array = gson.toJsonTree(testlist).getAsJsonArray();
+		Gson gson = new GsonBuilder().create();
+		JsonArray array = gson.toJsonTree(testlist).getAsJsonArray();
 		System.out.println(array);
-		
-		
-		m.addObject("json",array);
-		//m.addObject("size",testlist.size());
-		
-		
-	
 
-		
+		m.addObject("json", array);
+		// m.addObject("size",testlist.size());
+
 		// System.out.println(testlist.get(1).getTestName());
 		if (!testlist.isEmpty()) {
 			m.addObject("testList", testlist);
@@ -294,13 +316,12 @@ public class CommonController {
 		ModelAndView m = new ModelAndView("examiner");
 		List<Testinfo> testlist = testService.getalltest();
 		// System.out.println(testlist.get(1).getTestName());
-		 Gson gson = new GsonBuilder().create();
-		 JsonArray array = gson.toJsonTree(testlist).getAsJsonArray();
-		
-		
-		m.addObject("json",array);
-		m.addObject("size",testlist.size());
-		
+		Gson gson = new GsonBuilder().create();
+		JsonArray array = gson.toJsonTree(testlist).getAsJsonArray();
+
+		m.addObject("json", array);
+		m.addObject("size", testlist.size());
+
 		if (!testlist.isEmpty()) {
 			m.addObject("testList", testlist);
 			m.addObject("userClickAvailableTest", true);
@@ -316,26 +337,25 @@ public class CommonController {
 	@RequestMapping("/showque")
 	public ModelAndView showQue(HttpSession session, @RequestParam int id) {
 
-		//ModelAndView m = new ModelAndView("questiontable");
+		// ModelAndView m = new ModelAndView("questiontable");
 		ModelAndView m = new ModelAndView("examiner");
 		User user = (User) session.getAttribute("user");
 
-		System.out.println(user);
+		// System.out.println(user);
 
 		List<UploadQuestions> quelist = uploadQuestionService.getList(id);
+		System.out.println(quelist);
+		Gson gson = new GsonBuilder().create();
+		JsonArray array = gson.toJsonTree(quelist).getAsJsonArray();
 
-		 Gson gson = new GsonBuilder().create();
-		 JsonArray array = gson.toJsonTree(quelist).getAsJsonArray();
-		
-		
-		m.addObject("json",array);
-		m.addObject("size",quelist.size());
-		
+		m.addObject("json", array);
+		m.addObject("size", quelist.size());
+
 		if (quelist != null) {
 			m.addObject("queList", quelist);
 			m.addObject("userClickShowQUes", true);
-			m.addObject("dash_title", "Show QUes");
-			m.addObject("title", "Show QUes");
+			m.addObject("dash_title", "Questions");
+			m.addObject("title", "Questions");
 		} else
 			m.addObject("msg", "No data found");
 		return m;
@@ -352,8 +372,30 @@ public class CommonController {
 		m.addObject("userClickUpdateTest", true);
 		m.addObject("dash_title", "Update test");
 		m.addObject("title", "Update Test");
-		
+
 		return m;
+	}
+
+	@RequestMapping("/delete")
+	public ModelAndView updateTest(HttpSession session, @RequestParam int id) {
+		ModelAndView m = new ModelAndView("examiner");
+
+		testService.deleteTest(id);
+		User user = (User) session.getAttribute("user");
+		System.out.println(user);
+		List<Testinfo> testlist = testService.getList(user.getUserId());
+		Gson gson = new GsonBuilder().create();
+		JsonArray array = gson.toJsonTree(testlist).getAsJsonArray();
+		// System.out.println(array);
+
+		m.addObject("json", array);
+		m.addObject("size", testlist.size());
+		m.addObject("userClickAfterUpdatetest", true);
+		m.addObject("dash_title", "Updated tests");
+		m.addObject("title", "Your Tests");
+
+		return m;
+
 	}
 
 	@RequestMapping("/updatetest")
@@ -364,21 +406,21 @@ public class CommonController {
 		User user = (User) session.getAttribute("user");
 		System.out.println(user);
 		List<Testinfo> testlist = testService.getList(user.getUserId());
-		// System.out.println(testlist.get(1).getTestName());
-		if (!testlist.isEmpty()) {
-			m.addObject("testList", testlist);
-			m.addObject("userClickAfterUpdatetest", true);
-			m.addObject("dash_title", "Updated test");
-			m.addObject("title", "after Update Test");
-			
-			return m;
-		} else {
-			m.addObject("msg", "No Record found");
-			return m;
-		}
+		Gson gson = new GsonBuilder().create();
+		JsonArray array = gson.toJsonTree(testlist).getAsJsonArray();
+		// System.out.println(array);
 
+		m.addObject("json", array);
+		m.addObject("size", testlist.size());
+		m.addObject("testList", testlist);
+		m.addObject("userClickAfterUpdatetest", true);
+		m.addObject("dash_title", "Updated tests");
+		m.addObject("title", "Your Tests");
+
+		return m;
 	}
 
+	
 	@RequestMapping("/getlink")
 	public ModelAndView getLink(@RequestParam int id, HttpSession session) {
 
@@ -390,7 +432,7 @@ public class CommonController {
 		m.addObject("userClickgetLink", true);
 		m.addObject("dash_title", "Test Link is Ready");
 		m.addObject("title", "Get Test Link");
-		
+
 		return m;
 	}
 
@@ -520,51 +562,48 @@ public class CommonController {
 		m.addObject("title", "Profile");
 		return m;
 	}
-	
-	@RequestMapping(value="/updateprofile",method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView update(User user,@RequestParam MultipartFile file,HttpSession session) {
-		String filename=file.getOriginalFilename();
-		String realPath=request.getRealPath("/");
-		String finalPath=realPath+"upload";
-		System.out.println("-========="+realPath);
-		System.out.println("-========="+realPath);
-		System.out.println("==============="+finalPath);
-		System.out.println("================"+finalPath+"/"+filename);
-		String p=finalPath+"/"+filename;
-		if(filename.isEmpty())
-		{
-			filename="pp.png";
+
+	@RequestMapping(value = "/updateprofile", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView update(User user, @RequestParam MultipartFile file, HttpSession session) {
+		String filename = file.getOriginalFilename();
+		String realPath = request.getRealPath("/");
+		String finalPath = realPath + "upload";
+		System.out.println("-=========" + realPath);
+		System.out.println("-=========" + realPath);
+		System.out.println("===============" + finalPath);
+		System.out.println("================" + finalPath + "/" + filename);
+		String p = finalPath + "/" + filename;
+		if (filename.isEmpty()) {
+			filename = "pp.png";
 		}
 		try {
-		
-			BufferedOutputStream b=new BufferedOutputStream(new FileOutputStream(p));
-		b.write(file.getBytes());
-		b.close();
+
+			BufferedOutputStream b = new BufferedOutputStream(new FileOutputStream(p));
+			b.write(file.getBytes());
+			b.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		if(filename.isEmpty())
-		{
-			filename="pp.png";
+		if (filename.isEmpty()) {
+			filename = "pp.png";
 		}
 		user.setImageName(filename);
-		
+
 		userService.updateRecord(user);
 		session.setAttribute("user", userService.getUser(user.getEmail()));
-		
+
 		ModelAndView m = new ModelAndView("examiner");
-	
 
 		return m;
 	}
+
 	@RequestMapping("/feedbackform")
 	public ModelAndView feedback() {
 		ModelAndView m = new ModelAndView("feedbackform");
-		
-		
-		
+
 		return m;
 	}
+
 	@RequestMapping(value = "/addfeedback", method = RequestMethod.GET)
 	public ModelAndView addFeedback(Feedbackinfo feedbackinfo) {
 
@@ -574,69 +613,59 @@ public class CommonController {
 		// System.out.println(user.getId());
 		// System.out.println(user.getPassword());
 		ModelAndView m = new ModelAndView("welcome");
-		
+
 		return m;
 	}
-	
+
 	@RequestMapping(value = "/starttest", method = RequestMethod.GET)
 	public ModelAndView startTest(@RequestParam int id) {
 
+		List<com.arc.model.UploadQuestions> list = uploadQuestionService.getList(id);
 
-		 List<com.arc.model.UploadQuestions> list = uploadQuestionService.getList(id);
-		
-		 Gson gson = new GsonBuilder().create();
-		 JsonArray array = gson.toJsonTree(list).getAsJsonArray();
+		Gson gson = new GsonBuilder().create();
+		JsonArray array = gson.toJsonTree(list).getAsJsonArray();
 		System.out.println(array);
-		 ModelAndView m = new ModelAndView("testlive");
-		
-		m.addObject("json",array);
-		m.addObject("size",list.size());
-		
-		
+		ModelAndView m = new ModelAndView("testlive");
+
+		m.addObject("json", array);
+		m.addObject("size", list.size());
+
 		return m;
 	}
-	
-	
+
 	@RequestMapping(value = "/submittest", method = RequestMethod.GET)
 	public ModelAndView submitTest(@RequestParam String video) throws Exception {
 
-			System.out.println(video);
-			
-			byte[] decodedByte = org.apache.tomcat.util.codec.binary.Base64.decodeBase64(video);
-		
-			Blob b = new SerialBlob(decodedByte);
-			System.out.println(b.length());
-			
-			Student s=new Student();
-			s.setBranch("cse");
-			s.setVideo(b);
-			s.setEmail("a@b.fd");
-			s.setfId(12);
-			s.setFirstname("Rahul");
-			s.setGender("male");
-			s.setInstitute("asd");
-			s.setLastname("fds");
-			s.setPhone("5665555545");
-			
-			
-			
-		//	studentService.addStudentDetails(s);
-			
-			
-			
-		ModelAndView m = new ModelAndView("testlive");
-		
-		return m;
-	}	
-	
-	@RequestMapping("/dashboard")
-	public ModelAndView showDashboard(){
+		System.out.println(video);
 
-		
-			
+		byte[] decodedByte = org.apache.tomcat.util.codec.binary.Base64.decodeBase64(video);
+
+		Blob b = new SerialBlob(decodedByte);
+		System.out.println(b.length());
+
+		Student s = new Student();
+		s.setBranch("cse");
+		s.setVideo(b);
+		s.setEmail("a@b.fd");
+		s.setfId(12);
+		s.setFirstname("Rahul");
+		s.setGender("male");
+		s.setInstitute("asd");
+		s.setLastname("fds");
+		s.setPhone("5665555545");
+
+		// studentService.addStudentDetails(s);
+
+		ModelAndView m = new ModelAndView("testlive");
+
+		return m;
+	}
+
+	@RequestMapping("/dashboard")
+	public ModelAndView showDashboard() {
+
 		ModelAndView m = new ModelAndView("examiner");
-		
-		
+
 		m.addObject("userClickHome", true);
 		m.addObject("dash_title", "Home");
 		m.addObject("title", "Dashboard");

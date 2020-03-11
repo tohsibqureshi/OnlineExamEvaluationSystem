@@ -13,8 +13,14 @@
 			  {headerName: "Option3", field: "opt3",sortable: false, filter: true	},
 			  {headerName: "Option4", field: "opt4",sortable: false, filter: true	},
 			  {headerName: "Answer", field: "answer",sortable: false, filter: true	},
-			  {headerName: "Edit", field: "queId", cellRenderer: function(params) {
-			      return '<a href="/updatepage?id='+ params.value+'"><i class="material-icons">edit</i></a>'
+			  {headerName: "Action", field: "queId",pinned:'right',width:150, cellRenderer: function(params) {
+				  
+				  
+				 
+				  
+				
+			      		return '<a title="Edit" href="/updatepage?id='+ params.value+'"><i class="material-icons">edit</i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+'<a title="Delete" href="/deleteque?id='+ params.value+'"><i class="material-icons">delete</i></a>'
+		
 			  }}
 			  ];
 			    

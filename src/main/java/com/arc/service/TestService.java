@@ -68,10 +68,10 @@ public class TestService {
 	}
 
 	public List<Testinfo> getalltest() {
-		String check="public";
+		
 		List<Testinfo> test = new ArrayList<Testinfo>();
 		for (Testinfo record : list()) {
-			if (record.getPrivacy().equals(check)) {
+			if ("public".equals(record.getPrivacy())) {
 
 				test.add(record);
 
@@ -81,4 +81,14 @@ public class TestService {
 		return test;
 	}
 
+	
+
+	public void deleteTest(int id) {
+		Testinfo test = getTest(id);
+		testRepository.delete(test);
+		
+		
+	}
+
+	
 }

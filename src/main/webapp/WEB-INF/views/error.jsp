@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Session Out</title>
 </head>
 <body>
-<h1>ERROR
+<h1>ERROR:-  Session Out Please login again--
 </body>
 </html>

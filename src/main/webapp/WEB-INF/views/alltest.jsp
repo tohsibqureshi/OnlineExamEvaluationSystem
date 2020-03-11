@@ -1,7 +1,8 @@
+<style>
+<!--
 
-  
- 
-
+-->
+</style>
 
   <div id="myGrid" style="height:100%; width:100%;" class="ag-theme-material"></div>
   
@@ -17,8 +18,9 @@
 			  {headerName: "Test Expiry Date", field: "expiry",sortable: false, filter: true	},
 			  {headerName: "Test Expiry Time", field: "expiryTime",sortable: false, filter: true	},
 			  {headerName: "Test Pivacy", field: "privacy",sortable: false, filter: true	},
-			  {headerName: "Edit", field: "testId", cellRenderer: function(params) {
-			      return '<a href="/showque?id='+ params.value+'"><button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">Open</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+'<a href="/getlink?id='+ params.value+'"><i class="material-icons md-48">insert_link</i></a>'
+			  {headerName: "Action", field: "testId",pinned: 'right',width:150,cellRenderer: function(params) {
+			      return '<a href="/showque?id='+ params.value+'"><i class="material-icons">open_in_browser</i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+'<a href="/getlink?id='+ params.value+'"><i class="material-icons md-48">insert_link</i></a>'
+			 
 			  }}
 			];
 			    

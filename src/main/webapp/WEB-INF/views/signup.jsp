@@ -15,7 +15,7 @@
   
   
   <div class="form">
-  <form action="/addrecord">
+  <form action="/addrecord" method="post">
     <div class="input_field">
       <input name="name" type="text" placeholder="Name" class="input" required="required">
       <i class="fas fa-user"></i>

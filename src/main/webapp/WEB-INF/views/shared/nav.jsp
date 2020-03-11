@@ -33,7 +33,7 @@
 			<li class="mdl-menu__item">About</li>
 			<li class="mdl-menu__item">Contact</li>
 			<li class="mdl-menu__item">Legal information</li>
-			<a href="/logout">
+			<a href="/logout" >
 				<li class="mdl-menu__item">Logout</li>
 			</a>
 		</ul>
