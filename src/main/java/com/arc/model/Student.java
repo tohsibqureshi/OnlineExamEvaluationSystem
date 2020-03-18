@@ -21,23 +21,37 @@ public class Student {
 	String phone;
 	String institute;
 	String branch;
-	long fId;
+	long testId;
 	Blob video;
+	int marks;
+	String result;
 	
 	
-	
+	public long getTestId() {
+		return testId;
+	}
+	public void setTestId(long testId) {
+		this.testId = testId;
+	}
+	public int getMarks() {
+		return marks;
+	}
+	public void setMarks(int marks) {
+		this.marks = marks;
+	}
+	public String getResult() {
+		return result;
+	}
+	public void setResult(String result) {
+		this.result = result;
+	}
 	public Blob getVideo() {
 		return video;
 	}
 	public void setVideo(Blob video) {
 		this.video = video;
 	}
-	public long getfId() {
-		return fId;
-	}
-	public void setfId(long fId) {
-		this.fId = fId;
-	}
+	
 	public long getId() {
 		return id;
 	}

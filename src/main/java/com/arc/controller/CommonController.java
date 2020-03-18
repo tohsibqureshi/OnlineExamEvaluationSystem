@@ -234,10 +234,8 @@ public class CommonController {
 		UploadQuestions question = uploadQuestionService.getQuestion(id);
 		uploadQuestionService.delete(id);
 		User user = (User) session.getAttribute("user");
-	
 
 		// System.out.println(user);
-
 
 		List<UploadQuestions> quelist = uploadQuestionService.getList(question.getTestId());
 		System.out.println(quelist);
@@ -265,7 +263,7 @@ public class CommonController {
 
 		List<UploadQuestions> quelist = uploadQuestionService.getList(que.getTestId());
 		System.out.println("que list in update que " + quelist);
-		
+
 		Gson gson = new GsonBuilder().create();
 		JsonArray array = gson.toJsonTree(quelist).getAsJsonArray();
 		System.out.println(array);
@@ -290,7 +288,7 @@ public class CommonController {
 
 		Gson gson = new GsonBuilder().create();
 		JsonArray array = gson.toJsonTree(testlist).getAsJsonArray();
-		System.out.println(array);
+		// System.out.println(array);
 
 		m.addObject("json", array);
 		// m.addObject("size",testlist.size());
@@ -339,7 +337,7 @@ public class CommonController {
 
 		// ModelAndView m = new ModelAndView("questiontable");
 		ModelAndView m = new ModelAndView("examiner");
-		User user = (User) session.getAttribute("user");
+		// User user = (User) session.getAttribute("user");
 
 		// System.out.println(user);
 
@@ -356,8 +354,33 @@ public class CommonController {
 			m.addObject("userClickShowQUes", true);
 			m.addObject("dash_title", "Questions");
 			m.addObject("title", "Questions");
-		} else
-			m.addObject("msg", "No data found");
+		}
+		return m;
+	}
+
+	@RequestMapping("/showawailableque")
+	public ModelAndView showawailableque(HttpSession session, @RequestParam int id) {
+
+		// ModelAndView m = new ModelAndView("questiontable");
+		ModelAndView m = new ModelAndView("examiner");
+		User user = (User) session.getAttribute("user");
+
+		// System.out.println(user);
+
+		List<UploadQuestions> quelist = uploadQuestionService.getList(id);
+		System.out.println(quelist);
+		Gson gson = new GsonBuilder().create();
+		JsonArray array = gson.toJsonTree(quelist).getAsJsonArray();
+
+		m.addObject("json", array);
+		m.addObject("size", quelist.size());
+
+		if (quelist != null) {
+			m.addObject("queList", quelist);
+			m.addObject("userClickshowawailableque", true);
+			m.addObject("dash_title", "Available Questions");
+			m.addObject("title", "Available Questions");
+		}
 		return m;
 	}
 
@@ -420,7 +443,6 @@ public class CommonController {
 		return m;
 	}
 
-	
 	@RequestMapping("/getlink")
 	public ModelAndView getLink(@RequestParam int id, HttpSession session) {
 
@@ -476,7 +498,7 @@ public class CommonController {
 		try {
 			dbDate = format.parse(eDate);
 		} catch (java.text.ParseException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 
@@ -484,7 +506,7 @@ public class CommonController {
 		try {
 			currentDate = format.parse(cDate);
 		} catch (java.text.ParseException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		System.out.println("Date < 0");
@@ -539,17 +561,17 @@ public class CommonController {
 	public ModelAndView addStudentDetail(Student student, @PathVariable(value = "testId") int testId,
 			@PathVariable(value = "email") String email) {
 
-		User u = userService.getUser(email);
+		// User u = userService.getUser(email);
 
-		student.setfId(u.getUserId());
 		studentService.addStudentDetails(student);
 
 		ModelAndView m = new ModelAndView("instruction");
 
-		System.out.println();
+		//System.out.println();
 		Testinfo test = testService.getTest(testId);
 		m.addObject("test", test);
 		m.addObject("testId", testId);
+		m.addObject("sId", student.getId());
 		return m;
 	}
 
@@ -618,7 +640,7 @@ public class CommonController {
 	}
 
 	@RequestMapping(value = "/starttest", method = RequestMethod.GET)
-	public ModelAndView startTest(@RequestParam int id) {
+	public ModelAndView startTest(@RequestParam int id,@RequestParam long sId) {
 
 		List<com.arc.model.UploadQuestions> list = uploadQuestionService.getList(id);
 
@@ -629,34 +651,36 @@ public class CommonController {
 
 		m.addObject("json", array);
 		m.addObject("size", list.size());
-
+		m.addObject("sId", sId);
 		return m;
 	}
 
-	@RequestMapping(value = "/submittest", method = RequestMethod.GET)
-	public ModelAndView submitTest(@RequestParam String video) throws Exception {
+	@RequestMapping(value = "/submittest/{sId}", method = RequestMethod.GET)
+	public ModelAndView submitTest(@RequestParam String jsonobj ,@PathVariable(value = "sId") int sId) throws Exception {
 
-		System.out.println(video);
+		System.out.println(jsonobj);
 
-		byte[] decodedByte = org.apache.tomcat.util.codec.binary.Base64.decodeBase64(video);
-
-		Blob b = new SerialBlob(decodedByte);
-		System.out.println(b.length());
-
-		Student s = new Student();
-		s.setBranch("cse");
-		s.setVideo(b);
-		s.setEmail("a@b.fd");
-		s.setfId(12);
-		s.setFirstname("Rahul");
-		s.setGender("male");
-		s.setInstitute("asd");
-		s.setLastname("fds");
-		s.setPhone("5665555545");
+		//		System.out.println(video);
+//
+//		byte[] decodedByte = org.apache.tomcat.util.codec.binary.Base64.decodeBase64(video);
+//
+//		Blob b = new SerialBlob(decodedByte);
+//		System.out.println(b.length());
+//
+//		Student s = new Student();
+//		s.setBranch("cse");
+//		s.setVideo(b);
+//		s.setEmail("a@b.fd");
+//		// s.setfId(12);
+//		s.setFirstname("Rahul");
+//		s.setGender("male");
+//		s.setInstitute("asd");
+//		s.setLastname("fds");
+//		s.setPhone("5665555545");
 
 		// studentService.addStudentDetails(s);
 
-		ModelAndView m = new ModelAndView("testlive");
+		ModelAndView m = new ModelAndView("feedbackform");
 
 		return m;
 	}

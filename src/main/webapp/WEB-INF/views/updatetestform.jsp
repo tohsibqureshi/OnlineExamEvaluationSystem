@@ -30,8 +30,8 @@
 		<div class="form" ng-controller="DateController as dateCtrl">
 			<form action="/updatetest">
 				<div class="input_field">
-					<input name="F_id" type="number" class="input"
-						value="${user.userId}" style="display: none;"> 
+					<input name="fId" type="number" class="input"
+						value="${test.fId}" style="display: none;"> 
 					<input  name="testId" type="number" class="input" value="${test.testId}"
 						style="display: none;">
 				</div>
@@ -83,7 +83,13 @@
 						class="input" required="required">
 
 				</div>
+			 Previous Privacy	${test.privacy}
+				<div class="input_field">
 				
+			    <input name="privacy" type="radio" value="public" class="input">Public &nbsp;</input>
+			    <input name="privacy" type="radio" value="private" required="required" class="input" >Private</input>
+			  
+			  </div>
 		
 				
 				<div class="btn1">

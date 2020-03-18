@@ -6,10 +6,23 @@
 <link rel="stylesheet"
 	href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
 <link rel="stylesheet" href="css/examinerstyles.css">
-
+<style>
+	.back :hover{
+		cursor: pointer;
+	}
+	.forward :hover{
+		cursor: pointer;
+	}
+</style>
 <header
 	class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
 	<div class="mdl-layout__header-row">
+		<span class="back"> <i class="material-icons" onclick="goBack()">
+				arrow_back &nbsp; </i>
+		</span>
+		<span class="forward"> <i class="material-icons" onclick="goForward()">
+				arrow_forward &nbsp;&nbsp;</i>
+		</span> 
 		<span class="mdl-layout-title">${dash_title}</span>
 		<div class="mdl-layout-spacer"></div>
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
@@ -33,9 +46,17 @@
 			<li class="mdl-menu__item">About</li>
 			<li class="mdl-menu__item">Contact</li>
 			<li class="mdl-menu__item">Legal information</li>
-			<a href="/logout" >
+			<a href="/logout">
 				<li class="mdl-menu__item">Logout</li>
 			</a>
 		</ul>
 	</div>
 </header>
+<script>
+	function goBack() {
+		window.history.back();
+	}
+	function goForward() {
+		  window.history.forward();
+		}
+</script>

@@ -119,6 +119,7 @@ tr:nth-child(even) {
 				<td>
 					<form action="/starttest">
 						<input name="id" value="${test.testId}" style="display: none;">
+						<input name="sId" value="${sId}" style="display: none;">
 						<button type="submit">Start Test</button>
 					
 						

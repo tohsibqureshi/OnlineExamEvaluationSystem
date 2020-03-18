@@ -17,7 +17,14 @@
 		<div class="title">Registration Form</div>
 		<div class="form">
 			<form action="/addstudentdetails/${testId}/${email}">
-				<div class="inputfield">
+			<div class="input_field">
+			<input name="testId" type="number" class="input"
+				value="${testId}" style="display: none;"> 
+			
+		</div>
+	
+			
+			<div class="inputfield">
 					<label>First Name </label> <input name="firstname" type="text"
 						class="input" required="required">
 						

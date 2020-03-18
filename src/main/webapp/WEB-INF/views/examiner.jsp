@@ -71,6 +71,9 @@
  			<c:if test="${userClickShowQUes==true}">
 				<%@include file="questiontable.jsp"%> 
 			</c:if> 
+			<c:if test="${userClickshowawailableque==true}">
+			<%@include file="awailablequestiontable.jsp"%> 
+		</c:if> 
 			
 			<c:if test="${userClickUpdateTest==true}">
 			<%@include file="updatetestform.jsp"%> 
