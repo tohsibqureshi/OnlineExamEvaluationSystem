@@ -17,6 +17,8 @@
 <link rel="stylesheet" href="css/teststyle.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
 
 <body>
 	<div ng-app="myApp" ng-controller="myCtrl">
@@ -24,14 +26,18 @@
 			<h2>
 				sec 1
 				<form action="/submittest">
-				<input name="jsonobj" type="text" ng-model="json"
-					style="display: none;">
+					<input name="jsonobj" type="text" ng-model="json"
+						style="display: none;">
 
-				<button type="submit">Submit test</button>
-			</form>
+					<button type="submit">Submit test</button>
+				</form>
 			</h2>
 
-			<div class="que">Que !</div>
+			<div class="que">
+				Que !
+
+				<button ng-repeat="no in narr" ng-click=jump(no)>{{no}}</button>
+			</div>
 
 
 			<div class="qbody">{{question}}</div>
@@ -39,22 +45,26 @@
 			<div class="opt">
 				<form>
 					<div class="opt1">
-						<input name="optt1" type="radio" ng-model="selected" value="option1"> {{opt1}}
+						<input name="optt1" type="radio" ng-model="selected"
+							value="option1"> {{opt1}}
 					</div>
 					<div class="opt1">
-						<input name="optt1" type="radio" ng-model="selected" value="option2"> {{opt2}}
+						<input name="optt1" type="radio" ng-model="selected"
+							value="option2"> {{opt2}}
 					</div>
 					<div class="opt1">
-						<input name="optt1" type="radio" ng-model="selected" value="option3"> {{opt3}}
+						<input name="optt1" type="radio" ng-model="selected"
+							value="option3"> {{opt3}}
 					</div>
 					<div class="opt1">
-						<input name="optt1" type="radio" ng-model="selected" value="option4"> {{opt4}}
+						<input name="optt1" type="radio" ng-model="selected"
+							value="option4"> {{opt4}}
 					</div>
 					<div class="btn">
-						<button ng-click="next()" ng-model="selected" type="button" ng-hide="con">next</button>
+						<button ng-click="next()" type="button" ng-hide="con">next</button>
+						<button ng-click="" type="button" ng-show="con">submit</button>
 					</div>
-					<div class="btn">
-					</div>
+					<div class="btn"></div>
 				</form>
 
 			</div>
@@ -67,69 +77,256 @@
 
 
 <script>
-    var app = angular.module('myApp', []);
-    app.controller('myCtrl', function($scope) {
-        var i = 0;
-		var studentId=${sId};
-        var a;
-        $scope.a = ${json};
-        var total;
-        $scope.total = ${size};
-		var array=[];
-		$scope.json="";
-        console.log($scope.a[i].question);
-        console.log($scope.total);
-var data;
-        $scope.question = $scope.a[i].question;
-        $scope.opt1 = $scope.a[i].opt1;
-        $scope.opt2 = $scope.a[i].opt2;
-        $scope.opt3 = $scope.a[i].opt3;
-        $scope.opt4 = $scope.a[i].opt4;
+
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+   var i = 0;
+   $scope.narr = [0, 1, 2];
+   var studentId = ${sId};
+   var a;
+   var con = false;
+   $scope.a = ${json};
+   var total;
+   $scope.total = ${size};
+   var array = [];
+   $scope.json = "";
+   console.log($scope.a[i].question);
+   console.log($scope.total);
+   var data = {};
+   $scope.question = $scope.a[i].question;
+   $scope.opt1 = $scope.a[i].opt1;
+   $scope.opt2 = $scope.a[i].opt2;
+   $scope.opt3 = $scope.a[i].opt3;
+   $scope.opt4 = $scope.a[i].opt4;
+
+   function findObjectByKey(array, key, value) {
+	    for (var i = 0; i < array.length; i++) {
+	        if (array[i][key] === value) {
+	            return true;
+	        }
+	    }
+	    return false;
+	}
+   
+   $scope.next = function() {
+	   console.log(array);
+    
+	   if (findObjectByKey(array,'queId',$scope.a[i].queId)){
+      var data = {
+       queId: $scope.a[i].queId,
+       testId: $scope.a[i].testId,
+       correctOpt: $scope.a[i].answer,
+       selectedOpt: $scope.selected,
+       studentId: ${sId}
+      };
+      array[i] = data;
+      console.log(array);
+     }
+   
+    
+     //console.log(item);
+   //  var obj = _.find(array, function (item) { return item.queId == ; });
+      if (!findObjectByKey(array,'queId',$scope.a[i].queId)) {
+      
+       data = {
+       queId: $scope.a[i].queId,
+       testId: $scope.a[i].testId,
+       correctOpt: $scope.a[i].answer,
+       selectedOpt: $scope.selected,
+       studentId: ${sId}
+       };
+
+      array.push(data);
+      console.log(array);
+      // 	 $scope.json=JSON.stringify(array);
+      //	console.log($scope.json);
+
+     }
+
+ 
+
+    if (i < $scope.total - 1) {
+     i++;
+    } else {
+     i=0;
+    }
+
+    $scope.question = $scope.a[i].question;
+    $scope.opt1 = $scope.a[i].opt1;
+    $scope.opt2 = $scope.a[i].opt2;
+    $scope.opt3 = $scope.a[i].opt3;
+    $scope.opt4 = $scope.a[i].opt4;
+    $scope.selected = null;
+
+   }
+//next end
+   $scope.jump = function(n) {
+	   console.log(array);
+   
+     if (findObjectByKey(array,'queId',$scope.a[i].queId)){
+      var data = {
+       queId: $scope.a[i].queId,
+       testId: $scope.a[i].testId,
+       correctOpt: $scope.a[i].answer,
+       selectedOpt: $scope.selected,
+       studentId: ${sId}
+      };
+      array[i] = data;
+      console.log(array);
+     }
+  
+
+    if (!findObjectByKey(array,'queId',$scope.a[i].queId)) {
         
-       
-        i++;
-        $scope.next = function() {
+        data = {
+        queId: $scope.a[i].queId,
+        testId: $scope.a[i].testId,
+        correctOpt: $scope.a[i].answer,
+        selectedOpt: $scope.selected,
+        studentId: ${sId}
+        };
 
-        	
-        	
-   			 data={
-    				queId:$scope.a[i].queId,
-    				testId:$scope.a[i].testId,
-    				correctOpt:$scope.a[i].answer,
-    				selectedOpt:$scope.selected,
-    				studentId:${sId}
-    			};    	
-        	
-        	array.push(data);
-        	 $scope.json=JSON.stringify(array);
-     		console.log($scope.json);
-     		
-            console.log(array);
-            
+       array.push(data);
+       console.log(array);
+       // 	 $scope.json=JSON.stringify(array);
+       //	console.log($scope.json);
 
-            
-            $scope.question = $scope.a[i].question;
-            $scope.opt1 = $scope.a[i].opt1;
-            $scope.opt2 = $scope.a[i].opt2;
-            $scope.opt3 = $scope.a[i].opt3;
-            $scope.opt4 = $scope.a[i].opt4;
+      }
+    
+      $scope.question = $scope.a[n].question;
+      $scope.opt1 = $scope.a[n].opt1;
+      $scope.opt2 = $scope.a[n].opt2;
+      $scope.opt3 = $scope.a[n].opt3;
+      $scope.opt4 = $scope.a[n].opt4;
+      //$scope.selected = array[n].selectedOpt;
 
+      i = n + 1;
 
-
-            if (i < $scope.total - 1) {
-                i++;
-            } else {
-                i=0;
-            }
-            $scope.next1 = function(j) {
-                $scope.name = a[j].name;
-                $scope.age = a[j].age;
-                $scope.i = j;
-
-            }
-        }
-
+     }
     });
+
+//     var app = angular.module('myApp', []);
+//     app.controller('myCtrl', function($scope) {
+//         var i = 0;
+//         $scope.narr=[0,1,2];
+// 		var studentId=${sId};
+//         var a;
+//         var con=false;
+//         $scope.a = ${json};
+//         var total;
+//         $scope.total = ${size};
+// 		var array=[];
+// 		$scope.json="";
+//         console.log($scope.a[i].question);
+//         console.log($scope.total);
+// 		var data={};
+//         $scope.question = $scope.a[i].question;
+//         $scope.opt1 = $scope.a[i].opt1;
+//         $scope.opt2 = $scope.a[i].opt2;
+//         $scope.opt3 = $scope.a[i].opt3;
+//         $scope.opt4 = $scope.a[i].opt4;
+        
+//         $scope.next = function() {
+
+//         	_.forEach(array, function(item) {
+//                 //console.log(item);
+//                 if(item.queId==$scope.a[i].queId){
+//                 	var data={
+//                				queId:$scope.a[i].queId,
+//                				testId:$scope.a[i].testId,
+//                				correctOpt:$scope.a[i].answer,
+//                				selectedOpt:$scope.selected,
+//                				studentId:${sId}
+//                			};
+//                 	array[i]=data;
+//                 	console.log(array);	
+//                 }
+//         });
+        	
+//         	_.forEach(array, function(item) {
+//                 //console.log(item);
+//         		if(!(_.has(item, queId))){
+//         			data={
+//              				queId:$scope.a[i].queId,
+//              				testId:$scope.a[i].testId,
+//              				correctOpt:$scope.a[i].answer,
+//              				selectedOpt:$scope.selected,
+//              				studentId:${sId}
+//              			};    	
+                 	
+//                  	array.push(data);
+//                  	console.log(array);
+//                 // 	 $scope.json=JSON.stringify(array);
+//               	//	console.log($scope.json);
+              		
+//             	}
+
+//         });
+        	        	
+//             if (i < $scope.total - 1) {
+//                 i++;
+//             } else {
+//                 con=true;
+//             }
+            
+//             $scope.question = $scope.a[i].question;
+//             $scope.opt1 = $scope.a[i].opt1;
+//             $scope.opt2 = $scope.a[i].opt2;
+//             $scope.opt3 = $scope.a[i].opt3;
+//             $scope.opt4 = $scope.a[i].opt4;
+//             $scope.selected=null;
+
+//         }
+        
+//         $scope.jump = function(n) {
+        	
+        	
+//         		_.forEach(array, function(item) {
+//                         //console.log(item);
+//                         if(item.queId==$scope.a[i].queId){
+//                         	var data={
+//                        				queId:$scope.a[i].queId,
+//                        				testId:$scope.a[i].testId,
+//                        				correctOpt:$scope.a[i].answer,
+//                        				selectedOpt:$scope.selected,
+//                        				studentId:${sId}
+//                        			};
+//                         	array[i]=data;
+//                         	console.log(array);	
+//                         }
+//                 });
+        		
+//         		_.forEach(array, function(item) {
+//                     //console.log(item);
+//             		if(!(_.has(item, queId))){
+//             			data={
+//                  				queId:$scope.a[i].queId,
+//                  				testId:$scope.a[i].testId,
+//                  				correctOpt:$scope.a[i].answer,
+//                  				selectedOpt:$scope.selected,
+//                  				studentId:${sId}
+//                  			};    	
+                     	
+//                      	array.push(data);
+//                      	console.log(array);
+//                     // 	 $scope.json=JSON.stringify(array);
+//                   	//	console.log($scope.json);
+                  		
+//                 	}
+//             	  $scope.question = $scope.a[n].question;
+//                   $scope.opt1 = $scope.a[n].opt1;
+//                   $scope.opt2 = $scope.a[n].opt2;
+//                   $scope.opt3 = $scope.a[n].opt3;
+//                   $scope.opt4 = $scope.a[n].opt4;
+//                   $scope.selected=array[n].selectedOpt;
+      
+//                  i=n+1;
+
+                  
+              		
+              	
+//         }
+//     });
 </script>
 
 
