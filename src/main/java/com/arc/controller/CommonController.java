@@ -19,6 +19,8 @@ import javax.sql.rowset.serial.SerialBlob;
 import javax.sql.rowset.serial.SerialException;
 
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,12 +32,14 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.arc.model.ContactUs;
 import com.arc.model.Feedbackinfo;
+import com.arc.model.Result;
 import com.arc.model.Student;
 import com.arc.model.Testinfo;
 import com.arc.model.UploadQuestions;
 import com.arc.model.User;
 import com.arc.service.ContactService;
 import com.arc.service.FeedbackService;
+import com.arc.service.ResultService;
 import com.arc.service.TestService;
 import com.arc.service.UploadQuestionService;
 import com.arc.service.UserService;
@@ -61,7 +65,8 @@ public class CommonController {
 	FeedbackService feedbackService;
 	@Autowired
 	HttpServletRequest request;
-
+	@Autowired
+	ResultService resultService;
 	@RequestMapping({ "/", "/home" })
 	public String index() {
 		return "index";
@@ -652,14 +657,45 @@ public class CommonController {
 		m.addObject("json", array);
 		m.addObject("size", list.size());
 		m.addObject("sId", sId);
+		m.addObject("testId",id);
 		return m;
 	}
 
-	@RequestMapping(value = "/submittest/{sId}", method = RequestMethod.GET)
-	public ModelAndView submitTest(@RequestParam String jsonobj ,@PathVariable(value = "sId") int sId) throws Exception {
+	@RequestMapping(value = "/submittest", method = RequestMethod.GET)
+	public ModelAndView submitTest(@RequestParam String jsonobj ,@RequestParam int sId,@RequestParam int testId) throws Exception {
 
-		System.out.println(jsonobj);
-
+		System.out.println("helowwww"+sId);
+		System.out.println("helowwww"+jsonobj);
+		System.out.println("helowwww"+testId);
+		resultService.addresultDetails(jsonobj,sId);
+		Testinfo test= testService.getTest(testId);
+		Gson g = new Gson();
+		JSONParser parser = new JSONParser();
+		JSONArray array = (JSONArray) parser.parse(jsonobj);
+	     int marks=0;
+	    int correct=Integer.parseInt(test.getCorrect()); 
+	    int incorrect=Integer.parseInt(test.getIncorrect());
+	     
+		for (int i = 0; i < array.size(); i++) {
+			JSONObject objects = (JSONObject) array.get(i);
+			String str = g.toJson(objects);
+			Result res = g.fromJson(str, Result.class);
+			if(res.getCorrectOpt().equals(res.getSelectedOpt()))
+			 {
+				 marks=marks+correct;
+			 }
+			
+			 else
+	    	 {
+				 marks=marks-incorrect;
+	    	 }
+		
+		}
+		System.out.print("the marks for test is "+marks);
+	
+		studentService.updateMarks(sId,marks);
+		
+		
 		//		System.out.println(video);
 //
 //		byte[] decodedByte = org.apache.tomcat.util.codec.binary.Base64.decodeBase64(video);
@@ -695,4 +731,21 @@ public class CommonController {
 		m.addObject("title", "Dashboard");
 		return m;
 	}
+	@RequestMapping("/showresult")
+	public ModelAndView showresult(@RequestParam int testId, HttpSession session) {
+	    
+		ModelAndView m = new ModelAndView("showresult");
+		List<Result> result = resultService.getResult(testId);
+		Gson gson = new GsonBuilder().create();
+		JsonArray array = gson.toJsonTree(result).getAsJsonArray();
+
+		m.addObject("json", array);
+		m.addObject("size", result.size());
+
+		m.addObject("testId",testId);
+		return m;
+	
+	}
+	
+
 }

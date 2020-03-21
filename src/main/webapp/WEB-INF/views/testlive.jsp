@@ -26,11 +26,13 @@
 			<h2>
 				sec 1
 				<form action="/submittest">
-					<input name="jsonobj" type="text" ng-model="json"
-						style="display: none;">
-
-					<button type="submit">Submit test</button>
-				</form>
+				<input name="jsonobj" type="text" ng-model="json"
+					style="">
+				<input name="testId" type="text" value="${testId}" style="">
+				<input name="sId" type="text" value="${sId}" style="">
+			
+				<button type="submit">Submit test</button>
+			</form>
 			</h2>
 
 			<div class="que">
@@ -157,7 +159,7 @@ app.controller('myCtrl', function($scope) {
     $scope.opt3 = $scope.a[i].opt3;
     $scope.opt4 = $scope.a[i].opt4;
     $scope.selected = null;
-
+    $scope.json=JSON.stringify(array);
    }
 //next end
    $scope.jump = function(n) {
@@ -188,7 +190,7 @@ app.controller('myCtrl', function($scope) {
 
        array.push(data);
        console.log(array);
-       // 	 $scope.json=JSON.stringify(array);
+        	 
        //	console.log($scope.json);
 
       }
@@ -201,7 +203,7 @@ app.controller('myCtrl', function($scope) {
       //$scope.selected = array[n].selectedOpt;
 
       i = n + 1;
-
+      $scope.json=JSON.stringify(array);
      }
     });
 
