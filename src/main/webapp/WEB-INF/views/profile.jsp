@@ -77,7 +77,7 @@
 
 							<div class="col-xs-6">
 								<label for="first_name"><h4>Full name</h4></label> <input
-									type="text" class="form-control" name="first_name"
+									type="text" class="form-control" name="name"
 									id="first_name" value="${user.name}" title="Name.">
 							</div>
 						</div>
