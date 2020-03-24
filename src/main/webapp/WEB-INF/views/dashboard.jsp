@@ -14,7 +14,7 @@
 }
 
 div.card {
-	width: 250px;
+	width: 2500px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
 		rgba(0, 0, 0, 0.19);
 	text-align: center;
@@ -42,62 +42,14 @@ div.container {
 			</div>
               
 			<div class="container">
-				<p>tests hosted til date</p>
+				<p>Total Tests hosted</p>
 			</div>
 		</div>
 
-		<div class="card">
-			<div class="header">
-				<h1>2</h1> 
-			</div>
+		
 
-			<div class="container">
-				<p>January 1, 2016</p>
-			</div>
-		</div>
-
-		<div class="card">
-			<div class="header">
-				<h1>3</h1>
-			</div>
-
-			<div class="container">
-				<p>January 1, 2016</p>
-			</div>
-		</div>
 	</div>
-	<div class="row">
-
-		<div class="card">
-			<div class="header">
-				<h1>4</h1>
-			</div>
-
-			<div class="container">
-				<p>January 1, 2016</p>
-			</div>
-		</div>
-		<div class="card">
-			<div class="header">
-				<h1>5</h1>
-			</div>
-
-			<div class="container">
-				<p>January 1, 2016</p>
-			</div>
-		</div>
-
-		<div class="card">
-			<div class="header">
-				<h1>6</h1>
-			</div>
-
-			<div class="container">
-				<p>January 1, 2016</p>
-			</div>
-
-		</div>
-	</div>
+	
 	<div id="myGrid" style="height:100%; width:100%;" class="ag-theme-material"></div>
 	  
 

@@ -47,13 +47,7 @@ div.container {
 
 		
 	</div>
-	<div class="row">
-
-		
-		
-
-		
-	</div>
+	
 	<div id="myGrid" style="height:100%; width:100%;" class="ag-theme-material"></div>
 	  
 

@@ -67,6 +67,7 @@ public class CommonController {
 	HttpServletRequest request;
 	@Autowired
 	ResultService resultService;
+
 	@RequestMapping({ "/", "/home" })
 	public String index() {
 		return "index";
@@ -121,15 +122,41 @@ public class CommonController {
 				session.setAttribute("user", userService.getUser(email));
 				if (userService.getRole(email).equals("faculty")) {
 					ModelAndView m = new ModelAndView("examiner");
-
+					User user = (User) session.getAttribute("user");
+					int noOFtest = studentService.noofTest(user.getEmail());
+					List<Student> student = studentService.getTestDetails(user.getEmail());
+					// System.out.print(student.get(0).getFirstname());
+					List<Testinfo> testdetail = testService.getTestDetail(student);
+					Gson gson = new GsonBuilder().create();
+					JsonArray array = gson.toJsonTree(testdetail).getAsJsonArray();
+					System.out.println(array);
+					if (!testdetail.isEmpty()) {
+						m.addObject("noOftest", noOFtest);
+						m.addObject("testList", testdetail);
+						m.addObject("json", array);
+					}
 					m.addObject("userClickHome", true);
 					m.addObject("dash_title", "Home");
 					m.addObject("title", "Dashboard");
 
 					return m;
 				} else {
-					ModelAndView m = new ModelAndView("dashboard_student");
-					m.addObject("userClickHome", true);
+
+					User user = (User) session.getAttribute("user");
+					int noOFtest = studentService.noofTest(user.getEmail());
+					List<Student> student = studentService.getTestDetails(user.getEmail());
+					// System.out.print(student.get(0).getFirstname());
+					List<Testinfo> testdetail = testService.getTestDetail(student);
+					Gson gson = new GsonBuilder().create();
+					JsonArray array = gson.toJsonTree(testdetail).getAsJsonArray();
+					System.out.println(array);
+					ModelAndView m = new ModelAndView("student");
+					if (!testdetail.isEmpty()) {
+						m.addObject("noOftest", noOFtest);
+						m.addObject("testList", testdetail);
+						m.addObject("json", array);
+					}
+					m.addObject("userClickStudentDashboard", true);
 					m.addObject("dash_title", "Home");
 					m.addObject("title", "Dashboard");
 					return m;
@@ -179,7 +206,7 @@ public class CommonController {
 
 	@RequestMapping(value = "/addtest", method = RequestMethod.GET)
 	public ModelAndView addTest(Testinfo info) {
-		System.out.println("ttststts"+info.getfId());
+		System.out.println("ttststts" + info.getfId());
 		testService.addTest(info);
 //	int test_id=info.getTestId();
 		ModelAndView m = new ModelAndView("UploadQuestions");
@@ -317,6 +344,29 @@ public class CommonController {
 	@RequestMapping("/alltest")
 	public ModelAndView showallTest(HttpSession session) {
 		ModelAndView m = new ModelAndView("examiner");
+		List<Testinfo> testlist = testService.getalltest();
+		// System.out.println(testlist.get(1).getTestName());
+		Gson gson = new GsonBuilder().create();
+		JsonArray array = gson.toJsonTree(testlist).getAsJsonArray();
+
+		m.addObject("json", array);
+		m.addObject("size", testlist.size());
+
+		if (!testlist.isEmpty()) {
+			m.addObject("testList", testlist);
+			m.addObject("userClickAvailableTest", true);
+			m.addObject("dash_title", "Available Test");
+			m.addObject("title", "Available Tests");
+			return m;
+		} else {
+			m.addObject("msg", "No Record found");
+			return m;
+		}
+	}
+
+	@RequestMapping("/available_test")
+	public ModelAndView showAllTest(HttpSession session) {
+		ModelAndView m = new ModelAndView("student");
 		List<Testinfo> testlist = testService.getalltest();
 		// System.out.println(testlist.get(1).getTestName());
 		Gson gson = new GsonBuilder().create();
@@ -572,18 +622,31 @@ public class CommonController {
 
 		ModelAndView m = new ModelAndView("instruction");
 
-		//System.out.println();
+		// System.out.println();
 		Testinfo test = testService.getTest(testId);
 		m.addObject("test", test);
 		m.addObject("testId", testId);
 		m.addObject("sId", student.getId());
 		return m;
 	}
+	
+	//  add student method
+	
 
 	@RequestMapping("/editprofile")
 	public ModelAndView editProfile() {
 
 		ModelAndView m = new ModelAndView("examiner");
+		m.addObject("userClickEditProfile", true);
+		m.addObject("dash_title", "Edit Profile");
+		m.addObject("title", "Profile");
+		return m;
+	}
+
+	@RequestMapping("/edit_profile")
+	public ModelAndView editSProfile() {
+
+		ModelAndView m = new ModelAndView("student");
 		m.addObject("userClickEditProfile", true);
 		m.addObject("dash_title", "Edit Profile");
 		m.addObject("title", "Profile");
@@ -618,11 +681,19 @@ public class CommonController {
 
 		userService.updateRecord(user);
 		session.setAttribute("user", userService.getUser(user.getEmail()));
-
-		ModelAndView m = new ModelAndView("examiner");
-		m.addObject("userClickHome", true);
-		m.addObject("dash_title", "Home");
-		m.addObject("title", "Dashboard");
+		ModelAndView m;
+		if (user.getRoles().equals("student")) {
+			m = new ModelAndView("student");
+			m.addObject("userClickStudentDashboard", true);
+			m.addObject("dash_title", "Home");
+			m.addObject("title", "Dashboard");
+		}else {
+			m = new ModelAndView("examiner");
+			m.addObject("userClickHome", true);
+			m.addObject("dash_title", "Home");
+			m.addObject("title", "Dashboard");
+		}
+		
 		return m;
 	}
 
@@ -647,7 +718,7 @@ public class CommonController {
 	}
 
 	@RequestMapping(value = "/starttest", method = RequestMethod.GET)
-	public ModelAndView startTest(@RequestParam int id,@RequestParam long sId) {
+	public ModelAndView startTest(@RequestParam int id, @RequestParam long sId) {
 
 		List<com.arc.model.UploadQuestions> list = uploadQuestionService.getList(id);
 
@@ -659,50 +730,47 @@ public class CommonController {
 		m.addObject("json", array);
 		m.addObject("size", list.size());
 		m.addObject("sId", sId);
-		m.addObject("testId",id);
+		m.addObject("testId", id);
 		return m;
 	}
 
 	@RequestMapping(value = "/submittest", method = RequestMethod.GET)
-	public ModelAndView submitTest(@RequestParam String jsonobj ,@RequestParam int sId,@RequestParam int testId) throws Exception {
+	public ModelAndView submitTest(@RequestParam String jsonobj, @RequestParam int sId, @RequestParam int testId)
+			throws Exception {
 
-		System.out.println("helowwww"+sId);
-		System.out.println("helowwww"+jsonobj);
-		System.out.println("helowwww"+testId);
-		resultService.addresultDetails(jsonobj,sId);
-		Testinfo test= testService.getTest(testId);
+		System.out.println("helowwww" + sId);
+		System.out.println("helowwww" + jsonobj);
+		System.out.println("helowwww" + testId);
+		resultService.addresultDetails(jsonobj, sId);
+		Testinfo test = testService.getTest(testId);
 		Gson g = new Gson();
 		JSONParser parser = new JSONParser();
 		JSONArray array = (JSONArray) parser.parse(jsonobj);
-	     int marks=0;
-	    int correct=Integer.parseInt(test.getCorrect()); 
-	    int incorrect=Integer.parseInt(test.getIncorrect());
-	     
+		int marks = 0;
+		int correct = Integer.parseInt(test.getCorrect());
+		int incorrect = Integer.parseInt(test.getIncorrect());
+
 		for (int i = 0; i < array.size(); i++) {
 			JSONObject objects = (JSONObject) array.get(i);
 			String str = g.toJson(objects);
 			Result res = g.fromJson(str, Result.class);
-			if(res.getCorrectOpt().equals(res.getSelectedOpt()))
-			 {
-				 marks=marks+correct;
-			 }
-			
-			 else
-	    	 {
-				 marks=marks-incorrect;
-	    	 }
-		
+			if (res.getCorrectOpt().equals(res.getSelectedOpt())) {
+				marks = marks + correct;
+			}
+
+			else {
+				marks = marks - incorrect;
+			}
+
 		}
-		System.out.print("the marks for test is "+marks);
-		String result="FAIL";
-	   if(marks>=Integer.parseInt(test.getCutoff()))
-	   {
-		   result="PASS";
-	   }
-		studentService.updateMarks(sId,marks,result);
-		
-		
-		//		System.out.println(video);
+		System.out.print("the marks for test is " + marks);
+		String result = "FAIL";
+		if (marks >= Integer.parseInt(test.getCutoff())) {
+			result = "PASS";
+		}
+		studentService.updateMarks(sId, marks, result);
+
+		// System.out.println(video);
 //
 //		byte[] decodedByte = org.apache.tomcat.util.codec.binary.Base64.decodeBase64(video);
 //
@@ -721,10 +789,10 @@ public class CommonController {
 //		s.setPhone("5665555545");
 
 		// studentService.addStudentDetails(s);
-         Student student= studentService.getStudentById(sId);
+		Student student = studentService.getStudentById(sId);
 		ModelAndView m = new ModelAndView("feedbackform");
-        m.addObject("student",student);
-       
+		m.addObject("student", student);
+
 		return m;
 	}
 
@@ -733,8 +801,8 @@ public class CommonController {
 
 		ModelAndView m = new ModelAndView("examiner");
 		User user = (User) session.getAttribute("user");
-		int noOFtest=testService.noOfTest(user.getUserId());
-		List<Testinfo> testlist=testService.getList(user.getUserId());
+		int noOFtest = testService.noOfTest(user.getUserId());
+		List<Testinfo> testlist = testService.getList(user.getUserId());
 		Gson gson = new GsonBuilder().create();
 		JsonArray array = gson.toJsonTree(testlist).getAsJsonArray();
 		// System.out.println(array);
@@ -747,49 +815,47 @@ public class CommonController {
 			m.addObject("testList", testlist);
 			m.addObject("userClickHome", true);
 			m.addObject("dash_title", "Home");
-			m.addObject("noOftest",noOFtest);
+			m.addObject("noOftest", noOFtest);
 			m.addObject("title", "Dashboard");
 			return m;
 		} else {
 			m.addObject("msg", "No Record found");
 			m.addObject("userClickHome", true);
 			m.addObject("dash_title", "Home");
-			m.addObject("noOftest",noOFtest);
+			m.addObject("noOftest", noOFtest);
 			m.addObject("title", "Dashboard");
 			return m;
 		}
-		
-		
-	
-	
+
 	}
+
 	@RequestMapping("/showresult")
 	public ModelAndView showresult(@RequestParam int testId, HttpSession session) {
-	    
+
 		ModelAndView m = new ModelAndView("examiner");
 		List<Student> result = studentService.getResult(testId);
 		Gson gson = new GsonBuilder().create();
 		JsonArray array = gson.toJsonTree(result).getAsJsonArray();
-         System.out.print(array);
+		System.out.print(array);
 		m.addObject("json", array);
 		m.addObject("size", result.size());
 
-		m.addObject("testId",testId);
+		m.addObject("testId", testId);
 		m.addObject("userClickShowResult", true);
 		m.addObject("dash_title", "Test RESULT");
 		m.addObject("title", "Test Result");
 		return m;
-	
+
 	}
+
 	@RequestMapping("/dashboard_student")
-	public ModelAndView dashboard_student( HttpSession session )
-	{
-		ModelAndView m= new ModelAndView("dashboard_student"); 
+	public ModelAndView dashboard_student(HttpSession session) {
+		ModelAndView m = new ModelAndView("student");
 		User user = (User) session.getAttribute("user");
-		int noOFtest=studentService.noofTest(user.getEmail());
-		List<Student> student=studentService.getTestDetails(user.getEmail());
-		System.out.print(student.get(0).getFirstname());
-		List<Testinfo> testdetail=testService.getTestDetail(student);
+		int noOFtest = studentService.noofTest(user.getEmail());
+		List<Student> student = studentService.getTestDetails(user.getEmail());
+		// System.out.print(student.get(0).getFirstname());
+		List<Testinfo> testdetail = testService.getTestDetail(student);
 		Gson gson = new GsonBuilder().create();
 		JsonArray array = gson.toJsonTree(testdetail).getAsJsonArray();
 		System.out.println(array);
@@ -797,54 +863,86 @@ public class CommonController {
 		if (!testdetail.isEmpty()) {
 			m.addObject("testList", testdetail);
 			m.addObject("json", array);
-			m.addObject("userClickHome", true);
+			m.addObject("userClickStudentDashboard", true);
 			m.addObject("dash_title", "Home");
-			m.addObject("noOftest",noOFtest);
+			m.addObject("noOftest", noOFtest);
 			m.addObject("title", "Dashboard");
 			return m;
 		} else {
 			m.addObject("msg", "No Record found");
-			m.addObject("userClickHome", true);
+			m.addObject("userClickStudentDashboard", true);
 			m.addObject("dash_title", "Home");
-			m.addObject("noOftest",noOFtest);
+			m.addObject("noOftest", noOFtest);
 			m.addObject("title", "Dashboard");
 			return m;
 		}
-		
-		
+
 	}
+
 	@RequestMapping("/about")
 	public ModelAndView about() {
 		ModelAndView m = new ModelAndView("examiner");
-	
+
 		m.addObject("userClickAbout", true);
 		m.addObject("dash_title", "About");
-		
+
 		m.addObject("title", "About Us");
 		return m;
 	}
-	
+
 	@RequestMapping("/contact")
 	public ModelAndView contact() {
 		ModelAndView m = new ModelAndView("examiner");
-		
+
 		m.addObject("userClickContact", true);
 		m.addObject("dash_title", "Contact");
 
 		m.addObject("title", "Contact Details");
 		return m;
 	}
-	
+
 	@RequestMapping("/policy")
 	public ModelAndView policy() {
 		ModelAndView m = new ModelAndView("examiner");
-	
+
 		m.addObject("userClickPolicy", true);
 		m.addObject("dash_title", "Privacy and Policy");
-	
+
 		m.addObject("title", "Privacy and Policy");
 		return m;
 	}
-	
+
+	@RequestMapping("/about_student")
+	public ModelAndView aboutStudentt() {
+		ModelAndView m = new ModelAndView("student");
+
+		m.addObject("userClickAbout", true);
+		m.addObject("dash_title", "About");
+
+		m.addObject("title", "About Us");
+		return m;
+	}
+
+	@RequestMapping("/contact_student")
+	public ModelAndView contactStudent() {
+		ModelAndView m = new ModelAndView("student");
+
+		m.addObject("userClickContact", true);
+		m.addObject("dash_title", "Contact");
+
+		m.addObject("title", "Contact Details");
+		return m;
+	}
+
+	@RequestMapping("/policy_student")
+	public ModelAndView policyStudent() {
+		ModelAndView m = new ModelAndView("student");
+
+		m.addObject("userClickPolicy", true);
+		m.addObject("dash_title", "Privacy and Policy");
+
+		m.addObject("title", "Privacy and Policy");
+		return m;
+	}
 
 }
