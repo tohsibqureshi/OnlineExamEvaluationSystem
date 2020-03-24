@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Timeline</title>
+        <link rel="icon" href="img/tsicon.png" type="image/x-icon">
 </head>
 <body>
 <h1>WELCOME  -- ${user.name}</h1>

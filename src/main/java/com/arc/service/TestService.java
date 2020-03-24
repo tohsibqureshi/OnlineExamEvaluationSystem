@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.arc.model.Student;
 import com.arc.model.Testinfo;
 import com.arc.model.UploadQuestions;
 import com.arc.model.User;
@@ -88,6 +89,40 @@ public class TestService {
 		testRepository.delete(test);
 		
 		
+	}
+
+	public int noOfTest(Long userId) {
+		int tests=0;
+		List<Testinfo> test = new ArrayList<Testinfo>();
+		for (Testinfo record : list()) {
+			if (record.getfId()==userId) {
+
+				tests++;
+                
+			}
+		}
+
+		return tests;
+		
+	}
+
+	public List<Testinfo> getTestDetail(List<Student> student) {
+		List<Testinfo> test = new ArrayList<Testinfo>();
+		int len=student.size();
+		System.out.print(len);
+		for(int i=0;i<len;i++)
+		{
+			int id= (int) student.get(i).getTestId();
+			for (Testinfo record : list()) {
+				if (record.getTestId()==id) {
+
+					test.add(record);
+                   
+				}
+			}
+		   
+		}
+		return test;
 	}
 
 	

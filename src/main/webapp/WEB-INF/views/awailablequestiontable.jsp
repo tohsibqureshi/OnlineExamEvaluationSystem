@@ -1,5 +1,7 @@
 <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.js"></script>
  
+ <link rel="icon" href="img/tsicon.png" type="image/x-icon">
+ 
 </head>
 <body>
   <div id="myGrid" style="height:100%; width:100%;" class="ag-theme-material"></div>

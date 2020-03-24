@@ -5,6 +5,9 @@
 	<title>Registration Form</title>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
   <link rel="stylesheet" href="css/reg.css">
+  
+  <link rel="icon" href="img/tsicon.png" type="image/x-icon">
+  
 </head>
 <body style="background-image: url('img/bg.jpg')">
 

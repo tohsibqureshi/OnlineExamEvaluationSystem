@@ -7,23 +7,22 @@
 	href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
 <link rel="stylesheet" href="css/examinerstyles.css">
 <style>
-	.back :hover{
-		cursor: pointer;
-	}
-	.forward :hover{
-		cursor: pointer;
-	}
+.back :hover {
+	cursor: pointer;
+}
+
+.forward :hover {
+	cursor: pointer;
+}
 </style>
 <header
 	class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
 	<div class="mdl-layout__header-row">
-		<span class="back"> <i class="material-icons" onclick="goBack()">
-				arrow_back &nbsp; </i>
-		</span>
-		<span class="forward"> <i class="material-icons" onclick="goForward()">
-				arrow_forward &nbsp;&nbsp;</i>
-		</span> 
-		<span class="mdl-layout-title">${dash_title}</span>
+		<span class="back"> <i class="material-icons"
+			onclick="goBack()"> arrow_back &nbsp; </i>
+		</span> <span class="forward"> <i class="material-icons"
+			onclick="goForward()"> arrow_forward &nbsp;&nbsp;</i>
+		</span> <span class="mdl-layout-title">${dash_title}</span>
 		<div class="mdl-layout-spacer"></div>
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
 			<label class="mdl-button mdl-js-button mdl-button--icon" for="search">
@@ -43,9 +42,13 @@
 		<ul
 			class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right"
 			for="hdrbtn">
-			<li class="mdl-menu__item">About</li>
-			<li class="mdl-menu__item">Contact</li>
-			<li class="mdl-menu__item">Legal information</li>
+			<a href="/about"><li class="mdl-menu__item">About</li></a>
+			<a href="/contact">
+				<li class="mdl-menu__item">Contact</li>
+			</a>
+			<a href="/policy">
+				<li class="mdl-menu__item">Legal information</li>
+			</a>
 			<a href="/logout">
 				<li class="mdl-menu__item">Logout</li>
 			</a>
@@ -57,6 +60,6 @@
 		window.history.back();
 	}
 	function goForward() {
-		  window.history.forward();
-		}
+		window.history.forward();
+	}
 </script>

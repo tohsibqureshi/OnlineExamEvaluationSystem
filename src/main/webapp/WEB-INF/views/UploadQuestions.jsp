@@ -46,6 +46,10 @@ button {
 	border: none;
 }
 </style>
+
+<link rel="icon" href="img/tsicon.png" type="image/x-icon">
+
+
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>

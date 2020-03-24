@@ -467,7 +467,7 @@ Consolidated reports accompanies a feature to shortlist candidates into differen
 
 			<!-- Copyright -->
 			<div class="footer-copyright text-center py-3">
-				© 2020 Copyright: <a href="#">arcDeveloper.com</a>
+				© 2020 Copyright: <a href="#">Online Exam Evaluation System</a>
 			</div>
 			<!-- Copyright -->
 

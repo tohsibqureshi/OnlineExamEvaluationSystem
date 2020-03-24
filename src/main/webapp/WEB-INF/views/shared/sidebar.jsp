@@ -33,19 +33,19 @@
 			role="presentation">home</i>Home</a> <a class="mdl-navigation__link"
 			href="/create"><i
 			class="mdl-color-text--blue-grey-400 material-icons"
-			role="presentation">inbox</i>Create Test</a> <a
+			role="presentation">assignment_turned_in</i>Create Test</a> <a
 			class="mdl-navigation__link" href="/testtable"><i
 			class="mdl-color-text--blue-grey-400 material-icons"
-			role="presentation">delete</i>Test Created By Me</a> <a
+			role="presentation">book</i>Your Tests</a> <a
 			class="mdl-navigation__link" href="/alltest"><i
 			class="mdl-color-text--blue-grey-400 material-icons"
-			role="presentation">report</i>Available Test</a> <a
+			role="presentation">assessment</i>Available Tests</a> <a
 			class="mdl-navigation__link" href="/editprofile"><i
 			class="mdl-color-text--blue-grey-400 material-icons"
-			role="presentation">flag</i>Edit Profile</a>
+			role="presentation">account_circle</i>Edit Profile</a>
 		<div class="mdl-layout-spacer"></div>
 		<a class="mdl-navigation__link" href=""><i
 			class="mdl-color-text--blue-grey-400 material-icons"
-			role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
+			role="presentation">help_outline</i><span >Help</span></a>
 	</nav>
 </div>

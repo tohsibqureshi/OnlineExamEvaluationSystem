@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>	
-	
+	<link rel="icon" href="img/tsicon.png" type="image/x-icon">
 </head>
 <body ng-app="dateInputExample">
 <script>
@@ -24,7 +24,7 @@
   <div class="form" ng-controller="DateController as dateCtrl">
   <form action="/addtest">
     <div class="input_field">
-    <input name="F_id" type="number" class="input"   value="${user.userId}" readonly="" style="display:none;" >
+    <input name="fId" type="number" class="input"   value="${user.userId}" readonly="" style="display:none;" >
     </div>
     
     <div class="input_field">

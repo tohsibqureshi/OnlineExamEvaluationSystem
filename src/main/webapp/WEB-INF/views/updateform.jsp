@@ -45,6 +45,9 @@ button {
 	border: none;
 }
 </style>
+
+<link rel="icon" href="img/tsicon.png" type="image/x-icon">
+
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <body>
 

@@ -60,7 +60,8 @@ tr:nth-child(even) {
 	background-color: #dddddd;
 }
 </style>
-
+ 
+ <link rel="icon" href="img/tsicon.png" type="image/x-icon">
 	
 	<link rel="stylesheet" href="css/instruction.css">
 </head>

@@ -1,9 +1,13 @@
+<script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.js"></script>
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <!-- Material Design Bootstrap -->
 <link rel="stylesheet" href="css/mdb.min.css">
+
+<link rel="icon" href="img/tsicon.png" type="image/x-icon">
+
 <style>
 .layout {
 	
@@ -34,17 +38,17 @@ div.container {
 
 		<div class="card">
 			<div class="header">
-				<h1>1</h1>
+				<h1>${noOftest}</h1>
 			</div>
-
+              
 			<div class="container">
-				<p>January 1, 2016</p>
+				<p>tests hosted til date</p>
 			</div>
 		</div>
 
 		<div class="card">
 			<div class="header">
-				<h1>2</h1>
+				<h1>2</h1> 
 			</div>
 
 			<div class="container">
@@ -94,5 +98,38 @@ div.container {
 
 		</div>
 	</div>
+	<div id="myGrid" style="height:100%; width:100%;" class="ag-theme-material"></div>
+	  
+
+	<script>
+	var columnDefs = [
+		  {headerName: "Test Name", field: "testName",sortable: false, filter: true},
+		   {headerName: "Show Results" ,field: "testId", cellRenderer: function(params) {
+		      return '<a title="result" href="/showresult?testId='+ params.value+'"><i class="material-icons">open_in_browser</i></a>'
+		  }}
+		];
+		    
+		// specify the data
+		var rowData = ${json};
+		    
+		// let the grid know which columns and what data to use
+		var gridOptions = {
+		  columnDefs: columnDefs,
+		  rowData: rowData,
+		 
+		};
+		
+	
+	
+	
+		// setup the grid after the page has finished loading
+		document.addEventListener('DOMContentLoaded', function() {
+		    var gridDiv = document.querySelector('#myGrid');
+		    new agGrid.Grid(gridDiv, gridOptions);
+		});
+
+</script>
+
+
 </body>
 </html>

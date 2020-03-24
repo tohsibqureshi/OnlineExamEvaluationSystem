@@ -1,8 +1,9 @@
 <style>
-<!--
 
--->
+<link rel="icon" href="img/tsicon.png" type="image/x-icon">
+
 </style>
+
 
   <div id="myGrid" style="height:100%; width:100%;" class="ag-theme-material"></div>
   

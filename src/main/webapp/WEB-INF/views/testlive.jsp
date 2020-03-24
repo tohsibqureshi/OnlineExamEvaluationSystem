@@ -14,6 +14,8 @@
 <!-- 	<div id="stopButton" class="button">Stop</div> -->
 <!-- 	<h2>Recording</h2> -->
 
+<link rel="icon" href="img/tsicon.png" type="image/x-icon">
+
 <link rel="stylesheet" href="css/teststyle.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>

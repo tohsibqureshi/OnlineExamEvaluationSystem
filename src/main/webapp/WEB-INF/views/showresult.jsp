@@ -7,11 +7,13 @@
 </body>
 		<script>
 		var columnDefs = [
-			  {headerName: "Id", field: "id",sortable: false, filter: true},
-			  {headerName: "corrwectans ", field: "correctOpt",sortable: false, filter: true},
-			  {headerName: "Option id", field: "queId",sortable: false, filter: true	},
-			  {headerName: "corrwectans ", field: "correctOpt",sortable: false, filter: true},
-			  {headerName: "Option id", field: "queId",sortable: false, filter: true	},
+			  {headerName: "Email", field: "email",sortable: false, filter: true},
+			  {headerName: "First Name ", field: "firstname",sortable: false, filter: true},
+			  {headerName: "Last Name", field: "lastname",sortable: false, filter: true	},
+			  {headerName: "Institute ", field: "institute",sortable: false, filter: true},
+			  {headerName: "Branch ", field: "branch",sortable: false, filter: true},
+			  {headerName: "Marks", field: "marks",sortable: false, filter: true	},
+			  {headerName: "Result", field: "result",sortable: false, filter: true	},
 			 
 			  ];
 			    

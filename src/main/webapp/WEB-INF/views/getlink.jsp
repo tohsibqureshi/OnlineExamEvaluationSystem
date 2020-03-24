@@ -9,7 +9,7 @@
 <title>Registration Form</title>
 <link rel="stylesheet" href="css/student-register.css">
 
-
+<link rel="icon" href="img/tsicon.png" type="image/x-icon">
 </head>
 <body>
 
