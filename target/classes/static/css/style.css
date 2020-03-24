@@ -13,6 +13,21 @@ header,
     background-size: cover;
     
 }
+.feature-list li{
+	padding:20px;
+}
+
+.test-image{   
+	
+	width: 120px;
+    height: 345px;
+    overflow: hidden;
+    margin-top: 215px;
+}
+.test-image img{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	width:100%;
+}
 .feature h1{
 	text-align:left;
 	padding-top:100px;
@@ -112,13 +127,40 @@ h1::after{
 .services .col-md-3:hover span{
 	color: #fff;
 }
+.service{
+	margin-top: 50px;
+}
 <!---team------------------------------------------------------------------------------------->
 .team-section{
-  background: #f1f1f1;
-  text-align: left;
   
+  text-align: left;
+  padding-top:100px;
   
 }
+
+.inner-width h2::after{
+
+	content: '';
+	background: #ff4d73;
+	display: block;
+	height: 3px;
+	width: 130px;
+	margin: 20px ;
+}
+
+.contact-head h2::after{
+	content: '';
+	background: #ff4d73;
+	display: block;
+	height: 3px;
+	width: 140px;
+	margin: 20px ;
+	margin-bottom: 30px;
+}
+#contact{
+	padding-top: 85px;
+}
+
 .inner-width{
 
   max-width: 1200px;
@@ -127,11 +169,12 @@ h1::after{
   color: #333;
   overflow: hidden;
 }
-.team-section h1{
-  font-size: 20px;
+.team-section h2{
+	margin-top:50px;
+  font-size: 36px;
   text-transform: uppercase;
   display: inline-block;
-  padding-bottom:10px; 
+  padding-bottom:15px; 
 }
 .pe{
   float: left;

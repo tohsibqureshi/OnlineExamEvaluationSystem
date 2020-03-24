@@ -12,10 +12,10 @@
 			<div class="left"></div>
 			<div class="right">
 			<form action="/addfeedback">
-				<h2>FeedBack</h2>
-				<input type="text" class="field" name="name" placeholder="Your Name">
-				<input type="email" class="field" name="email" placeholder="Your Email">
-				<input type="text" class="field" name="phone" placeholder="Your Phone No.">
+				<h2>FeedBack</h2>   
+				<input type="text" class="field" name="name" value="${student.firstname} ${student.lastname}" readonly>
+				<input type="email" class="field" name="email" value="${student.email}" readonly>
+				<input type="text" class="field" name="phone" value="${student.phone}" readonly>
 				<textarea class="field area" name="message" placeholder="message"></textarea>
 				<button class="btn">Send</button>
 			</form>

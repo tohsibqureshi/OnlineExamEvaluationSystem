@@ -49,7 +49,7 @@
 		<main class="mdl-layout__content mdl-color--grey-100">
 
 			<c:if test="${userClickHome==true}">
-				<%@include file="welcome.jsp"%>
+				<%@include file="dashboard.jsp"%>
 			</c:if>
 
 			<c:if test="${userClickCreateTest==true}">

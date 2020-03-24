@@ -26,13 +26,12 @@
 			<h2>
 				sec 1
 				<form action="/submittest">
-				<input name="jsonobj" type="text" ng-model="json"
-					style="">
-				<input name="testId" type="text" value="${testId}" style="">
-				<input name="sId" type="text" value="${sId}" style="">
-			
-				<button type="submit">Submit test</button>
-			</form>
+					<input name="jsonobj" type="text" ng-model="json" style="">
+					<input name="testId" type="text" value="${testId}" style="">
+					<input name="sId" type="text" value="${sId}" style="">
+
+					<button type="submit">Submit test</button>
+				</form>
 			</h2>
 
 			<div class="que">
@@ -102,8 +101,8 @@ app.controller('myCtrl', function($scope) {
    $scope.opt4 = $scope.a[i].opt4;
 
    function findObjectByKey(array, key, value) {
-	    for (var i = 0; i < array.length; i++) {
-	        if (array[i][key] === value) {
+	    for (var j = 0; j < array.length; j++) {
+	        if (array[j][key] === value) {
 	            return true;
 	        }
 	    }
@@ -111,7 +110,7 @@ app.controller('myCtrl', function($scope) {
 	}
    
    $scope.next = function() {
-	   console.log(array);
+	  // console.log(array);
     
 	   if (findObjectByKey(array,'queId',$scope.a[i].queId)){
       var data = {
@@ -123,12 +122,7 @@ app.controller('myCtrl', function($scope) {
       };
       array[i] = data;
       console.log(array);
-     }
-   
-    
-     //console.log(item);
-   //  var obj = _.find(array, function (item) { return item.queId == ; });
-      if (!findObjectByKey(array,'queId',$scope.a[i].queId)) {
+     }else{
       
        data = {
        queId: $scope.a[i].queId,
@@ -163,7 +157,7 @@ app.controller('myCtrl', function($scope) {
    }
 //next end
    $scope.jump = function(n) {
-	   console.log(array);
+	   //console.log(array);
    
      if (findObjectByKey(array,'queId',$scope.a[i].queId)){
       var data = {
@@ -175,10 +169,7 @@ app.controller('myCtrl', function($scope) {
       };
       array[i] = data;
       console.log(array);
-     }
-  
-
-    if (!findObjectByKey(array,'queId',$scope.a[i].queId)) {
+     }else{
         
         data = {
         queId: $scope.a[i].queId,
@@ -200,10 +191,14 @@ app.controller('myCtrl', function($scope) {
       $scope.opt2 = $scope.a[n].opt2;
       $scope.opt3 = $scope.a[n].opt3;
       $scope.opt4 = $scope.a[n].opt4;
+      $scope.selected = null;
       //$scope.selected = array[n].selectedOpt;
-
-      i = n + 1;
-      $scope.json=JSON.stringify(array);
+ if (n < $scope.total - 1) {
+     i=n+1;
+    } else {
+     i=0;
+    }
+       $scope.json=JSON.stringify(array);
      }
     });
 

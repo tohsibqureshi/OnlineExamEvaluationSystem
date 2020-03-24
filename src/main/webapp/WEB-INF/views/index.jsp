@@ -101,13 +101,13 @@ html {
 
 					<div
 						class="container-fluid d-flex align-items-center justify-content-center h-100">
-${msg}
+						${msg}
 						<div class="row d-flex justify-content-center text-center">
 
 							<div class="col-md-10">
 
 								<!-- Heading -->
-								<h2 class="display-3 font-weight-bold white-text pt-5 mb-4">Online Test Portal</h2>
+								<h2 class="display-3 font-weight-bold white-text pt-5 mb-4">Online Exam Evaluation System</h2>
 
 								<!-- Divider -->
 								<hr class="hr-light">
@@ -142,8 +142,8 @@ ${msg}
 		<div class="container" id="best-features">
 			<div class="row">
 				<div class="col-md-6" >
-					<h2>Features Are</h2>
-					<ul>
+					<h1><strong>Features Are</strong></h1>
+					<ul class="feature-list">
 						<li>online exam portal, you can create online exams in less than 5 minutes without any hassle.</li>
 						<li>With our portal, online exams are auto checked and results are provided immediately to students.</li>
 						<li>Create unlimited questions sets</li>
@@ -151,14 +151,18 @@ ${msg}
 						<li>Create unlimited number of student profiles.</li>
 					</ul>
 				</div>
+				
+				<div class="col-md-6 test-image">
+					<img src="img/test1.jpg">
+				</div>
 			</div>
 		</div>
 	</div>
-</section>
+</section>	<hr class="my-5">
 		<!-- -service -->
 		<section class="services">
 	<div class="container" id="services">
-		<h1>Our Service</h1>
+		<h1><strong>Our Service</strong></h1>
 		<div class="row services">
 			<div class="col-md-3 text-center">
 				<div class="icon">
@@ -197,13 +201,14 @@ Consolidated reports accompanies a feature to shortlist candidates into differen
 		</div>
 	</div>
 	
-</section >
+</section >	<hr class="my-5">
 <!-- team -->
-<div class="team-section" id="team">
-    <div class="inner-width">
-      <h1>Our Team</h1>
-      <div class="pers">
-        <div class="pe">
+
+<section class="team-section" id="team">
+    <div class="container inner-width" >
+      <h2><strong>Our Team</strong></h2>
+      <div  class="pers">
+      <div class="pe">
           <img src="img/team_members/members_1.jpg" alt="">
           <div class="p-name">Rohan Chouhan</div>
           <div class="p-des">Front-End Developer</div>
@@ -212,6 +217,7 @@ Consolidated reports accompanies a feature to shortlist candidates into differen
             <a href="#"><i class="fab fa-instagram "></i></a>
           </div>
         </div>
+      
          <div class="pe">
           <img src="img/team_members/members_2.jpg" alt="">
           <div class="p-name">Ronak Neema</div>
@@ -241,17 +247,15 @@ Consolidated reports accompanies a feature to shortlist candidates into differen
         </div>
       </div>
     </div>
-  </div>
-
-
-							
+  </section>				
 				<hr class="my-5">
 
 				<!--Section: Contact-->
-				<section id="contact">
-
+				<section  class="contact-head">
+				<h2><strong>CONTACT US</strong></h2>
+<div   id="contact">
 					<!-- Heading -->
-					<h2 class="mb-5 font-weight-bold text-center">Contact us</h2>
+					
 
 					<!--Grid row-->
 					<div class="row">
@@ -347,7 +351,7 @@ Consolidated reports accompanies a feature to shortlist candidates into differen
 
 					</div>
 					<!--Grid row-->
-
+</div>
 				</section>
 				<!--Section: Contact-->
 
@@ -425,9 +429,7 @@ Consolidated reports accompanies a feature to shortlist candidates into differen
 						<p>
 							<a href="#!">Conduct Test</a>
 						</p>
-						<p>
-							<a href="#!">Default Templates</a>
-						</p>
+					
 						<p>
 							<a href="#!">Question library</a>
 						</p>

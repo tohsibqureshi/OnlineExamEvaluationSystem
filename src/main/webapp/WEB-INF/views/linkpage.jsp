@@ -1,3 +1,3 @@
-<h1>Your Test Linnk is</h1>
+<h1>Your Test Link is</h1>
 
 ${link}

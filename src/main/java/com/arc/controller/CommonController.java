@@ -715,9 +715,10 @@ public class CommonController {
 //		s.setPhone("5665555545");
 
 		// studentService.addStudentDetails(s);
-
+         Student student= studentService.getStudentById(sId);
 		ModelAndView m = new ModelAndView("feedbackform");
-
+        m.addObject("student",student);
+       
 		return m;
 	}
 
