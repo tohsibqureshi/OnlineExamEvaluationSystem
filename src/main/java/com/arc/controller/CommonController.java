@@ -590,7 +590,7 @@ public class CommonController {
 		return m;
 	}
 
-	@RequestMapping(value = "/updateprofile", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "/updateprofile", method = RequestMethod.POST)
 	public ModelAndView update(User user, @RequestParam MultipartFile file, HttpSession session) {
 		String filename = file.getOriginalFilename();
 		String realPath = request.getRealPath("/");
@@ -620,7 +620,9 @@ public class CommonController {
 		session.setAttribute("user", userService.getUser(user.getEmail()));
 
 		ModelAndView m = new ModelAndView("examiner");
-
+		m.addObject("userClickHome", true);
+		m.addObject("dash_title", "Home");
+		m.addObject("title", "Dashboard");
 		return m;
 	}
 

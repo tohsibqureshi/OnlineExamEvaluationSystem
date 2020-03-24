@@ -33,7 +33,7 @@ h2 {
 	width: 100%;
 }
 
-input[type=text], input[type=email], input[type=file] , {
+input[type=text], input[type=email]{
 	width: 100%;
 	box-sizing: border-box;
 	padding: 12px 5px;
