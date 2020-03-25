@@ -16,9 +16,9 @@
 			<div class="right">
 			<form action="/addfeedback">
 				<h2>FeedBack</h2>   
-				<input type="text" class="field" name="name" value="${student.firstname} ${student.lastname}" readonly>
+				<input type="text" class="field" name="name" placeholder="Enter Your Name" >
 				<input type="email" class="field" name="email" value="${student.email}" readonly>
-				<input type="text" class="field" name="phone" value="${student.phone}" readonly>
+				<input type="text" class="field" name="phone"  placeholder="Enter Your Mobile"  readonly>
 				<textarea class="field area" name="message" placeholder="message"></textarea>
 				<button class="btn">Send</button>
 			</form>

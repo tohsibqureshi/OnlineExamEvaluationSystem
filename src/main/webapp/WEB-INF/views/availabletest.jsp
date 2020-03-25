@@ -20,7 +20,7 @@
 			  {headerName: "Test Expiry Time", field: "expiryTime",sortable: false, filter: true	},
 			  {headerName: "Test Pivacy", field: "privacy",sortable: false, filter: true	},
 			  {headerName: "Action", field: "testId",pinned: 'right',width:150,cellRenderer: function(params) {
-			      return '<a href="/getlink?id='+ params.value+'">Start Test</a>'
+			      return '<a href="/addstudent?id='+ params.value+'">Start Test</a>'
 			 
 			  }}
 			];

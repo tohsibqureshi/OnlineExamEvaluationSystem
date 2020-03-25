@@ -10,7 +10,7 @@ public class Result {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	long id;
-	int studentId;
+	long studentId;
 	int queId;
 	String correctOpt;
 	int testId;
@@ -21,10 +21,11 @@ public class Result {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public int getStudentId() {
+	
+	public long getStudentId() {
 		return studentId;
 	}
-	public void setStudentId(int studentId) {
+	public void setStudentId(long studentId) {
 		this.studentId = studentId;
 	}
 	public int getQueId() {

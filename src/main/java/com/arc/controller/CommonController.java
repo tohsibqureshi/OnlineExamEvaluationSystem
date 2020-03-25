@@ -40,6 +40,7 @@ import com.arc.model.User;
 import com.arc.service.ContactService;
 import com.arc.service.FeedbackService;
 import com.arc.service.ResultService;
+import com.arc.service.StudentLoginService;
 import com.arc.service.TestService;
 import com.arc.service.UploadQuestionService;
 import com.arc.service.UserService;
@@ -67,6 +68,8 @@ public class CommonController {
 	HttpServletRequest request;
 	@Autowired
 	ResultService resultService;
+	@Autowired
+	StudentLoginService studentLoginService;
 
 	@RequestMapping({ "/", "/home" })
 	public String index() {
@@ -629,9 +632,25 @@ public class CommonController {
 		m.addObject("sId", student.getId());
 		return m;
 	}
-	
-	//  add student method
-	
+
+	@RequestMapping("/addstudent")
+	public ModelAndView addStudentDetail(@RequestParam int id, HttpSession session) {
+
+		// User u = userService.getUser(email);
+		User user = (User) session.getAttribute("user");
+		studentLoginService.addStudent(id, user.getUserId());
+
+		ModelAndView m = new ModelAndView("instruction");
+
+		// System.out.println();
+		Testinfo test = testService.getTest(id);
+		m.addObject("test", test);
+		m.addObject("testId", id);
+		m.addObject("sId", user.getUserId());
+		return m;
+	}
+
+	// add student method
 
 	@RequestMapping("/editprofile")
 	public ModelAndView editProfile() {
@@ -687,13 +706,13 @@ public class CommonController {
 			m.addObject("userClickStudentDashboard", true);
 			m.addObject("dash_title", "Home");
 			m.addObject("title", "Dashboard");
-		}else {
+		} else {
 			m = new ModelAndView("examiner");
 			m.addObject("userClickHome", true);
 			m.addObject("dash_title", "Home");
 			m.addObject("title", "Dashboard");
 		}
-		
+
 		return m;
 	}
 
@@ -735,7 +754,7 @@ public class CommonController {
 	}
 
 	@RequestMapping(value = "/submittest", method = RequestMethod.GET)
-	public ModelAndView submitTest(@RequestParam String jsonobj, @RequestParam int sId, @RequestParam int testId)
+	public ModelAndView submitTest(@RequestParam String jsonobj, @RequestParam long sId, @RequestParam int testId)
 			throws Exception {
 
 		System.out.println("helowwww" + sId);
@@ -757,7 +776,6 @@ public class CommonController {
 			if (res.getCorrectOpt().equals(res.getSelectedOpt())) {
 				marks = marks + correct;
 			}
-
 			else {
 				marks = marks - incorrect;
 			}
@@ -768,8 +786,16 @@ public class CommonController {
 		if (marks >= Integer.parseInt(test.getCutoff())) {
 			result = "PASS";
 		}
-		studentService.updateMarks(sId, marks, result);
-
+		
+		System.out.println(result);
+		Object student;
+		if (userService.getUserById(sId) != null) {
+			studentLoginService.updateMarks(sId, marks, result);
+			student = studentLoginService.getStudentById(sId);
+		} else {
+			studentService.updateMarks(sId, marks, result);
+			student = studentService.getStudentById(sId);
+		}
 		// System.out.println(video);
 //
 //		byte[] decodedByte = org.apache.tomcat.util.codec.binary.Base64.decodeBase64(video);
@@ -789,7 +815,7 @@ public class CommonController {
 //		s.setPhone("5665555545");
 
 		// studentService.addStudentDetails(s);
-		Student student = studentService.getStudentById(sId);
+		// Student student = studentService.getStudentById(sId);
 		ModelAndView m = new ModelAndView("feedbackform");
 		m.addObject("student", student);
 

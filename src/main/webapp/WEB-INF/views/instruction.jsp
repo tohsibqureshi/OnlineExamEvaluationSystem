@@ -71,7 +71,7 @@ tr:nth-child(even) {
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
-					<h1><strong>Test Instructions</strong></h1>
+					<h1><strong>Test is live - Test Instructions</strong></h1>
 					<ol>
 						<li> Before taking test , please make sure that:
 						     <br>You have a proper internet connection.
@@ -89,11 +89,7 @@ tr:nth-child(even) {
 	</div>
 </section>
 
-	<h2>
-		Test is live
 	
-
-	</h2>
 
 	<table>
 		<tr>
@@ -103,9 +99,8 @@ tr:nth-child(even) {
 			<th>No of Questions</th>
 			<th>marks for correct Ans</th>
 			<th>Marks for wrong ans</th>
-			<th>Date of expiry</th>
-			<th>Tid</th>
-			<th>Edit</th>
+			
+			<th>Action</th>
 		</tr>
 
 			<tr>
@@ -115,8 +110,7 @@ tr:nth-child(even) {
 				<td>${test.nQuestions}</td>
 				<td>${test.correct}</td>
 				<td>${test.incorrect}</td>
-				<td>${test.expiryTime}</td>
-				<td>${test.testId}</td>
+				
 				<td>
 					<form action="/starttest">
 						<input name="id" value="${test.testId}" style="display: none;">

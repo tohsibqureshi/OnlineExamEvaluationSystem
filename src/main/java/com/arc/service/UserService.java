@@ -95,6 +95,15 @@ UserRepository userRepository;
 		else
 			return null;
 	}
+	public User getUserById(Long id) {
+		for (User record : list()) {
+			if (record.getUserId()==id) {
+				return record;
+			}
+		}
+
+		return null;
+	}
 	
 
 	

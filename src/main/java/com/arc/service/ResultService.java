@@ -19,7 +19,7 @@ import com.google.gson.Gson;
 public class ResultService {
 	@Autowired
 	ResultRepository resultRepository;
-	public void addresultDetails(String jsonobj,int sId) throws ParseException {
+	public void addresultDetails(String jsonobj,long sId) throws ParseException {
 		Gson g = new Gson();
 //		JSONArray jsonArray = new JSONArray(jsonobj);
 		JSONParser parser = new JSONParser();
