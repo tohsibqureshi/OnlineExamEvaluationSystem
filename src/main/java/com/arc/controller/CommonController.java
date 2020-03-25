@@ -34,6 +34,7 @@ import com.arc.model.ContactUs;
 import com.arc.model.Feedbackinfo;
 import com.arc.model.Result;
 import com.arc.model.Student;
+import com.arc.model.StudentLogin;
 import com.arc.model.Testinfo;
 import com.arc.model.UploadQuestions;
 import com.arc.model.User;
@@ -126,16 +127,18 @@ public class CommonController {
 				if (userService.getRole(email).equals("faculty")) {
 					ModelAndView m = new ModelAndView("examiner");
 					User user = (User) session.getAttribute("user");
-					int noOFtest = studentService.noofTest(user.getEmail());
-					List<Student> student = studentService.getTestDetails(user.getEmail());
+					//int noOFtest = studentService.noofTest(user.getEmail());
+					//List<Student> student = studentService.getTestDetails(user.getEmail());
 					// System.out.print(student.get(0).getFirstname());
-					List<Testinfo> testdetail = testService.getTestDetail(student);
+					//List<Testinfo> testdetail = testService.getTestDetail(student);
+					List<Testinfo> testlist = testService.getList(user.getUserId());
 					Gson gson = new GsonBuilder().create();
-					JsonArray array = gson.toJsonTree(testdetail).getAsJsonArray();
+					JsonArray array = gson.toJsonTree(testlist).getAsJsonArray();
+					int noOFtest =array.size();
 					System.out.println(array);
-					if (!testdetail.isEmpty()) {
+					if (!testlist.isEmpty()) {
 						m.addObject("noOftest", noOFtest);
-						m.addObject("testList", testdetail);
+						m.addObject("testList", testlist);
 						m.addObject("json", array);
 					}
 					m.addObject("userClickHome", true);
@@ -146,17 +149,20 @@ public class CommonController {
 				} else {
 
 					User user = (User) session.getAttribute("user");
-					int noOFtest = studentService.noofTest(user.getEmail());
-					List<Student> student = studentService.getTestDetails(user.getEmail());
+					//int noOFtest = studentService.noofTest(user.getEmail());
+					//List<Student> student = studentService.getTestDetails(user.getEmail());
 					// System.out.print(student.get(0).getFirstname());
-					List<Testinfo> testdetail = testService.getTestDetail(student);
+				//	List<Testinfo> testdetail = testService.getTestDetail(student);
+					List<StudentLogin> student = studentLoginService.getTestDetails(user.getUserId());
 					Gson gson = new GsonBuilder().create();
-					JsonArray array = gson.toJsonTree(testdetail).getAsJsonArray();
+					JsonArray array = gson.toJsonTree(student).getAsJsonArray();
 					System.out.println(array);
+					int noOFtest =array.size();
+					
 					ModelAndView m = new ModelAndView("student");
-					if (!testdetail.isEmpty()) {
+					if (!student.isEmpty()) {
 						m.addObject("noOftest", noOFtest);
-						m.addObject("testList", testdetail);
+						m.addObject("testList", student);
 						m.addObject("json", array);
 					}
 					m.addObject("userClickStudentDashboard", true);
@@ -212,7 +218,11 @@ public class CommonController {
 		System.out.println("ttststts" + info.getfId());
 		testService.addTest(info);
 //	int test_id=info.getTestId();
-		ModelAndView m = new ModelAndView("UploadQuestions");
+		ModelAndView m = new ModelAndView("examiner");
+		m.addObject("userClickAddTest", true);
+		m.addObject("dash_title", "Enter Questions");
+		m.addObject("title", "Upload Question Form");
+		
 //	m.addObject("test_id",test_id);
 		m.addObject("totalques", info.getnQuestions());
 		m.addObject("testid", info.getTestId());
@@ -227,13 +237,37 @@ public class CommonController {
 	}
 
 	@RequestMapping(value = "/addQuestion", method = RequestMethod.GET)
-	public ModelAndView addQuestion(@RequestParam String jsonobj, @RequestParam int testId) throws ParseException {
+	public ModelAndView addQuestion(@RequestParam String jsonobj, @RequestParam int testId,HttpSession session) throws ParseException {
 		System.out.println(jsonobj + testId);
 		uploadQuestionService.addQuestion(jsonobj, testId);
 //	System.out.println("questuonnnss"+uploadQuestions.getQuestion());
 		ModelAndView m = new ModelAndView("examiner");
+		User user = (User) session.getAttribute("user");
+		System.out.println(user);
+		List<Testinfo> testlist = testService.getList(user.getUserId());
 
-		return m;
+		Gson gson = new GsonBuilder().create();
+		JsonArray array = gson.toJsonTree(testlist).getAsJsonArray();
+		// System.out.println(array);
+
+		m.addObject("json", array);
+		// m.addObject("size",testlist.size());
+
+		// System.out.println(testlist.get(1).getTestName());
+		if (!testlist.isEmpty()) {
+			m.addObject("testList", testlist);
+			m.addObject("userClickCreatedTest", true);
+			m.addObject("dash_title", "My Test");
+			m.addObject("title", "My Tests");
+			return m;
+		} else {
+			m.addObject("msg", "No Record found");
+			m.addObject("userClickCreatedTest", true);
+			m.addObject("dash_title", "My Test");
+			m.addObject("title", "My Tests");
+			return m;
+		}
+
 	}
 
 	@RequestMapping("/addquery")
@@ -731,7 +765,7 @@ public class CommonController {
 		// System.out.println(user.getEmail());
 		// System.out.println(user.getId());
 		// System.out.println(user.getPassword());
-		ModelAndView m = new ModelAndView("welcome");
+		ModelAndView m = new ModelAndView("thanks");
 
 		return m;
 	}
@@ -768,7 +802,7 @@ public class CommonController {
 		int marks = 0;
 		int correct = Integer.parseInt(test.getCorrect());
 		int incorrect = Integer.parseInt(test.getIncorrect());
-
+        String testname=test.getTestName();
 		for (int i = 0; i < array.size(); i++) {
 			JSONObject objects = (JSONObject) array.get(i);
 			String str = g.toJson(objects);
@@ -790,7 +824,7 @@ public class CommonController {
 		System.out.println(result);
 		Object student;
 		if (userService.getUserById(sId) != null) {
-			studentLoginService.updateMarks(sId, marks, result);
+			studentLoginService.updateMarks(sId, marks, result,testname);
 			student = studentLoginService.getStudentById(sId);
 		} else {
 			studentService.updateMarks(sId, marks, result);
@@ -878,16 +912,17 @@ public class CommonController {
 	public ModelAndView dashboard_student(HttpSession session) {
 		ModelAndView m = new ModelAndView("student");
 		User user = (User) session.getAttribute("user");
-		int noOFtest = studentService.noofTest(user.getEmail());
-		List<Student> student = studentService.getTestDetails(user.getEmail());
+		
+		List<StudentLogin> student = studentLoginService.getTestDetails(user.getUserId());
 		// System.out.print(student.get(0).getFirstname());
-		List<Testinfo> testdetail = testService.getTestDetail(student);
+		
 		Gson gson = new GsonBuilder().create();
-		JsonArray array = gson.toJsonTree(testdetail).getAsJsonArray();
+		JsonArray array = gson.toJsonTree(student).getAsJsonArray();
 		System.out.println(array);
+		int noOFtest = array.size();
 
-		if (!testdetail.isEmpty()) {
-			m.addObject("testList", testdetail);
+		if (!student.isEmpty()) {
+			m.addObject("testList", student);
 			m.addObject("json", array);
 			m.addObject("userClickStudentDashboard", true);
 			m.addObject("dash_title", "Home");

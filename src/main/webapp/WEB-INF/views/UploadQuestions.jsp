@@ -12,7 +12,6 @@ textarea {
 
 .opt1 {
 	border: none;
-	
 	padding: 2%;
 }
 
@@ -48,22 +47,36 @@ button {
 </style>
 
 <link rel="icon" href="img/tsicon.png" type="image/x-icon">
-
+<link rel="icon" href="img/tsicon.png" type="image/x-icon">
+<style>
+.text-center {
+	padding-top: 155px !important;
+	padding-bottom: 280px !important;
+	margin-bottom: 0 !important;
+}
+</style>
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
+
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <body>
 	<div ng-app="myApp" ng-controller="myCtrl">
 		<div ng-hide="tt">
-			<h1>Submitted success fully.... Goto dashboard</h1>
-			<form action="/addQuestion">
-				<input name="jsonobj" type="text" ng-model="json"
-					style="display: none;"> <input name="testId" type="number"
-					value="${testid}" style="display: none;">
+			<div class="jumbotron text-center ">
+				<h1 class="display-3">Your Test Successfully Submitted</h1>
+				<p class="lead">
+					<strong>Goto Dashboard</strong>
+				</p>
+				<form action="/addQuestion">
+					<input name="jsonobj" type="text" ng-model="json"
+						style="display: none;"> <input name="testId" type="number"
+						value="${testid}" style="display: none;">
 
-				<button type="submit">Dashboard</button>
-			</form>
+					<button class="btn btn-primary btn-sm" type="submit">Dashboard</button>
+				</form>
+			</div>
 		</div>
 		<form>
 			<div ng-show="tt">

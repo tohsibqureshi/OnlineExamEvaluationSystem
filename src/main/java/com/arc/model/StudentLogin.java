@@ -1,14 +1,18 @@
 package com.arc.model;
 
+import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JacksonInject.Value;
 @Entity
 public class StudentLogin {
 	@Id  
     @Column(name="id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	String name;
 	@Column(name = "username")
@@ -20,7 +24,20 @@ public class StudentLogin {
 	int marks=0;
 	String result="";
 	long testId;
-	
+	long studentId;
+	public long getStudentId() {
+		return studentId;
+	}
+	public void setStudentId(long studentId) {
+		this.studentId = studentId;
+	}
+	String testname;
+	public String getTestname() {
+		return testname;
+	}
+	public void setTestname(String testname) {
+		this.testname = testname;
+	}
 	public long getTestId() {
 		return testId;
 	}
