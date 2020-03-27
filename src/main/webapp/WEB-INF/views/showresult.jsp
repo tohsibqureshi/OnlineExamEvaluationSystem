@@ -11,9 +11,9 @@
 			  {headerName: "First Name ", field: "firstname",sortable: false, filter: true},
 			  {headerName: "Last Name", field: "lastname",sortable: false, filter: true	},
 			  {headerName: "Institute ", field: "institute",sortable: false, filter: true},
-			  {headerName: "Branch ", field: "branch",sortable: false, filter: true},
-			  {headerName: "Marks", field: "marks",sortable: false, filter: true	},
-			  {headerName: "Result", field: "result",sortable: false, filter: true	},
+			  {headerName: "Branch ", field: "branch",sortable: false, filter: true,width:110},
+			  {headerName: "Marks", field: "marks",sortable: false, filter: true,pinned:'right',width:101	},
+			  {headerName: "Result", field: "result",sortable: false, filter: true,pinned:'right',width:103	},
 			 
 			  ];
 			    

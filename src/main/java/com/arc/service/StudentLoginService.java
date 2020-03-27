@@ -34,9 +34,9 @@ public class StudentLoginService {
 
 	}
 
-	public void updateMarks(long sId, int marks, String result,String testname) {
+	public void updateMarks(long sId, int marks, String result,String testname, int testId) {
 		StudentLogin student1 = new StudentLogin();
-		StudentLogin student = getStudentById(sId);
+		User student = service.getUserById(sId);
 		student1.setMarks(marks);
 		student1.setResult(result);
 		student1.setTestname(testname);
@@ -45,8 +45,8 @@ public class StudentLoginService {
 		student1.setMobile(student.getMobile());
 		student1.setName(student.getName());
         student1.setPassword(student.getPassword());
-        student1.setStudentId(student.getStudentId());
-        student1.setTestId(student.getTestId());
+        student1.setStudentId(student.getUserId());
+        student1.setTestId(testId);
 		student1.setUserName(student.getUserName());
 		
 		loginRepository.save(student1);

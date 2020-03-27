@@ -55,9 +55,9 @@ div.container {
 
 	<script>
 	var columnDefs = [
-		  {headerName: "Test Name", field: "testName",sortable: false, filter: true},
-		   {headerName: "Show Results" ,field: "testId", cellRenderer: function(params) {
-		      return '<a title="result" href="/showresult?testId='+ params.value+'"><i class="material-icons">open_in_browser</i></a>'
+		  {headerName: "Test Name", field: "testName",sortable: false, filter: true,width: 750},
+		   {headerName: "Show Results" ,field: "testId",pinned:'right',width:300, cellRenderer: function(params) {
+		      return '<a title="result" href="/showresult?testId='+ params.value+'"><i class="material-icons" style="padding-top:5px;">open_in_browser</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;View Submission</a>'
 		  }}
 		];
 		    

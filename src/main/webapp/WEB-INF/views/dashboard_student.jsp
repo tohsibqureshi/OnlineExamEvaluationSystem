@@ -11,7 +11,7 @@
 }
 
 div.card {
-	width: 250px;
+	width: 2500px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
 		rgba(0, 0, 0, 0.19);
 	text-align: center;
@@ -39,7 +39,7 @@ div.container {
 			</div>
               
 			<div class="container">
-				<p>tests given til date</p>
+				<p>You give Tests till date</p>
 			</div>
 		</div>
 
@@ -53,9 +53,9 @@ div.container {
 
 	<script>
 	var columnDefs = [
-		  {headerName: "Test Name", field: "testname",sortable: false, filter: true},
-		  {headerName: "Result", field: "result",sortable: false, filter: true},
-		  {headerName: "Marks", field: "marks",sortable: false, filter: true},
+		  {headerName: "Test Name", field: "testname",sortable: false, filter: true,width: 450},
+		  {headerName: "Result", field: "result",sortable: false, filter: true,width: 300},
+		  {headerName: "Marks", field: "marks",sortable: false, filter: true,width: 300},
 		   
 		];
 		    

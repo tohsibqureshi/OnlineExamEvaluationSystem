@@ -1,4 +1,7 @@
-button{
+.none{
+	display: none;
+}
+.button3{
 	
 	
 	 text-align: center;
@@ -18,7 +21,48 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	
 	
 }
+.button30{
+	
+display:inline-block;
+	 text-align: center;
+      font-size: 28px;
+      padding: 20px;
+      width: 250px;
+      height:55px;
+      text-align:center;
+      font-size:15px;
+	border-radius:50px;
+	cursor:pointer;
+	color:black;
+	background-color:#4CAF50;
+	margin-top: -4px;
+	margin-right:10px;
+	float:right;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   
+	
+	
+}
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
 
+.button1 {border-radius: 8px;}
+p {
+  text-align: center;
+  display:inline-block;
+  font-size: 40px;
+  margin: 0px;
+}
 .sec{
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	position:relative;

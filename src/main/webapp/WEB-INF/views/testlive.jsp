@@ -26,20 +26,20 @@
 	<div ng-app="myApp" ng-controller="myCtrl">
 		<div class="sec">
 			<h2>
-				sec 1
+				
 				<form action="/submittest">
-					<input name="jsonobj" type="text" ng-model="json" style="">
-					<input name="testId" type="text" value="${testId}" style="">
-					<input name="sId" type="text" value="${sId}" style="">
+					<input class="none" name="jsonobj" type="text" ng-model="json" style="">
+					<input class="none" name="testId" type="text" value="${testId}" style="">
+					<input class="none" name="sId" type="text" value="${sId}" style="">
 
-					<button type="submit">Submit test</button>
+					<p id="demo"></p><button class="button30" type="submit">Submit test</button>
 				</form>
 			</h2>
-
+<div id="demo1">
 			<div class="que">
-				Que !
+				Questions :- 
 
-				<button ng-repeat="no in narr" ng-click=jump(no)>{{no}}</button>
+				<button class="button button1" ng-repeat="no in narr" ng-click=jump(no)>{{no}}</button>
 			</div>
 
 
@@ -64,7 +64,7 @@
 							value="option4"> {{opt4}}
 					</div>
 					<div class="btn">
-						<button ng-click="next()" type="button" ng-hide="con">next</button>
+						<button class="button3" ng-click="next()" type="button" ng-hide="con">next</button>
 						<button ng-click="" type="button" ng-show="con">submit</button>
 					</div>
 					<div class="btn"></div>
@@ -72,7 +72,7 @@
 
 			</div>
 
-
+</div>
 
 		</div>
 	</div>
@@ -81,16 +81,53 @@
 
 <script>
 
+
+//Set the date we're counting down tovar 
+      dt = new Date();
+var countDownDate = dt.setMinutes( dt.getMinutes() + ${duration} );
+
+//Update the count down every 1 second
+var x = setInterval(function() {
+
+// Get today's date and time
+var now = new Date().getTime();
+ 
+// Find the distance between now and the count down date
+var distance = countDownDate - now;
+ 
+// Time calculations for days, hours, minutes and seconds
+var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+ 
+// Output the result in an element with id="demo"
+document.getElementById("demo").innerHTML = hours + "h "
++ minutes + "m " + seconds + "s ";
+ 
+// If the count down is over, write some text 
+if (distance < 0) {
+ clearInterval(x);
+ document.getElementById("demo").innerHTML = "EXPIRED";
+ document.getElementById("demo1").innerHTML = "Please Submit Test";
+}
+}, 1000);
+
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope) {
    var i = 0;
-   $scope.narr = [0, 1, 2];
+   $scope.narr = [];
    var studentId = ${sId};
    var a;
    var con = false;
    $scope.a = ${json};
    var total;
    $scope.total = ${size};
+   
+   for(var x=1;x<$scope.total+1;x++){
+	   $scope.narr.push(x);
+   }
+   
    var array = [];
    $scope.json = "";
    console.log($scope.a[i].question);
@@ -160,7 +197,7 @@ app.controller('myCtrl', function($scope) {
 //next end
    $scope.jump = function(n) {
 	   //console.log(array);
-   
+   n=n-1;
      if (findObjectByKey(array,'queId',$scope.a[i].queId)){
       var data = {
        queId: $scope.a[i].queId,

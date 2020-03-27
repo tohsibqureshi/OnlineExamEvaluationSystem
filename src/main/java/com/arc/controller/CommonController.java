@@ -672,7 +672,7 @@ public class CommonController {
 
 		// User u = userService.getUser(email);
 		User user = (User) session.getAttribute("user");
-		studentLoginService.addStudent(id, user.getUserId());
+		//studentLoginService.addStudent(id, user.getUserId());
 
 		ModelAndView m = new ModelAndView("instruction");
 
@@ -773,6 +773,9 @@ public class CommonController {
 	@RequestMapping(value = "/starttest", method = RequestMethod.GET)
 	public ModelAndView startTest(@RequestParam int id, @RequestParam long sId) {
 
+		Testinfo test = testService.getTest(id);
+		int duration = test.getDuration();
+		
 		List<com.arc.model.UploadQuestions> list = uploadQuestionService.getList(id);
 
 		Gson gson = new GsonBuilder().create();
@@ -783,6 +786,7 @@ public class CommonController {
 		m.addObject("json", array);
 		m.addObject("size", list.size());
 		m.addObject("sId", sId);
+		m.addObject("duration", duration);
 		m.addObject("testId", id);
 		return m;
 	}
@@ -809,6 +813,8 @@ public class CommonController {
 			Result res = g.fromJson(str, Result.class);
 			if (res.getCorrectOpt().equals(res.getSelectedOpt())) {
 				marks = marks + correct;
+			}else if(res.getSelectedOpt()==null) {
+				marks = marks + 0;
 			}
 			else {
 				marks = marks - incorrect;
@@ -824,7 +830,7 @@ public class CommonController {
 		System.out.println(result);
 		Object student;
 		if (userService.getUserById(sId) != null) {
-			studentLoginService.updateMarks(sId, marks, result,testname);
+			studentLoginService.updateMarks(sId, marks, result,testname,testId);
 			student = studentLoginService.getStudentById(sId);
 		} else {
 			studentService.updateMarks(sId, marks, result);
